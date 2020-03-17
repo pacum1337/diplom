@@ -60,6 +60,7 @@
             // 
             // bCancel
             // 
+            this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bCancel.Location = new System.Drawing.Point(12, 257);
             this.bCancel.Name = "bCancel";
@@ -67,16 +68,19 @@
             this.bCancel.TabIndex = 3;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // bEnter
             // 
+            this.bEnter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnter.Location = new System.Drawing.Point(331, 257);
+            this.bEnter.Location = new System.Drawing.Point(328, 252);
             this.bEnter.Name = "bEnter";
             this.bEnter.Size = new System.Drawing.Size(114, 46);
             this.bEnter.TabIndex = 4;
             this.bEnter.Text = "Вход";
             this.bEnter.UseVisualStyleBackColor = true;
+            this.bEnter.Click += new System.EventHandler(this.bEnter_Click);
             // 
             // tbLog
             // 
@@ -98,19 +102,21 @@
             // cbRemember
             // 
             this.cbRemember.AutoSize = true;
+            this.cbRemember.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbRemember.Location = new System.Drawing.Point(97, 182);
+            this.cbRemember.Location = new System.Drawing.Point(98, 192);
             this.cbRemember.Name = "cbRemember";
-            this.cbRemember.Size = new System.Drawing.Size(274, 28);
+            this.cbRemember.Size = new System.Drawing.Size(183, 28);
             this.cbRemember.TabIndex = 7;
-            this.cbRemember.Text = "Запомнить меня на 7 дней";
+            this.cbRemember.Text = "Запомнить меня";
             this.cbRemember.UseVisualStyleBackColor = true;
             // 
             // lReg
             // 
             this.lReg.AutoSize = true;
+            this.lReg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lReg.Location = new System.Drawing.Point(319, 9);
+            this.lReg.Location = new System.Drawing.Point(316, 9);
             this.lReg.Name = "lReg";
             this.lReg.Size = new System.Drawing.Size(126, 24);
             this.lReg.TabIndex = 8;
@@ -120,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 315);
+            this.ClientSize = new System.Drawing.Size(454, 310);
             this.Controls.Add(this.lReg);
             this.Controls.Add(this.cbRemember);
             this.Controls.Add(this.tbPas);
@@ -129,9 +135,13 @@
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MaximumSize = new System.Drawing.Size(472, 357);
+            this.MinimumSize = new System.Drawing.Size(472, 357);
             this.Name = "Auth";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация пользователя";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Auth_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -52,6 +52,10 @@
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuthUserCookie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Strings.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
