@@ -24,12 +24,12 @@ namespace UchetPractica
 
         private void bEnter_Click(object sender, EventArgs e)
         {
-            string login = tbLog.Text;
+            string login = tbLog.Text.Trim();
             string hash = Strings.hashStr;
-            byte[] checkSum1 = mdPas.ComputeHash(Encoding.UTF8.GetBytes(tbPas.Text + hash));
+            byte[] checkSum1 = mdPas.ComputeHash(Encoding.UTF8.GetBytes(tbPas.Text.Trim() + hash));
             string password = BitConverter.ToString(checkSum1).Replace("-", String.Empty);
 
-            string sqlString = String.Format("SELECT * FROM Users WHERE Login='{0}' AND Password='{1}'", login, password);
+            string sqlString = String.Format("SELECT * FROM Users WHERE Login='{0}' AND Password=N'{1}'", login, password);
 
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
@@ -40,6 +40,7 @@ namespace UchetPractica
                 if (reader.HasRows)
                 {
                     reader.Read();
+                    MessageBox.Show(password);
                     MessageBox.Show("Добро пожаловать " + reader.GetString(1) + " " + reader.GetString(2));
                     flag = true;
                     if (cbRemember.Checked)//Save cookie
@@ -69,6 +70,12 @@ namespace UchetPractica
             {
                 Application.Exit();
             }
+        }
+
+        private void lReg_Click(object sender, EventArgs e)
+        {
+            Reg reg = new Reg();
+            reg.ShowDialog();
         }
     }
 }

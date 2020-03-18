@@ -42,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(104, 86);
+            this.label1.Location = new System.Drawing.Point(116, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 24);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(94, 139);
+            this.label2.Location = new System.Drawing.Point(104, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 24);
             this.label2.TabIndex = 1;
@@ -65,7 +65,7 @@
             this.bCancel.Location = new System.Drawing.Point(12, 257);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(110, 46);
-            this.bCancel.TabIndex = 3;
+            this.bCancel.TabIndex = 4;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
@@ -77,7 +77,7 @@
             this.bEnter.Location = new System.Drawing.Point(328, 252);
             this.bEnter.Name = "bEnter";
             this.bEnter.Size = new System.Drawing.Size(114, 46);
-            this.bEnter.TabIndex = 4;
+            this.bEnter.TabIndex = 3;
             this.bEnter.Text = "Вход";
             this.bEnter.UseVisualStyleBackColor = true;
             this.bEnter.Click += new System.EventHandler(this.bEnter_Click);
@@ -121,6 +121,7 @@
             this.lReg.Size = new System.Drawing.Size(126, 24);
             this.lReg.TabIndex = 8;
             this.lReg.Text = "Регистрация";
+            this.lReg.Click += new System.EventHandler(this.lReg_Click);
             // 
             // Auth
             // 

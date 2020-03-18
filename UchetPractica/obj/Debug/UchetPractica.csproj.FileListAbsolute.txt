@@ -8,3 +8,4 @@ C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Prope
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csproj.GenerateResource.cache
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.pdb
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Reg.resources
