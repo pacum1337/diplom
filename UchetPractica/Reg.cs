@@ -75,18 +75,25 @@ namespace UchetPractica
                     {
                         if(superPas != "")
                         {
-                            string sqlString = String.Format("SELECT * FROM Users WHERE Id='{0}' AND Password=N'{1}'"
-                                , superUsers[cbSU.SelectedIndex].ToString(), superPas);
-
                             byte[] checkSum2 = md5.ComputeHash(Encoding.UTF8.GetBytes(pas1 + hash));
                             string password = BitConverter.ToString(checkSum2).Replace("-", String.Empty);
 
-                            string sqlReg;
+                            bool superCheck = true;//cbSuperuser checked
+                            string sqlReg ="";
                             if (cbSuperReg.Checked)
                             {
-                                sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password, " +
+                                DialogResult dr = MessageBox.Show("Вы уверены, что хотите создать \nпользователя с ролью 'SuperUser'?", "Подтверждение действия",
+                                MessageBoxButtons.YesNo);
+                                if (dr == DialogResult.Yes)
+                                {
+                                    sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password, " +
                                     "SuperUser) " +
-                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}', 1)", name, surname, login, password);
+                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}', 1)", name, surname, login, password);
+                                }
+                                else
+                                {
+                                    superCheck = false;
+                                }
                             }
                             else
                             {
@@ -94,7 +101,10 @@ namespace UchetPractica
                                 "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')", name, surname, login, password);
                             }
 
+
                             bool isSuper = false;
+                            string sqlString = String.Format("SELECT * FROM Users WHERE Id='{0}' AND Password=N'{1}'"
+                                , superUsers[cbSU.SelectedIndex].ToString(), superPas);
                             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                             {
                                 connection.Open();
@@ -107,7 +117,8 @@ namespace UchetPractica
                                 }
                                 else MessageBox.Show("Не верно введен пароль SuperUser");
                             }
-                            if (isSuper)
+
+                            if (isSuper && superCheck)
                             {
                                 using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                                 {
