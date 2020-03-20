@@ -20,6 +20,7 @@ namespace UchetPractica
         public Auth()
         {
             InitializeComponent();
+            tbPas.UseSystemPasswordChar = true;
         }
 
         private void bEnter_Click(object sender, EventArgs e)
@@ -40,18 +41,24 @@ namespace UchetPractica
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    MessageBox.Show(password);
                     MessageBox.Show("Добро пожаловать " + reader.GetString(1) + " " + reader.GetString(2));
                     flag = true;
                     if (cbRemember.Checked)//Save cookie
                     {
-                        string file_direct = Strings.direct + @"\Data\Cookie\user.txt";
-                        File.WriteAllText(file_direct, "");
-                        using (var writer = new StreamWriter(file_direct, true))
+                        string file_direct_remember = AuthUserCookie.userCookie;
+                        File.WriteAllText(file_direct_remember, "");
+                        using (var writer = new StreamWriter(file_direct_remember, true))
                         {
                             writer.WriteLine(reader.GetInt32(0).ToString());
                             writer.WriteLine(reader.GetString(4));
                         }
+                    }
+                    string file_direct_auth_user = AuthUserCookie.file_direct_auth_user;
+                    File.WriteAllText(file_direct_auth_user, "");
+                    using (var writer = new StreamWriter(file_direct_auth_user, true))
+                    {
+                        writer.WriteLine(reader.GetInt32(0).ToString());
+                        writer.WriteLine(reader.GetString(4));
                     }
                     Close();
                 }

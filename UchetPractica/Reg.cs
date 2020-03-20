@@ -20,6 +20,9 @@ namespace UchetPractica
         public Reg()
         {
             InitializeComponent();
+            tbPas.UseSystemPasswordChar = true;
+            tbPas2.UseSystemPasswordChar = true;
+            tbSUPas.UseSystemPasswordChar = true;
         }
 
         private void bCancel_Click(object sender, EventArgs e)

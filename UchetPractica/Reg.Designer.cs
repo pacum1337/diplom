@@ -54,7 +54,6 @@
             this.tbPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPas.Location = new System.Drawing.Point(179, 197);
             this.tbPas.Name = "tbPas";
-            this.tbPas.PasswordChar = '*';
             this.tbPas.Size = new System.Drawing.Size(165, 28);
             this.tbPas.TabIndex = 4;
             // 
@@ -115,7 +114,6 @@
             this.tbPas2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPas2.Location = new System.Drawing.Point(179, 245);
             this.tbPas2.Name = "tbPas2";
-            this.tbPas2.PasswordChar = '*';
             this.tbPas2.Size = new System.Drawing.Size(165, 28);
             this.tbPas2.TabIndex = 5;
             // 
@@ -145,7 +143,6 @@
             this.tbSUPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbSUPas.Location = new System.Drawing.Point(379, 181);
             this.tbSUPas.Name = "tbSUPas";
-            this.tbSUPas.PasswordChar = '*';
             this.tbSUPas.Size = new System.Drawing.Size(165, 28);
             this.tbSUPas.TabIndex = 7;
             // 

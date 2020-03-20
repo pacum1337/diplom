@@ -9,3 +9,5 @@ C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.cspro
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.pdb
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Reg.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Profile.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Students.resources

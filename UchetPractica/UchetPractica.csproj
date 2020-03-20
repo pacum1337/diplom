@@ -46,14 +46,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arhiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Arhiv.Designer.cs">
+      <DependentUpon>Arhiv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Auth.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
-    <Compile Include="AuthUserCookie.cs">
+    <Compile Include="AuthUserCookie.cs" />
+    <Compile Include="Documents.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents.Designer.cs">
+      <DependentUpon>Documents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Groups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groups.Designer.cs">
+      <DependentUpon>Groups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rucovoditeli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rucovoditeli.Designer.cs">
+      <DependentUpon>Rucovoditeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students.Designer.cs">
+      <DependentUpon>Students.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Organizations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organizations.Designer.cs">
+      <DependentUpon>Organizations.cs</DependentUpon>
     </Compile>
     <Compile Include="Reg.cs">
       <SubType>Form</SubType>
@@ -61,7 +101,6 @@
     <Compile Include="Reg.Designer.cs">
       <DependentUpon>Reg.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegUser.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -73,6 +112,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students.resx">
+      <DependentUpon>Students.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
