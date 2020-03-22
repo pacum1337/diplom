@@ -11,3 +11,10 @@ C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.pdb
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Reg.resources
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Profile.resources
 C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Students.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Groups.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Organizations.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Rucovoditeli.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Documents.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.DocAdd.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.DocumentsWork.resources
+C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.OrgannizAdd.resources

@@ -43,7 +43,7 @@ namespace UchetPractica
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Documents documents = new Documents();
+            DocumentsWork documents = new DocumentsWork();
             documents.ShowDialog();
         }
 
@@ -73,7 +73,7 @@ namespace UchetPractica
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Arhiv arhiv = new Arhiv();
+            Documents arhiv = new Documents();
             arhiv.ShowDialog();
         }
 

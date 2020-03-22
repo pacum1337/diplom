@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arhiv.cs">
+    <Compile Include="DocAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Arhiv.Designer.cs">
-      <DependentUpon>Arhiv.cs</DependentUpon>
+    <Compile Include="DocAdd.Designer.cs">
+      <DependentUpon>DocAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents.Designer.cs">
+      <DependentUpon>Documents.cs</DependentUpon>
     </Compile>
     <Compile Include="Auth.cs">
       <SubType>Form</SubType>
@@ -59,17 +65,23 @@
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
     <Compile Include="AuthUserCookie.cs" />
-    <Compile Include="Documents.cs">
+    <Compile Include="DocumentsWork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents.Designer.cs">
-      <DependentUpon>Documents.cs</DependentUpon>
+    <Compile Include="DocumentsWork.Designer.cs">
+      <DependentUpon>DocumentsWork.cs</DependentUpon>
     </Compile>
     <Compile Include="Groups.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Groups.Designer.cs">
       <DependentUpon>Groups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrgannizAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrgannizAdd.Designer.cs">
+      <DependentUpon>OrgannizAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs">
       <SubType>Form</SubType>
@@ -110,11 +122,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DocAdd.resx">
+      <DependentUpon>DocAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documents.resx">
+      <DependentUpon>Documents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DocumentsWork.resx">
+      <DependentUpon>DocumentsWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groups.resx">
+      <DependentUpon>Groups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organizations.resx">
+      <DependentUpon>Organizations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrgannizAdd.resx">
+      <DependentUpon>OrgannizAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profile.resx">
       <DependentUpon>Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rucovoditeli.resx">
+      <DependentUpon>Rucovoditeli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Students.resx">
       <DependentUpon>Students.cs</DependentUpon>
