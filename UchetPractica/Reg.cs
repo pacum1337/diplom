@@ -16,7 +16,8 @@ namespace UchetPractica
     public partial class Reg : Form
     {
         MD5 md5 = new MD5CryptoServiceProvider();
-        string superUsers ="";
+        int[] superUsers = new int[0];
+        int lenght = 0;
         public Reg()
         {
             InitializeComponent();
@@ -40,8 +41,10 @@ namespace UchetPractica
                 SqlDataReader reader = sql.ExecuteReader();
                 while (reader.Read())
                 {
+                    lenght++;
+                    Array.Resize(ref superUsers, lenght);
                     cbSU.Items.Add(reader.GetString(1).ToString());
-                    superUsers += reader.GetInt32(0).ToString();
+                    superUsers[lenght-1] = reader.GetInt32(0);
                 }
             }
         }
@@ -151,7 +154,7 @@ namespace UchetPractica
             }
             else
             {
-                MessageBox.Show("Заполните не заполненые поля!");
+                MessageBox.Show("Заполните не заполненные поля!");
             }
         }
     }
