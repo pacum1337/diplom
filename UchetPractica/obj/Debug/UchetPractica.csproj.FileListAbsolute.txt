@@ -38,3 +38,11 @@ C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Reg.re
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csproj.GenerateResource.cache
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.pdb
+C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csproj.ResolveComReference.cache
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.dll
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.pdb
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.xml
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csproj.CopyComplete

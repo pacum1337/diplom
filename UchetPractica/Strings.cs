@@ -13,5 +13,7 @@ namespace UchetPractica
         //connect str
         public static string direct = Environment.CurrentDirectory;
         public static string ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + direct + @"\Data\DB\uchet_db.mdf;Integrated Security=True;Connect Timeout=30";
+        //ecxel шаблоны
+        public static string excel_shablons_folder = direct + @"\Data\Excel_shablons\";
     }
 }
