@@ -36,18 +36,23 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.графикУПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportExcelGraphikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ProfileToolStripMenuItem});
+            this.ProfileToolStripMenuItem,
+            this.графикУПToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(496, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,11 +131,40 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(532, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(539, 376);
+            this.dataGridView1.TabIndex = 5;
+            // 
+            // графикУПToolStripMenuItem
+            // 
+            this.графикУПToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ImportExcelGraphikToolStripMenuItem});
+            this.графикУПToolStripMenuItem.Name = "графикУПToolStripMenuItem";
+            this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.графикУПToolStripMenuItem.Text = "График УП";
+            // 
+            // ImportExcelGraphikToolStripMenuItem
+            // 
+            this.ImportExcelGraphikToolStripMenuItem.Name = "ImportExcelGraphikToolStripMenuItem";
+            this.ImportExcelGraphikToolStripMenuItem.Size = new System.Drawing.Size(281, 26);
+            this.ImportExcelGraphikToolStripMenuItem.Text = "Импортировать график УП";
+            this.ImportExcelGraphikToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelGraphikToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 274);
+            this.ClientSize = new System.Drawing.Size(1165, 478);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -145,6 +179,7 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +195,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem redactProfileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem графикУПToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ImportExcelGraphikToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

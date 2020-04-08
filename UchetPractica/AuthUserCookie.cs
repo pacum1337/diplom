@@ -11,9 +11,6 @@ namespace UchetPractica
 {
     class AuthUserCookie
     {
-        public static string userCookie = Strings.direct + @"\Data\Cookie\user.txt";
-        public static string file_direct_auth_user = Strings.direct + @"\Data\Cookie\authTxt.txt";
-
         public static void CookieAuth(string id,string pas)
         {
             string sqlString = String.Format("SELECT * FROM Users WHERE Id='{0}' AND Password='{1}'", id, pas);
@@ -28,13 +25,17 @@ namespace UchetPractica
                     reader.Read();
                     MessageBox.Show("Добро пожаловать " + reader.GetString(1) + " " + reader.GetString(2));
 
-                    File.WriteAllText(file_direct_auth_user, "");
-                    using (var writer = new StreamWriter(file_direct_auth_user, true))
-                    {
-                        writer.WriteLine(reader.GetInt32(0).ToString());
-                        writer.WriteLine(reader.GetString(4));
-                    }
+                    string sqlAuth = String.Format("UPDATE SystemTable " +
+                            "SET UserAuthId = '{0}', UserAuthPassword = N'{1}'",
+                            reader.GetInt32(0).ToString(), reader.GetString(4));
 
+                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                    {
+                        connect.Open();
+                        SqlCommand command = new SqlCommand(sqlAuth, connect);
+                        int h = command.ExecuteNonQuery();
+                        if (h == 0) MessageBox.Show("Error!!");
+                    }
                 }
                 else
                 {
@@ -46,12 +47,29 @@ namespace UchetPractica
         }
         public static void UserLogOut()
         {
-            File.WriteAllText(userCookie, "");
-            File.WriteAllText(file_direct_auth_user, "");
+            string sqlAuth = String.Format("UPDATE SystemTable " +
+                            "SET UserCookieId = '', UserCookiePassword = ''");
+
+            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            {
+                connect.Open();
+                SqlCommand command = new SqlCommand(sqlAuth, connect);
+                int h = command.ExecuteNonQuery();
+                if (h == 0) MessageBox.Show("Error!!");
+            }
         }
         public static void UserOut()
         {
-            File.WriteAllText(file_direct_auth_user, "");
+            string sqlAuth = String.Format("UPDATE SystemTable " +
+                            "SET UserAuthId = '', UserAuthPassword = ''");
+
+            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            {
+                connect.Open();
+                SqlCommand command = new SqlCommand(sqlAuth, connect);
+                int h = command.ExecuteNonQuery();
+                if (h == 0) MessageBox.Show("Error!!");
+            }
         }
     }
 }

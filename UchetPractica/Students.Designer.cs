@@ -494,8 +494,8 @@
             this.Controls.Add(this.bDel);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pStud);
             this.Controls.Add(this.pGroup);
+            this.Controls.Add(this.pStud);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Students";
             this.Text = "Группы и студенты";

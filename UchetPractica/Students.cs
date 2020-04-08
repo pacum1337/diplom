@@ -29,6 +29,55 @@ namespace UchetPractica
             InitializeComponent();
         }
 
+        public static int GetCourse(string groupNum)
+        {
+            int cours = 0; ;
+            try
+            {
+                string num = groupNum[1].ToString();
+                int numOfYear = Convert.ToInt32(num);
+                DateTime time = DateTime.Today;//Вычисление курса группы
+                int year = time.Year % 10;
+                DateTime sept = new DateTime(time.Year, 9, 1);
+                if (time < sept)
+                {
+                    if (numOfYear < year)
+                    {
+                        cours = year - numOfYear;
+                    }
+                    else if (numOfYear > year)
+                    {
+                        cours = (10 - numOfYear) + year;
+                    }
+                    else
+                    {
+                        cours = 0;
+                    }
+                }
+                else
+                {
+                    if (numOfYear < year)
+                    {
+                        cours = year - numOfYear + 1;
+                    }
+                    else if (numOfYear > year)
+                    {
+                        cours = (10 - numOfYear) + year + 1;
+                    }
+                    else
+                    {
+                        cours = 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return cours;
+
+        }
+
         private void StudentsShowData()
         {
             string sqlStudents = String.Format("SELECT S.Id, S.Name, S.Surname, S.Patronymic, G.GroupNumber " +
@@ -103,56 +152,6 @@ namespace UchetPractica
             dataGridView1.Columns[4].Width = 60;
             dataGridView1.Columns[5].Width = 80;
         }
-
-        private int GetCourse(string groupNum)
-        {
-            int cours = 0; ;
-            try
-            {
-                string num = groupNum[1].ToString();
-                int numOfYear = Convert.ToInt32(num);
-                DateTime time = DateTime.Today;//Вычисление курса группы
-                int year = time.Year % 10;
-                DateTime sept = new DateTime(time.Year, 9, 1);
-                if (time < sept)
-                {
-                    if (numOfYear < year)
-                    {
-                        cours = year - numOfYear;
-                    }
-                    else if (numOfYear > year)
-                    {
-                        cours = (10 - numOfYear) + year;
-                    }
-                    else
-                    {
-                        cours = 0;
-                    }
-                }
-                else
-                {
-                    if (numOfYear < year)
-                    {
-                        cours = year - numOfYear + 1;
-                    }
-                    else if (numOfYear > year)
-                    {
-                        cours = (10 - numOfYear) + year + 1;
-                    }
-                    else
-                    {
-                        cours = 1;
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return cours;
-
-        }
-
         private void CountStuds()
         {
             //получение id всех групп
@@ -506,7 +505,7 @@ namespace UchetPractica
                     GroupsShowData();
                     pGroup.Visible = false;
                 }
-            }
+            } 
         }
 
         private void bDel_Click(object sender, EventArgs e)
@@ -657,7 +656,6 @@ namespace UchetPractica
             lGroupNum.Visible = false;
         }
 
-
         private void ExelExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataTableCollection tableCollection;
@@ -686,7 +684,7 @@ namespace UchetPractica
                                     foreach (DataTable table in tableCollection)
                                     {
                                         DataTable dt = tableCollection[table.TableName.ToString()];
-                                        dataGridView1.DataSource = dt;
+                                        dataGridView2.DataSource = dt;
                                         string groupNum = "";//group info
                                         string groupCode = "";
                                         string groupSpecialty = "";
@@ -706,7 +704,7 @@ namespace UchetPractica
 
                                             if (i == 0)
                                             {
-                                                string num = dataGridView1[1, i].Value.ToString().Trim();
+                                                string num = dataGridView2[1, i].Value.ToString().Trim();
                                                 int strIndex = num.IndexOf("№");
                                                 num = num.Remove(0, strIndex + 2);
                                                 groupNum = num.Trim();
@@ -714,7 +712,7 @@ namespace UchetPractica
                                             }
                                             else if (i == 1)
                                             {
-                                                string Text = dataGridView1[1, i].Value.ToString().Trim();
+                                                string Text = dataGridView2[1, i].Value.ToString().Trim();
                                                 string[] words = Text.Split(' ');
                                                 string spec = "";
                                                 groupCode = words[0].Trim();
@@ -802,13 +800,13 @@ namespace UchetPractica
                                                     }
                                                 }
                                             }
-                                            if (i > 4 && dataGridView1[2, i].Value.ToString() == "")
+                                            if (i > 4 && dataGridView2[2, i].Value.ToString() == "")
                                             {
                                                 excelControl = false;
                                             }
                                             else if (i > 4 && excelControl)
                                             {
-                                                string Text = dataGridView1[2, i].Value.ToString().Trim();
+                                                string Text = dataGridView2[2, i].Value.ToString().Trim();
                                                 string[] words = Text.Split(' ');
                                                 string[] items = new string[0];
                                                 int countItems = 0;

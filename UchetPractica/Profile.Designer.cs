@@ -73,7 +73,7 @@
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.tbOldPas);
             this.panel1.Controls.Add(this.lPanelHeader);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(477, 284);
             this.panel1.TabIndex = 43;
@@ -175,7 +175,7 @@
             this.lPas.AutoSize = true;
             this.lPas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lPas.Location = new System.Drawing.Point(38, 211);
+            this.lPas.Location = new System.Drawing.Point(36, 222);
             this.lPas.Name = "lPas";
             this.lPas.Size = new System.Drawing.Size(169, 24);
             this.lPas.TabIndex = 44;
@@ -187,7 +187,7 @@
             this.lSur.AutoSize = true;
             this.lSur.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lSur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lSur.Location = new System.Drawing.Point(38, 106);
+            this.lSur.Location = new System.Drawing.Point(36, 117);
             this.lSur.Name = "lSur";
             this.lSur.Size = new System.Drawing.Size(188, 24);
             this.lSur.TabIndex = 45;
@@ -199,7 +199,7 @@
             this.lLog.AutoSize = true;
             this.lLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lLog.Location = new System.Drawing.Point(38, 162);
+            this.lLog.Location = new System.Drawing.Point(36, 173);
             this.lLog.Name = "lLog";
             this.lLog.Size = new System.Drawing.Size(157, 24);
             this.lLog.TabIndex = 46;
@@ -211,7 +211,7 @@
             this.lName.AutoSize = true;
             this.lName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lName.Location = new System.Drawing.Point(38, 54);
+            this.lName.Location = new System.Drawing.Point(36, 65);
             this.lName.Name = "lName";
             this.lName.Size = new System.Drawing.Size(139, 24);
             this.lName.TabIndex = 47;

@@ -68,13 +68,21 @@ namespace UchetPractica
             inpOldPas = BitConverter.ToString(checkSu1).Replace("-", String.Empty);
 
 
-            bool pasIsEq = false;
+            bool pasIsEq;
 
-            string[] readText = File.ReadAllLines(AuthUserCookie.file_direct_auth_user);
-            if (readText.Length != 0)
+            string sqlString = String.Format("SELECT * FROM SystemTable");
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
-                id = readText[0];
-                oldPas = readText[1];
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlString, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    id = reader.GetInt32(3).ToString();
+                    oldPas = reader.GetString(4);
+                }
             }
 
             if (lInp2.Visible == true)
@@ -119,21 +127,34 @@ namespace UchetPractica
                         MessageBox.Show("Информация изменена");
                         if (lInp2.Visible)
                         {
-                            string file_direct_auth_user = AuthUserCookie.file_direct_auth_user;
-                            File.WriteAllText(file_direct_auth_user, "");
-                            using (var writer = new StreamWriter(file_direct_auth_user, true))
+                            
+                            string sqlAuth = String.Format("UPDATE SystemTable " +
+                            "SET UserAuthId = '{0}', UserAuthPassword = N'{1}'",
+                            id, value);
+
+                            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                             {
-                                writer.WriteLine(id);
-                                writer.WriteLine(value);
+                                connect.Open();
+                                SqlCommand commandNewAuth = new SqlCommand(sqlAuth, connect);
+                                int h2 = commandNewAuth.ExecuteNonQuery();
+                                if (h2 == 0) MessageBox.Show("Error!!");
                             }
 
-                            string cookie = AuthUserCookie.userCookie;
-                            File.WriteAllText(cookie, "");
-                            using (var writer = new StreamWriter(cookie, true))
+
+
+                            string sqlCookie = String.Format("UPDATE SystemTable " +
+                            "SET UserCookieId = '{0}', UserCookiePassword = N'{1}'",
+                            id, value);
+
+                            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                             {
-                                writer.WriteLine(id);
-                                writer.WriteLine(value);
+                                connect.Open();
+                                SqlCommand commandNewCookie = new SqlCommand(sqlCookie, connect);
+                                int h2 = commandNewCookie.ExecuteNonQuery();
+                                if (h2 == 0) MessageBox.Show("Error!!");
                             }
+
+
                         }
                         CleanPanel();
                     }

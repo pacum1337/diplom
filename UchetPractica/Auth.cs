@@ -45,21 +45,30 @@ namespace UchetPractica
                     flag = true;
                     if (cbRemember.Checked)//Save cookie
                     {
-                        string file_direct_remember = AuthUserCookie.userCookie;
-                        File.WriteAllText(file_direct_remember, "");
-                        using (var writer = new StreamWriter(file_direct_remember, true))
+                        string sqlCookie = String.Format("UPDATE SystemTable " +
+                            "SET UserCookieId = '{0}', UserCookiePassword = N'{1}'",
+                            reader.GetInt32(0).ToString(), reader.GetString(4));
+
+                        using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
-                            writer.WriteLine(reader.GetInt32(0).ToString());
-                            writer.WriteLine(reader.GetString(4));
+                            connect.Open();
+                            SqlCommand command = new SqlCommand(sqlCookie, connect);
+                            int h = command.ExecuteNonQuery();
+                            if (h == 0) MessageBox.Show("Error!!");
                         }
                     }
-                    string file_direct_auth_user = AuthUserCookie.file_direct_auth_user;
-                    File.WriteAllText(file_direct_auth_user, "");
-                    using (var writer = new StreamWriter(file_direct_auth_user, true))
+                    string sqlAuth = String.Format("UPDATE SystemTable " +
+                            "SET UserAuthId = '{0}', UserAuthPassword = N'{1}'",
+                            reader.GetInt32(0).ToString(), reader.GetString(4));
+
+                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                     {
-                        writer.WriteLine(reader.GetInt32(0).ToString());
-                        writer.WriteLine(reader.GetString(4));
+                        connect.Open();
+                        SqlCommand command = new SqlCommand(sqlAuth, connect);
+                        int h = command.ExecuteNonQuery();
+                        if (h == 0) MessageBox.Show("Error!!");
                     }
+
                     Close();
                 }
                 else MessageBox.Show("Такого пользователя не существует!");
