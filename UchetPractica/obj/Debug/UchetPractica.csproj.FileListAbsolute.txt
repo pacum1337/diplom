@@ -21,7 +21,6 @@ C:\Users\makca\Desktop\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Organ
 C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\UchetPractica.exe.config
 C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\UchetPractica.exe
 C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\UchetPractica.pdb
-C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.DocAdd.resources
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Documents.resources
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.Auth.resources

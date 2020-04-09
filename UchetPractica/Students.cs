@@ -888,7 +888,6 @@ namespace UchetPractica
             {
                 File.Copy(Path.Combine(exclel_folder, excel_file), Path.Combine(fbd.SelectedPath, excel_file));
             }
-
         }
 
         private void OldGroupsToolStripMenuItem_Click(object sender, EventArgs e)

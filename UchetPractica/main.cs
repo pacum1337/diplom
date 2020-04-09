@@ -183,11 +183,136 @@ namespace UchetPractica
             }
         }
 
+        private void StudyProcessMessages()
+        {
+            
+            string sqlCheckDate = "SELECT StudyProcessMessages, StudyOffWeekDate FROM SystemTable";
+            string offDate = "";
+            string typeMess = "";
+            string groups = "";
+            DateTime trueStartDate = DateTime.Today;
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlCheckDate, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                    {
+                        typeMess = reader.GetString(0).Trim();
+                        offDate = reader.GetString(1).Trim();
+                    }
+                }
+            }
+
+            if (typeMess != "off" && typeMess != "offWeek")
+            {
+                try
+                {
+                    string sql = "SELECT * FROM StudyProcess WHERE WeekType=N'пп' ";
+                    DateTime date = DateTime.Today;
+                    DateTime endDate, startDate;
+
+                if (typeMess == "1")
+                    {
+                        sql += "AND GroupNumber LIKE '1%'" ;
+                    }
+                    else if(typeMess == "2")
+                    {
+                        sql += "AND GroupNumber LIKE '2%'";
+                    }
+                    else if (typeMess == "3")
+                    {
+                        sql += "AND GroupNumber LIKE '3%'";
+                    }
+                    else if (typeMess == "4")
+                    {
+                        sql += "AND GroupNumber LIKE '4%'";
+                    }
+                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand(sql, connection);
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            string grnum = reader.GetString(1);
+                            DateTime dateFeature = date.AddDays(7);
+                            startDate = DateTime.Parse(reader.GetString(2));
+                            endDate = DateTime.Parse(reader.GetString(3));
+                            if(startDate <= dateFeature && endDate >= dateFeature)
+                            {
+                            trueStartDate = startDate;
+                                bool yjeIdet = false;
+                                string sqlYjeIdet = String.Format("SELECT * FROM StudyProcess WHERE " +
+                                    "WeekType='пп' AND GroupNumber='{0}' AND WeekDateStart='{1}'",
+                                    grnum, startDate.AddDays(-8).ToString("dd/MM/yyyy"));
+                                using (SqlConnection connection1 = new SqlConnection(Strings.ConStr))
+                                { 
+                                    connection1.Open();
+                                    SqlCommand command1 = new SqlCommand(sqlYjeIdet, connection1);
+                                    SqlDataReader reader1 = command1.ExecuteReader();
+
+                                    if (reader1.HasRows)
+                                    {
+                                        yjeIdet = true;
+                                    }
+                                }
+                                if (!yjeIdet)
+                                {
+                                groups += grnum + " ";
+                                }
+                            }
+                        }
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка вывода уведомлений.\n" +
+                        "Обновите график учебного процесса или отключите уведомления",
+                        "Ошибка вывода уведомлений");
+                }
+            }
+            else if(typeMess == "offWeek")
+            {
+                DateTime time = DateTime.Parse(offDate);
+                int dayOfWeek = (int)time.DayOfWeek;
+                if(dayOfWeek != 0)
+                {
+                    time = time.AddDays(8 - dayOfWeek);
+                }
+                else
+                {
+                    time = time.AddDays(1);
+                }
+                if (DateTime.Today >= time)
+                {
+                    StudyMessages("all");
+                    StudyProcessMessages();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            if(groups != "")
+            {
+                MessageBox.Show("Практика у групп: " + groups.Trim() + "\n" +
+                    trueStartDate.ToString("dd/MM/yyyy") + " - число начала практики");
+            }
+        }
+
         private void Main_Load(object sender, EventArgs e)
         {
             AutoAuth();
             DeleteOldGroups();
             AutoChangeCourse();
+            StudyProcessMessages();
         }
 
         protected void UserExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -343,7 +468,7 @@ namespace UchetPractica
                                                     {
                                                         if(dataGridView1[j, i].Value.ToString().Trim() != "")
                                                         {
-                                                            string typeValue = dataGridView1[j, i].Value.ToString().Trim();
+                                                            string typeValue = dataGridView1[j, i].Value.ToString().Trim().ToLower();
                                                             string sqlAddProcessLine = String.Format("INSERT INTO StudyProcess " +
                                                                 "(GroupNumber, WeekDateStart, WeekDateEnd, WeekType) " +
                                                                 "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
@@ -373,6 +498,95 @@ namespace UchetPractica
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void ShablonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string exclel_folder = Strings.excel_shablons_folder;
+            string excel_file = "Study_process_shablon.xlsx";
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                File.Copy(Path.Combine(exclel_folder, excel_file), Path.Combine(fbd.SelectedPath, excel_file));
+            }
+        }
+
+        private void StudyMessages(string TypeMes)
+        {
+            string sqlAuth = String.Format("UPDATE SystemTable SET StudyProcessMessages = '{0}'", TypeMes);
+
+            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            {
+                connect.Open();
+                SqlCommand command = new SqlCommand(sqlAuth, connect);
+                int h = command.ExecuteNonQuery();
+                if (h == 0) MessageBox.Show("Error!!");
+            }
+        }
+
+        private void всеОтделенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("all");
+        }
+
+        private void оИПТСToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("1");
+        }
+
+        private void группы2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("2");
+        }
+
+        private void группы3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("3");
+        }
+
+        private void группы4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("4");
+        }
+
+        private void отключитьУведомленияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("off");
+        }
+
+        private void отключитьДоСледующейНеделиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudyMessages("offWeek");
+
+            string sqlCheckDate = "SELECT StudyProcessMessages FROM SystemTable";
+            string typeMess = "";
+            DateTime date = DateTime.Today;
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlCheckDate, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if (!reader.IsDBNull(0))
+                    {
+                        typeMess = reader.GetString(0).Trim();
+                    }
+                }
+            }
+
+
+            string sqlAuth = String.Format("UPDATE SystemTable SET StudyOffWeekDate=N'{0}'"
+                ,date.ToString("dd/MM/yyyy"));
+            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            {
+                connect.Open();
+                SqlCommand command = new SqlCommand(sqlAuth, connect);
+                int h = command.ExecuteNonQuery();
+                if (h == 0) MessageBox.Show("Error!!");
             }
         }
     }

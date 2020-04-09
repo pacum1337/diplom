@@ -32,13 +32,22 @@
             this.ProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redactProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.графикУПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportExcelGraphikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShablonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показУведомленийОППToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеОтделенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оИПТСToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.группы2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.группы3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.группы4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отключитьУведомленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bEnter = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.графикУПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ImportExcelGraphikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отключитьДоСледующейНеделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -48,11 +57,12 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ProfileToolStripMenuItem,
-            this.графикУПToolStripMenuItem});
+            this.графикУПToolStripMenuItem,
+            this.показУведомленийОППToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1165, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(482, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,6 +88,85 @@
             this.UserExitToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.UserExitToolStripMenuItem.Text = "Выйти из профиля";
             this.UserExitToolStripMenuItem.Click += new System.EventHandler(this.UserExitToolStripMenuItem_Click);
+            // 
+            // графикУПToolStripMenuItem
+            // 
+            this.графикУПToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ImportExcelGraphikToolStripMenuItem,
+            this.ShablonToolStripMenuItem});
+            this.графикУПToolStripMenuItem.Name = "графикУПToolStripMenuItem";
+            this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.графикУПToolStripMenuItem.Text = "График УП";
+            // 
+            // ImportExcelGraphikToolStripMenuItem
+            // 
+            this.ImportExcelGraphikToolStripMenuItem.Name = "ImportExcelGraphikToolStripMenuItem";
+            this.ImportExcelGraphikToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.ImportExcelGraphikToolStripMenuItem.Text = "Импортировать график УП";
+            this.ImportExcelGraphikToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelGraphikToolStripMenuItem_Click);
+            // 
+            // ShablonToolStripMenuItem
+            // 
+            this.ShablonToolStripMenuItem.Name = "ShablonToolStripMenuItem";
+            this.ShablonToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.ShablonToolStripMenuItem.Text = "Скачать шаблон Exel для импорта";
+            this.ShablonToolStripMenuItem.Click += new System.EventHandler(this.ShablonToolStripMenuItem_Click);
+            // 
+            // показУведомленийОППToolStripMenuItem
+            // 
+            this.показУведомленийОППToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всеОтделенияToolStripMenuItem,
+            this.оИПТСToolStripMenuItem,
+            this.группы2ToolStripMenuItem,
+            this.группы3ToolStripMenuItem,
+            this.группы4ToolStripMenuItem,
+            this.отключитьУведомленияToolStripMenuItem,
+            this.отключитьДоСледующейНеделиToolStripMenuItem});
+            this.показУведомленийОППToolStripMenuItem.Name = "показУведомленийОППToolStripMenuItem";
+            this.показУведомленийОППToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+            this.показУведомленийОППToolStripMenuItem.Text = "Показ уведомлений о ПП";
+            // 
+            // всеОтделенияToolStripMenuItem
+            // 
+            this.всеОтделенияToolStripMenuItem.Name = "всеОтделенияToolStripMenuItem";
+            this.всеОтделенияToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.всеОтделенияToolStripMenuItem.Text = "Все отделения";
+            this.всеОтделенияToolStripMenuItem.Click += new System.EventHandler(this.всеОтделенияToolStripMenuItem_Click);
+            // 
+            // оИПТСToolStripMenuItem
+            // 
+            this.оИПТСToolStripMenuItem.Name = "оИПТСToolStripMenuItem";
+            this.оИПТСToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.оИПТСToolStripMenuItem.Text = "Группы \"1***\"";
+            this.оИПТСToolStripMenuItem.Click += new System.EventHandler(this.оИПТСToolStripMenuItem_Click);
+            // 
+            // группы2ToolStripMenuItem
+            // 
+            this.группы2ToolStripMenuItem.Name = "группы2ToolStripMenuItem";
+            this.группы2ToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.группы2ToolStripMenuItem.Text = "Группы \"2***\"";
+            this.группы2ToolStripMenuItem.Click += new System.EventHandler(this.группы2ToolStripMenuItem_Click);
+            // 
+            // группы3ToolStripMenuItem
+            // 
+            this.группы3ToolStripMenuItem.Name = "группы3ToolStripMenuItem";
+            this.группы3ToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.группы3ToolStripMenuItem.Text = "Группы \"3***\"";
+            this.группы3ToolStripMenuItem.Click += new System.EventHandler(this.группы3ToolStripMenuItem_Click);
+            // 
+            // группы4ToolStripMenuItem
+            // 
+            this.группы4ToolStripMenuItem.Name = "группы4ToolStripMenuItem";
+            this.группы4ToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.группы4ToolStripMenuItem.Text = "Группы \"4***\"";
+            this.группы4ToolStripMenuItem.Click += new System.EventHandler(this.группы4ToolStripMenuItem_Click);
+            // 
+            // отключитьУведомленияToolStripMenuItem
+            // 
+            this.отключитьУведомленияToolStripMenuItem.Name = "отключитьУведомленияToolStripMenuItem";
+            this.отключитьУведомленияToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.отключитьУведомленияToolStripMenuItem.Text = "Отключить уведомления";
+            this.отключитьУведомленияToolStripMenuItem.Click += new System.EventHandler(this.отключитьУведомленияToolStripMenuItem_Click);
             // 
             // bEnter
             // 
@@ -136,34 +225,27 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(532, 31);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 42);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(539, 376);
+            this.dataGridView1.Size = new System.Drawing.Size(56, 22);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.Visible = false;
             // 
-            // графикУПToolStripMenuItem
+            // отключитьДоСледующейНеделиToolStripMenuItem
             // 
-            this.графикУПToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ImportExcelGraphikToolStripMenuItem});
-            this.графикУПToolStripMenuItem.Name = "графикУПToolStripMenuItem";
-            this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.графикУПToolStripMenuItem.Text = "График УП";
-            // 
-            // ImportExcelGraphikToolStripMenuItem
-            // 
-            this.ImportExcelGraphikToolStripMenuItem.Name = "ImportExcelGraphikToolStripMenuItem";
-            this.ImportExcelGraphikToolStripMenuItem.Size = new System.Drawing.Size(281, 26);
-            this.ImportExcelGraphikToolStripMenuItem.Text = "Импортировать график УП";
-            this.ImportExcelGraphikToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelGraphikToolStripMenuItem_Click);
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Name = "отключитьДоСледующейНеделиToolStripMenuItem";
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Text = "Отключить до следующей недели";
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Click += new System.EventHandler(this.отключитьДоСледующейНеделиToolStripMenuItem_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 478);
+            this.ClientSize = new System.Drawing.Size(482, 277);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -198,6 +280,15 @@
         private System.Windows.Forms.ToolStripMenuItem графикУПToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImportExcelGraphikToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem показУведомленийОППToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всеОтделенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShablonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оИПТСToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem группы2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem группы3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem группы4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отключитьУведомленияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отключитьДоСледующейНеделиToolStripMenuItem;
     }
 }
 
