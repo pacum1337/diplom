@@ -102,6 +102,12 @@
     <Compile Include="Rucovoditeli.Designer.cs">
       <DependentUpon>Rucovoditeli.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingOrganizations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingOrganizations.Designer.cs">
+      <DependentUpon>SettingOrganizations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Students.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rucovoditeli.resx">
       <DependentUpon>Rucovoditeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingOrganizations.resx">
+      <DependentUpon>SettingOrganizations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Students.resx">
       <DependentUpon>Students.cs</DependentUpon>

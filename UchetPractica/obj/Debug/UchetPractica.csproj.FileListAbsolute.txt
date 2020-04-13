@@ -45,3 +45,32 @@ C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.xml
 C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.DataSet.pdb
 C:\Study\Диплом\UchetPractica\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Study\Диплом\UchetPractica\UchetPractica\obj\Debug\UchetPractica.csproj.CopyComplete
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\UchetPractica.exe.config
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\UchetPractica.exe
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\UchetPractica.pdb
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.dll
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.pdb
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.xml
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\makca\Desktop\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.csproj.ResolveComReference.cache
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocAdd.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Documents.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Auth.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocumentsWork.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Groups.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Organizations.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.OrgannizAdd.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Profile.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Rucovoditeli.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Students.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Main.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Properties.Resources.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.Reg.resources
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.csproj.GenerateResource.cache
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.csproj.CopyComplete
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.exe
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.pdb
+C:\Users\makca\Desktop\Новая папка\UchetPractica\obj\Debug\UchetPractica.SettingOrganizations.resources
