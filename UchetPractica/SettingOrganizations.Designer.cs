@@ -85,7 +85,7 @@
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbName.Location = new System.Drawing.Point(236, 82);
             this.tbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbName.MaxLength = 15;
+            this.tbName.MaxLength = 255;
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(552, 28);
             this.tbName.TabIndex = 47;
@@ -105,7 +105,7 @@
             this.tbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbAddress.Location = new System.Drawing.Point(236, 114);
             this.tbAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbAddress.MaxLength = 15;
+            this.tbAddress.MaxLength = 255;
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(552, 28);
             this.tbAddress.TabIndex = 49;
@@ -125,7 +125,7 @@
             this.tbDirector.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbDirector.Location = new System.Drawing.Point(236, 146);
             this.tbDirector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbDirector.MaxLength = 15;
+            this.tbDirector.MaxLength = 255;
             this.tbDirector.Name = "tbDirector";
             this.tbDirector.Size = new System.Drawing.Size(552, 28);
             this.tbDirector.TabIndex = 51;
@@ -138,6 +138,7 @@
             this.dtpDateReg.Name = "dtpDateReg";
             this.dtpDateReg.Size = new System.Drawing.Size(189, 28);
             this.dtpDateReg.TabIndex = 53;
+            this.dtpDateReg.Value = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -164,7 +165,7 @@
             this.tbINN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbINN.Location = new System.Drawing.Point(236, 212);
             this.tbINN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbINN.MaxLength = 15;
+            this.tbINN.MaxLength = 50;
             this.tbINN.Name = "tbINN";
             this.tbINN.Size = new System.Drawing.Size(189, 28);
             this.tbINN.TabIndex = 55;
@@ -185,7 +186,7 @@
             this.tbOGRN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbOGRN.Location = new System.Drawing.Point(236, 244);
             this.tbOGRN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbOGRN.MaxLength = 15;
+            this.tbOGRN.MaxLength = 50;
             this.tbOGRN.Name = "tbOGRN";
             this.tbOGRN.Size = new System.Drawing.Size(189, 28);
             this.tbOGRN.TabIndex = 57;
@@ -206,7 +207,7 @@
             this.tbKPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbKPP.Location = new System.Drawing.Point(236, 276);
             this.tbKPP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbKPP.MaxLength = 15;
+            this.tbKPP.MaxLength = 50;
             this.tbKPP.Name = "tbKPP";
             this.tbKPP.Size = new System.Drawing.Size(189, 28);
             this.tbKPP.TabIndex = 59;
@@ -237,7 +238,7 @@
             this.tbOKOGY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbOKOGY.Location = new System.Drawing.Point(514, 273);
             this.tbOKOGY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbOKOGY.MaxLength = 15;
+            this.tbOKOGY.MaxLength = 50;
             this.tbOKOGY.Name = "tbOKOGY";
             this.tbOKOGY.Size = new System.Drawing.Size(189, 28);
             this.tbOKOGY.TabIndex = 66;
@@ -258,7 +259,7 @@
             this.tbOKATO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbOKATO.Location = new System.Drawing.Point(514, 241);
             this.tbOKATO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbOKATO.MaxLength = 15;
+            this.tbOKATO.MaxLength = 50;
             this.tbOKATO.Name = "tbOKATO";
             this.tbOKATO.Size = new System.Drawing.Size(189, 28);
             this.tbOKATO.TabIndex = 64;
@@ -279,7 +280,7 @@
             this.tbOKPO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbOKPO.Location = new System.Drawing.Point(514, 209);
             this.tbOKPO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbOKPO.MaxLength = 15;
+            this.tbOKPO.MaxLength = 50;
             this.tbOKPO.Name = "tbOKPO";
             this.tbOKPO.Size = new System.Drawing.Size(189, 28);
             this.tbOKPO.TabIndex = 62;
@@ -300,7 +301,7 @@
             this.tbOKTMO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbOKTMO.Location = new System.Drawing.Point(514, 305);
             this.tbOKTMO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbOKTMO.MaxLength = 15;
+            this.tbOKTMO.MaxLength = 50;
             this.tbOKTMO.Name = "tbOKTMO";
             this.tbOKTMO.Size = new System.Drawing.Size(189, 28);
             this.tbOKTMO.TabIndex = 68;
@@ -346,8 +347,8 @@
             // выхлжИзПрограммыToolStripMenuItem
             // 
             this.выхлжИзПрограммыToolStripMenuItem.Name = "выхлжИзПрограммыToolStripMenuItem";
-            this.выхлжИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
-            this.выхлжИзПрограммыToolStripMenuItem.Text = "Выхлж из программы";
+            this.выхлжИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
+            this.выхлжИзПрограммыToolStripMenuItem.Text = "Выход из программы";
             this.выхлжИзПрограммыToolStripMenuItem.Click += new System.EventHandler(this.выхлжИзПрограммыToolStripMenuItem_Click);
             // 
             // SettingOrganizations
