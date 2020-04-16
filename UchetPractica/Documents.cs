@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace UchetPractica
 {
     public partial class Documents : Form
     {
+        private bool colCont = false;
         public Documents()
         {
             InitializeComponent();
@@ -23,6 +25,41 @@ namespace UchetPractica
             cbPeriodEnd.SelectedIndex = 0;
         }
 
+        private void LoadDocRaspred()
+        {
+            string sqlGroups = "SELECT D.Id, G.GroupNumber, D.DateStart, D.DateEnd " +
+                "FROM DocumentRaspredelenie AS D " +
+                "INNER JOIN Groups AS G ON D.GroupId = G.Id ";
+            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            {
+                connect.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlGroups, connect);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+
+                SqlCommand command = new SqlCommand(sqlGroups, connect);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    colCont = true;
+                }
+                else
+                {
+                    colCont = false;
+                }
+            }
+            dataGridView1.Columns[0].Visible = false;
+
+            dataGridView1.Columns[1].HeaderText = "Номер группы";
+            dataGridView1.Columns[2].HeaderText = "Дата начала практики";
+            dataGridView1.Columns[3].HeaderText = "Дата окончания практики";
+
+            dataGridView1.Columns[1].Width = 200;
+            dataGridView1.Columns[2].Width = 200;
+            dataGridView1.Columns[3].Width = 200;
+        }
+
         private void bCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -32,6 +69,17 @@ namespace UchetPractica
         {
             DocumentsWork work = new DocumentsWork();
             work.ShowDialog();
+        }
+
+        private void Documents_Load(object sender, EventArgs e)
+        {
+            LoadDocRaspred();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DocRaspredelenAdd raspredelenAdd = new DocRaspredelenAdd();
+            raspredelenAdd.ShowDialog();
         }
     }
 }

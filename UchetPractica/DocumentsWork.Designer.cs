@@ -53,10 +53,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(26, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(35, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 18);
+            this.label6.Size = new System.Drawing.Size(108, 24);
             this.label6.TabIndex = 42;
             this.label6.Text = "Документ: ";
             // 
@@ -64,10 +63,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(116, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(155, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 18);
+            this.label1.Size = new System.Drawing.Size(31, 24);
             this.label1.TabIndex = 43;
             this.label1.Text = "№";
             // 
@@ -75,10 +73,9 @@
             // 
             this.lDocId.AutoSize = true;
             this.lDocId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lDocId.Location = new System.Drawing.Point(144, 25);
-            this.lDocId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lDocId.Location = new System.Drawing.Point(192, 31);
             this.lDocId.Name = "lDocId";
-            this.lDocId.Size = new System.Drawing.Size(107, 18);
+            this.lDocId.Size = new System.Drawing.Size(131, 24);
             this.lDocId.TabIndex = 44;
             this.lDocId.Text = "12345678901";
             // 
@@ -86,10 +83,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(255, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(340, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 18);
+            this.label2.Size = new System.Drawing.Size(121, 24);
             this.label2.TabIndex = 45;
             this.label2.Text = ", Группы №";
             // 
@@ -97,10 +93,9 @@
             // 
             this.lGroupName.AutoSize = true;
             this.lGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupName.Location = new System.Drawing.Point(355, 25);
-            this.lGroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lGroupName.Location = new System.Drawing.Point(473, 31);
             this.lGroupName.Name = "lGroupName";
-            this.lGroupName.Size = new System.Drawing.Size(44, 18);
+            this.lGroupName.Size = new System.Drawing.Size(54, 24);
             this.lGroupName.TabIndex = 46;
             this.lGroupName.Text = "3602";
             // 
@@ -108,10 +103,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(403, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(537, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 18);
+            this.label3.Size = new System.Drawing.Size(134, 24);
             this.label3.TabIndex = 47;
             this.label3.Text = "за период с ";
             // 
@@ -119,10 +113,9 @@
             // 
             this.lDateStart.AutoSize = true;
             this.lDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lDateStart.Location = new System.Drawing.Point(513, 25);
-            this.lDateStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lDateStart.Location = new System.Drawing.Point(684, 31);
             this.lDateStart.Name = "lDateStart";
-            this.lDateStart.Size = new System.Drawing.Size(95, 18);
+            this.lDateStart.Size = new System.Drawing.Size(116, 24);
             this.lDateStart.TabIndex = 48;
             this.lDateStart.Text = "01.01.2020 ";
             // 
@@ -130,10 +123,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(612, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(816, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 18);
+            this.label4.Size = new System.Drawing.Size(35, 24);
             this.label4.TabIndex = 49;
             this.label4.Text = "до";
             // 
@@ -141,10 +133,9 @@
             // 
             this.lDateEnd.AutoSize = true;
             this.lDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lDateEnd.Location = new System.Drawing.Point(644, 25);
-            this.lDateEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lDateEnd.Location = new System.Drawing.Point(859, 31);
             this.lDateEnd.Name = "lDateEnd";
-            this.lDateEnd.Size = new System.Drawing.Size(95, 18);
+            this.lDateEnd.Size = new System.Drawing.Size(116, 24);
             this.lDateEnd.TabIndex = 50;
             this.lDateEnd.Text = "01.01.2020 ";
             // 
@@ -152,10 +143,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(152, 55);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(203, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 18);
+            this.label5.Size = new System.Drawing.Size(17, 24);
             this.label5.TabIndex = 51;
             this.label5.Text = "(";
             // 
@@ -163,10 +153,9 @@
             // 
             this.lPracticType.AutoSize = true;
             this.lPracticType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lPracticType.Location = new System.Drawing.Point(306, 55);
-            this.lPracticType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lPracticType.Location = new System.Drawing.Point(408, 68);
             this.lPracticType.Name = "lPracticType";
-            this.lPracticType.Size = new System.Drawing.Size(211, 18);
+            this.lPracticType.Size = new System.Drawing.Size(264, 24);
             this.lPracticType.TabIndex = 52;
             this.lPracticType.Text = "Преддипломная практика";
             // 
@@ -174,10 +163,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(521, 55);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(695, 68);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 18);
+            this.label8.Size = new System.Drawing.Size(17, 24);
             this.label8.TabIndex = 53;
             this.label8.Text = ")";
             // 
@@ -185,10 +173,10 @@
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(147, 97);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Location = new System.Drawing.Point(196, 119);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 45);
+            this.button4.Size = new System.Drawing.Size(200, 55);
             this.button4.TabIndex = 56;
             this.button4.Text = "Корректировать документ";
             this.button4.UseVisualStyleBackColor = true;
@@ -197,10 +185,10 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(301, 98);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(401, 121);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 45);
+            this.button3.Size = new System.Drawing.Size(200, 55);
             this.button3.TabIndex = 55;
             this.button3.Text = "Удалить документ";
             this.button3.UseVisualStyleBackColor = true;
@@ -209,10 +197,10 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(7, 97);
-            this.bCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.bCancel.Location = new System.Drawing.Point(9, 119);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(87, 45);
+            this.bCancel.Size = new System.Drawing.Size(116, 55);
             this.bCancel.TabIndex = 54;
             this.bCancel.Text = "Отмена";
             this.bCancel.UseVisualStyleBackColor = true;
@@ -222,10 +210,10 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(455, 97);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(607, 119);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 45);
+            this.button1.Size = new System.Drawing.Size(200, 55);
             this.button1.TabIndex = 57;
             this.button1.Text = "Отправить на почту";
             this.button1.UseVisualStyleBackColor = true;
@@ -234,22 +222,22 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(609, 97);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(812, 119);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 45);
+            this.button2.Size = new System.Drawing.Size(200, 55);
             this.button2.TabIndex = 58;
             this.button2.Text = "Печать";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lDocType
             // 
             this.lDocType.AutoSize = true;
             this.lDocType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lDocType.Location = new System.Drawing.Point(170, 55);
-            this.lDocType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lDocType.Location = new System.Drawing.Point(227, 68);
             this.lDocType.Name = "lDocType";
-            this.lDocType.Size = new System.Drawing.Size(115, 18);
+            this.lDocType.Size = new System.Drawing.Size(145, 24);
             this.lDocType.TabIndex = 59;
             this.lDocType.Text = "Уведомление";
             // 
@@ -257,18 +245,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(289, 55);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(385, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 18);
+            this.label7.Size = new System.Drawing.Size(16, 24);
             this.label7.TabIndex = 60;
             this.label7.Text = ",";
             // 
             // DocumentsWork
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 154);
+            this.ClientSize = new System.Drawing.Size(1028, 190);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lDocType);
             this.Controls.Add(this.button2);
@@ -288,6 +275,7 @@
             this.Controls.Add(this.lDocId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DocumentsWork";
             this.Text = "Работа с документом";
             this.ResumeLayout(false);

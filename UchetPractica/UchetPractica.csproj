@@ -59,6 +59,12 @@
     <Compile Include="DocAdd.Designer.cs">
       <DependentUpon>DocAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocRaspredelenAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocRaspredelenAdd.Designer.cs">
+      <DependentUpon>DocRaspredelenAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Documents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DocAdd.resx">
       <DependentUpon>DocAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocRaspredelenAdd.resx">
+      <DependentUpon>DocRaspredelenAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.cs</DependentUpon>

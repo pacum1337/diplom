@@ -103,3 +103,4 @@ C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractic
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.csproj.CopyComplete
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.pdb
+C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocRaspredelenAdd.resources
