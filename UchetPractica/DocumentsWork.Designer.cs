@@ -45,8 +45,6 @@
             this.bCancel = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lDocType = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label6
@@ -117,7 +115,7 @@
             this.lDateStart.Name = "lDateStart";
             this.lDateStart.Size = new System.Drawing.Size(116, 24);
             this.lDateStart.TabIndex = 48;
-            this.lDateStart.Text = "01.01.2020 ";
+            this.lDateStart.Text = "24.03.2020 ";
             // 
             // label4
             // 
@@ -137,7 +135,7 @@
             this.lDateEnd.Name = "lDateEnd";
             this.lDateEnd.Size = new System.Drawing.Size(116, 24);
             this.lDateEnd.TabIndex = 50;
-            this.lDateEnd.Text = "01.01.2020 ";
+            this.lDateEnd.Text = "17.04.2020 ";
             // 
             // label5
             // 
@@ -153,11 +151,11 @@
             // 
             this.lPracticType.AutoSize = true;
             this.lPracticType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lPracticType.Location = new System.Drawing.Point(408, 68);
+            this.lPracticType.Location = new System.Drawing.Point(213, 68);
             this.lPracticType.Name = "lPracticType";
-            this.lPracticType.Size = new System.Drawing.Size(264, 24);
+            this.lPracticType.Size = new System.Drawing.Size(485, 24);
             this.lPracticType.TabIndex = 52;
-            this.lPracticType.Text = "Преддипломная практика";
+            this.lPracticType.Text = "Распределение на производственную практику\r\n";
             // 
             // label8
             // 
@@ -173,10 +171,10 @@
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(196, 119);
+            this.button4.Location = new System.Drawing.Point(207, 119);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 55);
+            this.button4.Size = new System.Drawing.Size(265, 55);
             this.button4.TabIndex = 56;
             this.button4.Text = "Корректировать документ";
             this.button4.UseVisualStyleBackColor = true;
@@ -185,7 +183,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(401, 121);
+            this.button3.Location = new System.Drawing.Point(498, 119);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(200, 55);
@@ -210,19 +208,20 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(607, 119);
+            this.button1.Location = new System.Drawing.Point(797, 68);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 55);
             this.button1.TabIndex = 57;
             this.button1.Text = "Отправить на почту";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(812, 119);
+            this.button2.Location = new System.Drawing.Point(708, 119);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 55);
@@ -231,33 +230,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lDocType
-            // 
-            this.lDocType.AutoSize = true;
-            this.lDocType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lDocType.Location = new System.Drawing.Point(227, 68);
-            this.lDocType.Name = "lDocType";
-            this.lDocType.Size = new System.Drawing.Size(145, 24);
-            this.lDocType.TabIndex = 59;
-            this.lDocType.Text = "Уведомление";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(385, 68);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 24);
-            this.label7.TabIndex = 60;
-            this.label7.Text = ",";
-            // 
             // DocumentsWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 190);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.lDocType);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
@@ -275,7 +252,7 @@
             this.Controls.Add(this.lDocId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DocumentsWork";
             this.Text = "Работа с документом";
             this.ResumeLayout(false);
@@ -302,7 +279,5 @@
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label lDocType;
-        private System.Windows.Forms.Label label7;
     }
 }

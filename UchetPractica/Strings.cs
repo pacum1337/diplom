@@ -12,7 +12,7 @@ namespace UchetPractica
         public static readonly string hashStr = "wferjververineirvneirovneruvjiwoafsjcoia";
         //connect str
         public static string direct = Environment.CurrentDirectory;
-        public static string ConStr = @"Data Source=DESKTOP-ML2948P\SQLEXPRESS;Initial Catalog=Uchet;Integrated Security=True";
+        public static string ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + direct + @"\Data\DB\uchet_db.mdf;Integrated Security=True;Connect Timeout=30";
         //ecxel шаблоны
         public static string excel_shablons_folder = direct + @"\Data\Excel_shablons\";
     }

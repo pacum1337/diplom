@@ -80,7 +80,10 @@ namespace UchetPractica
 
         private void StudentsShowData()
         {
-            string sqlStudents = String.Format("SELECT S.Id, S.Name, S.Surname, S.Patronymic, G.GroupNumber " +
+            dataGridView1.DataSource = null;
+
+            string sqlStudents = String.Format("SELECT S.Id, S.Name, S.Surname, " +
+                "S.Patronymic, G.GroupNumber, S.Status " +
                 "FROM Students AS S " +
                 "INNER JOIN Groups AS G ON S.GroupId = G.Id " +
                 "WHERE S.GroupId=N'{0}'", showGroupId);
@@ -110,15 +113,21 @@ namespace UchetPractica
             dataGridView1.Columns[2].HeaderText = "Фамилия";
             dataGridView1.Columns[3].HeaderText = "Отчество";
             dataGridView1.Columns[4].HeaderText = "Номер группы";
+            dataGridView1.Columns[5].HeaderText = "Статус";
 
             dataGridView1.Columns[1].Width = 120;
             dataGridView1.Columns[2].Width = 120;
             dataGridView1.Columns[3].Width = 120;
             dataGridView1.Columns[4].Width = 120;
+            dataGridView1.Columns[5].Width = 120;
         }
 
-        private void GroupsShowData(string sqlGroups = "SELECT * FROM Groups WHERE Cours <= 4")
-        {   
+        private void GroupsShowData(string sqlGroups = "SELECT Id, GroupNumber, " +
+            "Specialty, Cours, StudentsCount, Code, Status " +
+            "FROM Groups WHERE Cours <= 4 AND Status=N'Обучается'")
+        {
+            dataGridView1.DataSource = null;
+
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
                 connect.Open();
@@ -145,12 +154,15 @@ namespace UchetPractica
             dataGridView1.Columns[3].HeaderText = "Курс";
             dataGridView1.Columns[4].HeaderText = "Количество студентов";
             dataGridView1.Columns[5].HeaderText = "Код группы";
+            dataGridView1.Columns[6].HeaderText = "Статус";
+
 
             dataGridView1.Columns[1].Width = 60;
             dataGridView1.Columns[2].Width = 200;
             dataGridView1.Columns[3].Width = 60;
-            dataGridView1.Columns[4].Width = 60;
+            dataGridView1.Columns[4].Width = 80;
             dataGridView1.Columns[5].Width = 80;
+            dataGridView1.Columns[6].Width = 120;
         }
         private void CountStuds()
         {
@@ -245,6 +257,7 @@ namespace UchetPractica
                 tbGroupNum.Text = "";
                 tbSpecialty.Text = "";
                 tbGroupCode.Text = "";
+                cbStatusGroup.SelectedIndex = 0;
             }
             else
             {
@@ -255,6 +268,7 @@ namespace UchetPractica
                 tbSurname.Text = "";
                 tbPatr.Text = "";
                 tbGrNum.Text = showGroupNum;
+                cbStatusStud.SelectedIndex = 0;
             }
         }
 
@@ -289,10 +303,12 @@ namespace UchetPractica
                         string groupNumber = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
                         string specialty = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
                         string groupCode = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
+                        string status = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
 
                         tbGroupNum.Text = groupNumber;
                         tbSpecialty.Text = specialty;
                         tbGroupCode.Text = groupCode;
+                        cbStatusGroup.Text = status;
                     }
                     else
                     {
@@ -317,11 +333,13 @@ namespace UchetPractica
                         string name = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
                         string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
                         string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+                        string status = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
 
                         tbGrNum.Text = showGroupNum;
                         tbName.Text = name;
                         tbSurname.Text = surname;
                         tbPatr.Text = patr;
+                        cbStatusStud.Text = status;
                     }
                     else
                     {
@@ -357,6 +375,7 @@ namespace UchetPractica
                 string name = tbName.Text.Trim();
                 string surname = tbSurname.Text.Trim();
                 string patr = tbPatr.Text.Trim();
+                string status = cbStatusStud.Text;
                 if (addRed)//Добавление студента 
                 {
                     bool haveSoStud = false;
@@ -380,9 +399,9 @@ namespace UchetPractica
                     if (!haveSoStud)
                     {
                         string sqlAddStud = String.Format("INSERT INTO Students " +
-                            "(GroupId, Name, Surname,Patronymic) " +
-                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
-                            , groupId, name, surname, patr);
+                            "(GroupId, Name, Surname,Patronymic,Status) " +
+                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
+                            , groupId, name, surname, patr, status);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -400,8 +419,8 @@ namespace UchetPractica
                 else//Редактирование студента
                 {
                     string sqlEditStud = String.Format("UPDATE Students SET GroupId = '{0}', " +
-                        "Name = N'{1}', Surname = N'{2}', Patronymic = N'{3}' " +
-                        " WHERE Id = '{4}'", groupId, name, surname, patr, selectStudId);
+                        "Name = N'{1}', Surname = N'{2}', Patronymic = N'{3}', Status=N'{4}' " +
+                        " WHERE Id = '{5}'", groupId, name, surname, patr, status, selectStudId);
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
                         connection.Open();
@@ -448,6 +467,7 @@ namespace UchetPractica
                 int cours = GetCourse(tbGroupNum.Text.Trim());
                 int studCount = 0;
                 string groupCode = tbGroupCode.Text.Trim();
+                string status = cbStatusGroup.Text;
 
                 if (addRed)//Добавление группы 
                 {
@@ -471,9 +491,9 @@ namespace UchetPractica
                     if (!haveSoGroup)
                     {
                         string sqlAddGroup = String.Format("INSERT INTO Groups " +
-                            "(GroupNumber, Specialty, Cours, StudentsCount, Code) " +
-                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
-                            , groupNumber, specialty, cours, studCount, groupCode);
+                            "(GroupNumber, Specialty, Cours, StudentsCount, Code, Status) " +
+                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                            , groupNumber, specialty, cours, studCount, groupCode, status);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -490,8 +510,9 @@ namespace UchetPractica
                 else//Редактирование группы
                 {
                     string sqlEditStud = String.Format("UPDATE Groups SET GroupNumber = '{0}', " +
-                        "Specialty = N'{1}', Code = N'{2}'" +
-                        " WHERE Id = '{3}'", groupNumber, specialty, groupCode, selectGroupId);
+                        "Specialty = N'{1}', Code = N'{2}', Status = N'{3}'" +
+                        " WHERE Id = '{4}'", 
+                        groupNumber, specialty, groupCode, status, selectGroupId);
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
                         connection.Open();
@@ -658,14 +679,32 @@ namespace UchetPractica
 
         private void ExelExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string sqlStatusGroup = String.Format("UPDATE Groups SET Status=N'Не обучается'");
+
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlStatusGroup, connection);
+                int number = command.ExecuteNonQuery();
+            }
+
+            string sqlStatusStud = String.Format("UPDATE Students SET Status=N'Не обучается'");
+
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlStatusStud, connection);
+                int number = command.ExecuteNonQuery();
+            }
+
             DataTableCollection tableCollection;
             DialogResult dr = MessageBox.Show("При импорте все старые данные будут перезаписаны на новые\n" +
                 "без возможности отмены действия.\n" +
                 "Вы уверены, что хотите импортировать данные?", "Подтверждение действия", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                try
-                {
+                /*try
+                {*/
                     string excelPath;
                     using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls" })
                     {
@@ -691,7 +730,7 @@ namespace UchetPractica
                                         bool haveSoGroup = false;
                                         int cours = 0;
                                         int newGroupId = -1;
-                                        int[] oldGroupId = new int[0];
+                                        int oldGroupId = -1;
                                         int len = 0;
 
                                         bool excelControl = true;
@@ -733,34 +772,16 @@ namespace UchetPractica
                                                     SqlDataReader sqlReader = command.ExecuteReader();
                                                     if (sqlReader.HasRows)
                                                     {
-                                                        while (sqlReader.Read())
-                                                        {
-                                                            len++;
-                                                            Array.Resize(ref oldGroupId, len);
-                                                            oldGroupId[len - 1] = sqlReader.GetInt32(0);
-                                                        }
+                                                        sqlReader.Read();
+                                                        oldGroupId = sqlReader.GetInt32(0);
                                                         haveSoGroup = true;
                                                     }
                                                 }
 
-                                                if (haveSoGroup)//Удаление существующей группы с таким же номером
+                                                if (haveSoGroup)//Изменение статуса существующей группы с таким же номером
                                                 {
-                                                    string sqlDelGroup = String.Format("DELETE FROM Groups " +
-                                                        "WHERE GroupNumber = '{0}'", groupNum);
-
-                                                    for (int x = 0; x < oldGroupId.Length; x++)
-                                                    {
-                                                        string sqlDelStudOfGroup = String.Format("DELETE FROM Students " +
-                                                                    "WHERE GroupId = '{0}'", oldGroupId[x]);
-
-                                                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление студентов группы из бд
-                                                        {
-                                                            connection.Open();
-                                                            SqlCommand command = new SqlCommand(sqlDelStudOfGroup, connection);
-                                                            int number = command.ExecuteNonQuery();
-                                                        }
-                                                    }
-
+                                                    string sqlDelGroup = String.Format("UPDATE Groups SET Status=N'Обучается' " +
+                                                        "WHERE GroupNumber=N'{0}'", groupNum);
 
                                                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
                                                     {
@@ -768,35 +789,51 @@ namespace UchetPractica
                                                         SqlCommand command = new SqlCommand(sqlDelGroup, connection);
                                                         int number = command.ExecuteNonQuery();
                                                     }
-                                                }
+                                                    //Получение id созданной группы
+                                                    string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
 
-                                                //Добавление в бд новой группы
-                                                string sqlAddGroup = String.Format("INSERT INTO Groups " +
-                                                    "(GroupNumber, Specialty, Cours, StudentsCount, Code) " +
-                                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
-                                                    , groupNum, groupSpecialty, cours, 0, groupCode);
-
-                                                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
-                                                {
-                                                    connect.Open();
-                                                    SqlCommand command = new SqlCommand(sqlAddGroup, connect);
-                                                    int h = command.ExecuteNonQuery();
-                                                    if (h == 0) MessageBox.Show("Error!!");
-                                                }
-
-                                                //Получение id созданной группы
-                                                string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
-
-                                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                                                {
-                                                    connection.Open();
-                                                    SqlCommand sql = new SqlCommand(sqlString, connection);
-                                                    SqlDataReader readerSerch = sql.ExecuteReader();
-
-                                                    if (readerSerch.HasRows)
+                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                                                     {
-                                                        readerSerch.Read();
-                                                        newGroupId = readerSerch.GetInt32(0);
+                                                        connection.Open();
+                                                        SqlCommand sql = new SqlCommand(sqlString, connection);
+                                                        SqlDataReader readerSerch = sql.ExecuteReader();
+
+                                                        if (readerSerch.HasRows)
+                                                        {
+                                                            readerSerch.Read();
+                                                            newGroupId = readerSerch.GetInt32(0);
+                                                        }
+                                                    }
+                                                }
+                                                else//Добавление в бд новой группы
+                                                {
+                                                    string sqlAddGroup = String.Format("INSERT INTO Groups " +
+                                                    "(GroupNumber, Specialty, Cours, StudentsCount, Code, Status) " +
+                                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                                                    , groupNum, groupSpecialty, cours, 0, groupCode, "Обучается");
+
+                                                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                                                    {
+                                                        connect.Open();
+                                                        SqlCommand command = new SqlCommand(sqlAddGroup, connect);
+                                                        int h = command.ExecuteNonQuery();
+                                                        if (h == 0) MessageBox.Show("Error!!");
+                                                    }
+
+                                                    //Получение id созданной группы
+                                                    string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
+
+                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                                    {
+                                                        connection.Open();
+                                                        SqlCommand sql = new SqlCommand(sqlString, connection);
+                                                        SqlDataReader readerSerch = sql.ExecuteReader();
+
+                                                        if (readerSerch.HasRows)
+                                                        {
+                                                            readerSerch.Read();
+                                                            newGroupId = readerSerch.GetInt32(0);
+                                                        }
                                                     }
                                                 }
                                             }
@@ -836,19 +873,47 @@ namespace UchetPractica
                                                     patr = "";
                                                 }
 
-                                                //Добавление студентов
-                                                string sqlAddStud = String.Format("INSERT INTO Students " +
-                                                        "(GroupId, Name, Surname,Patronymic) " +
-                                                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
-                                                        , newGroupId, name, surname, patr);
 
-                                                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                                            string sqlProvStud = String.Format("SELECT * FROM Students WHERE " +
+                                                "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'", 
+                                                newGroupId, name, surname, patr);
+                                            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                            {
+                                                connection.Open();
+                                                SqlCommand command = new SqlCommand(sqlProvStud, connection);
+                                                SqlDataReader sqlReader = command.ExecuteReader();
+                                                if (sqlReader.HasRows)
                                                 {
-                                                    connect.Open();
-                                                    SqlCommand command = new SqlCommand(sqlAddStud, connect);
-                                                    int h = command.ExecuteNonQuery();
-                                                    if (h == 0) MessageBox.Show("Error!!");
+                                                    string sqlStatusEdit = String.Format("UPDATE Students SET Status=N'Обучается' WHERE " +
+                                                        "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'",
+                                                         newGroupId, name, surname, patr);
+
+                                                    using (SqlConnection con = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+                                                    {
+                                                        con.Open();
+                                                        SqlCommand com = new SqlCommand(sqlStatusEdit, con);
+                                                        int number = com.ExecuteNonQuery();
+                                                    }
                                                 }
+                                                else
+                                                {
+                                                    //Добавление студентов
+                                                    string sqlAddStud = String.Format("INSERT INTO Students " +
+                                                                "(GroupId, Name, Surname,Patronymic, Status) " +
+                                                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
+                                                                , newGroupId, name, surname, patr, "Обучается");
+
+                                                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                                                    {
+                                                        connect.Open();
+                                                        SqlCommand comm = new SqlCommand(sqlAddStud, connect);
+                                                        int h = comm.ExecuteNonQuery();
+                                                        if (h == 0) MessageBox.Show("Error!!");
+                                                    }
+                                                }
+                                            }
+
+                                            
                                             }
                                         }
                                     }
@@ -856,11 +921,11 @@ namespace UchetPractica
                             }
                         }
                     }
-                }
+                /*}
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }*/
                 CountStuds();
                 if (isGroup)
                 {
@@ -892,7 +957,7 @@ namespace UchetPractica
 
         private void OldGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM Groups WHERE Cours > 4";
+            string sql = "SELECT * FROM Groups WHERE Cours > 4 OR Status!=N'Обучается'";
             GroupsShowData(sql);
             pStud.Visible = false;
             pGroup.Visible = false;

@@ -223,7 +223,7 @@ namespace UchetPractica
                     rucColl[i].Items.Add(rucColleStr[j]);
 
                     //
-                    rucColl[i].Text = rucColleStr[j];
+                    rucColl[i].Text = rucColleStr[0];
                 }
                 rucColl[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucColl[i]);
@@ -235,7 +235,7 @@ namespace UchetPractica
                 rucOrg[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 for (int j = 0; j < rucOrgStr.Length; j++)
                 {
-                    rucOrg[i].Items.Add(rucOrgStr[j]);
+                    rucOrg[i].Items.Add(rucOrgStr[1]);
 
                     //
                     rucOrg[i].Text = rucOrgStr[j];

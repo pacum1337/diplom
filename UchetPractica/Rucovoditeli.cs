@@ -148,7 +148,7 @@ namespace UchetPractica
             }
             else
             {
-                string id = orgId[cbOrg.SelectedIndex].ToString("dd/MM/yyyy");
+                string id = orgId[cbOrg.SelectedIndex].ToString();
                 string name = tbName.Text.Trim();
                 string surname = textBox4.Text.Trim();
                 string patr = textBox1.Text.Trim();

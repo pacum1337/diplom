@@ -91,7 +91,6 @@ C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractic
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocumentsWork.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Groups.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Organizations.resources
-C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.OrgannizAdd.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Profile.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Rucovoditeli.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.SettingOrganizations.resources

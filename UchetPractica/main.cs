@@ -216,7 +216,7 @@ namespace UchetPractica
                     DateTime date = DateTime.Today;
                     DateTime endDate, startDate;
 
-                if (typeMess == "1")
+                    if (typeMess == "1")
                     {
                         sql += "AND GroupNumber LIKE '1%'" ;
                     }

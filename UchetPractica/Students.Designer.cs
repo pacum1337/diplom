@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pStud = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbStatusStud = new System.Windows.Forms.ComboBox();
             this.tbGrNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,7 +57,8 @@
             this.ShablonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pGroup = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbStatusGroup = new System.Windows.Forms.ComboBox();
             this.bShowGroupEnter = new System.Windows.Forms.Button();
             this.bShowGroupCancel = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,6 +68,7 @@
             this.tbSpecialty = new System.Windows.Forms.TextBox();
             this.tbGroupCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.lGroupNum = new System.Windows.Forms.Label();
             this.pStud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,6 +79,8 @@
             // 
             // pStud
             // 
+            this.pStud.Controls.Add(this.label10);
+            this.pStud.Controls.Add(this.cbStatusStud);
             this.pStud.Controls.Add(this.tbGrNum);
             this.pStud.Controls.Add(this.label4);
             this.pStud.Controls.Add(this.label3);
@@ -86,12 +92,35 @@
             this.pStud.Controls.Add(this.tbPatr);
             this.pStud.Controls.Add(this.tbName);
             this.pStud.Controls.Add(this.label5);
-            this.pStud.Location = new System.Drawing.Point(730, 42);
+            this.pStud.Location = new System.Drawing.Point(915, 44);
             this.pStud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pStud.Name = "pStud";
             this.pStud.Size = new System.Drawing.Size(461, 356);
             this.pStud.TabIndex = 0;
             this.pStud.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(19, 213);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 24);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Статус";
+            // 
+            // cbStatusStud
+            // 
+            this.cbStatusStud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusStud.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatusStud.FormattingEnabled = true;
+            this.cbStatusStud.Items.AddRange(new object[] {
+            "Обучается",
+            "Не обучается"});
+            this.cbStatusStud.Location = new System.Drawing.Point(232, 210);
+            this.cbStatusStud.Name = "cbStatusStud";
+            this.cbStatusStud.Size = new System.Drawing.Size(208, 30);
+            this.cbStatusStud.TabIndex = 55;
             // 
             // tbGrNum
             // 
@@ -117,7 +146,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(19, 177);
+            this.label3.Location = new System.Drawing.Point(21, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 24);
             this.label3.TabIndex = 35;
@@ -217,7 +246,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(712, 356);
+            this.dataGridView1.Size = new System.Drawing.Size(897, 356);
             this.dataGridView1.TabIndex = 1;
             // 
             // bCancel
@@ -237,20 +266,21 @@
             // 
             this.bDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bDel.Location = new System.Drawing.Point(577, 404);
+            this.bDel.Location = new System.Drawing.Point(368, 404);
             this.bDel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bDel.Name = "bDel";
             this.bDel.Size = new System.Drawing.Size(116, 55);
             this.bDel.TabIndex = 14;
             this.bDel.Text = "Удалить";
             this.bDel.UseVisualStyleBackColor = true;
+            this.bDel.Visible = false;
             this.bDel.Click += new System.EventHandler(this.bDel_Click);
             // 
             // bEditShow
             // 
             this.bEditShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEditShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEditShow.Location = new System.Drawing.Point(420, 404);
+            this.bEditShow.Location = new System.Drawing.Point(709, 404);
             this.bEditShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEditShow.Name = "bEditShow";
             this.bEditShow.Size = new System.Drawing.Size(116, 55);
@@ -263,7 +293,7 @@
             // 
             this.bAddShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bAddShow.Location = new System.Drawing.Point(264, 404);
+            this.bAddShow.Location = new System.Drawing.Point(587, 404);
             this.bAddShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bAddShow.Name = "bAddShow";
             this.bAddShow.Size = new System.Drawing.Size(116, 55);
@@ -281,7 +311,7 @@
             this.выходИзПрограммыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1203, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1388, 28);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -292,28 +322,28 @@
             this.GroupShow,
             this.OldGroupsToolStripMenuItem});
             this.ShowAboutToolStripMenuItem.Name = "ShowAboutToolStripMenuItem";
-            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.ShowAboutToolStripMenuItem.Text = "Отображение данных о";
             // 
             // StudentsShow
             // 
             this.StudentsShow.Name = "StudentsShow";
-            this.StudentsShow.Size = new System.Drawing.Size(299, 26);
+            this.StudentsShow.Size = new System.Drawing.Size(196, 26);
             this.StudentsShow.Text = "Студентах";
             this.StudentsShow.Click += new System.EventHandler(this.StudentsShow_Click);
             // 
             // GroupShow
             // 
             this.GroupShow.Name = "GroupShow";
-            this.GroupShow.Size = new System.Drawing.Size(299, 26);
+            this.GroupShow.Size = new System.Drawing.Size(196, 26);
             this.GroupShow.Text = "Группах";
             this.GroupShow.Click += new System.EventHandler(this.GroupShow_Click);
             // 
             // OldGroupsToolStripMenuItem
             // 
             this.OldGroupsToolStripMenuItem.Name = "OldGroupsToolStripMenuItem";
-            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(299, 26);
-            this.OldGroupsToolStripMenuItem.Text = "Группах, что закончили учебу";
+            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.OldGroupsToolStripMenuItem.Text = "Другие группы";
             this.OldGroupsToolStripMenuItem.Click += new System.EventHandler(this.OldGroupsToolStripMenuItem_Click);
             // 
             // ExportДанныхToolStripMenuItem
@@ -322,7 +352,7 @@
             this.ExelExportToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.ExportДанныхToolStripMenuItem.Name = "ExportДанныхToolStripMenuItem";
-            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.ExportДанныхToolStripMenuItem.Text = "Импорт данных";
             // 
             // ExelExportToolStripMenuItem
@@ -342,13 +372,14 @@
             // выходИзПрограммыToolStripMenuItem
             // 
             this.выходИзПрограммыToolStripMenuItem.Name = "выходИзПрограммыToolStripMenuItem";
-            this.выходИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.выходИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
             this.выходИзПрограммыToolStripMenuItem.Text = "Выход из программы";
             this.выходИзПрограммыToolStripMenuItem.Click += new System.EventHandler(this.ExitFromAppToolStripMenuItem_Click);
             // 
             // pGroup
             // 
-            this.pGroup.Controls.Add(this.dataGridView2);
+            this.pGroup.Controls.Add(this.label9);
+            this.pGroup.Controls.Add(this.cbStatusGroup);
             this.pGroup.Controls.Add(this.bShowGroupEnter);
             this.pGroup.Controls.Add(this.bShowGroupCancel);
             this.pGroup.Controls.Add(this.label11);
@@ -358,23 +389,34 @@
             this.pGroup.Controls.Add(this.tbSpecialty);
             this.pGroup.Controls.Add(this.tbGroupCode);
             this.pGroup.Controls.Add(this.label6);
-            this.pGroup.Location = new System.Drawing.Point(730, 44);
+            this.pGroup.Location = new System.Drawing.Point(915, 47);
             this.pGroup.Name = "pGroup";
             this.pGroup.Size = new System.Drawing.Size(461, 354);
             this.pGroup.TabIndex = 25;
             this.pGroup.Visible = false;
             // 
-            // dataGridView2
+            // label9
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(25, 174);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(213, 120);
-            this.dataGridView2.TabIndex = 27;
-            this.dataGridView2.Visible = false;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(19, 178);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 24);
+            this.label9.TabIndex = 54;
+            this.label9.Text = "Статус";
+            // 
+            // cbStatusGroup
+            // 
+            this.cbStatusGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatusGroup.FormattingEnabled = true;
+            this.cbStatusGroup.Items.AddRange(new object[] {
+            "Обучается",
+            "Не обучается"});
+            this.cbStatusGroup.Location = new System.Drawing.Point(234, 175);
+            this.cbStatusGroup.Name = "cbStatusGroup";
+            this.cbStatusGroup.Size = new System.Drawing.Size(208, 30);
+            this.cbStatusGroup.TabIndex = 53;
             // 
             // bShowGroupEnter
             // 
@@ -471,11 +513,23 @@
             this.label6.TabIndex = 37;
             this.label6.Text = "Настройки группы";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(150, 420);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.Size = new System.Drawing.Size(75, 23);
+            this.dataGridView2.TabIndex = 27;
+            this.dataGridView2.Visible = false;
+            // 
             // lGroupNum
             // 
             this.lGroupNum.AutoSize = true;
             this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupNum.Location = new System.Drawing.Point(729, 420);
+            this.lGroupNum.Location = new System.Drawing.Point(914, 419);
             this.lGroupNum.Name = "lGroupNum";
             this.lGroupNum.Size = new System.Drawing.Size(331, 24);
             this.lGroupNum.TabIndex = 38;
@@ -486,7 +540,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 470);
+            this.ClientSize = new System.Drawing.Size(1388, 470);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.lGroupNum);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.bAddShow);
@@ -553,5 +608,9 @@
         private System.Windows.Forms.Label lGroupNum;
         private System.Windows.Forms.ToolStripMenuItem OldGroupsToolStripMenuItem;
         private System.Windows.Forms.TextBox tbGrNum;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbStatusGroup;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbStatusStud;
     }
 }

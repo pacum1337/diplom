@@ -80,6 +80,7 @@ namespace UchetPractica
         {
             DocRaspredelenAdd raspredelenAdd = new DocRaspredelenAdd();
             raspredelenAdd.ShowDialog();
+            LoadDocRaspred();
         }
     }
 }

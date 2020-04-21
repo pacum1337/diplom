@@ -90,12 +90,6 @@
     <Compile Include="Groups.Designer.cs">
       <DependentUpon>Groups.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrgannizAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrgannizAdd.Designer.cs">
-      <DependentUpon>OrgannizAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Organizations.resx">
       <DependentUpon>Organizations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrgannizAdd.resx">
-      <DependentUpon>OrgannizAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profile.resx">
       <DependentUpon>Profile.cs</DependentUpon>
