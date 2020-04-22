@@ -53,12 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DocAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DocAdd.Designer.cs">
-      <DependentUpon>DocAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="DocRaspredelenAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,12 +77,6 @@
     </Compile>
     <Compile Include="DocumentsWork.Designer.cs">
       <DependentUpon>DocumentsWork.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Groups.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Groups.Designer.cs">
-      <DependentUpon>Groups.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs">
       <SubType>Form</SubType>
@@ -135,9 +123,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DocAdd.resx">
-      <DependentUpon>DocAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DocRaspredelenAdd.resx">
       <DependentUpon>DocRaspredelenAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,9 +134,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentsWork.resx">
       <DependentUpon>DocumentsWork.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Groups.resx">
-      <DependentUpon>Groups.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organizations.resx">
       <DependentUpon>Organizations.cs</DependentUpon>

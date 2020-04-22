@@ -45,15 +45,22 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.cbOrg = new System.Windows.Forms.ComboBox();
             this.tbName = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.отображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всехКромеНеРаботающихToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
             // 
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(242, 371);
+            this.button5.Location = new System.Drawing.Point(242, 390);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 55);
@@ -66,7 +73,7 @@
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(408, 371);
+            this.button4.Location = new System.Drawing.Point(408, 390);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 55);
@@ -79,20 +86,21 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(577, 371);
+            this.button3.Location = new System.Drawing.Point(577, 390);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 55);
             this.button3.TabIndex = 20;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // bCancel
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(12, 371);
+            this.bCancel.Location = new System.Drawing.Point(12, 390);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(116, 55);
@@ -105,7 +113,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 11);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 30);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -116,6 +124,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.cbStatus);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label6);
@@ -127,7 +137,7 @@
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.cbOrg);
             this.panel1.Controls.Add(this.tbName);
-            this.panel1.Location = new System.Drawing.Point(699, 11);
+            this.panel1.Location = new System.Drawing.Point(699, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 356);
@@ -248,17 +258,76 @@
             this.tbName.Size = new System.Drawing.Size(209, 28);
             this.tbName.TabIndex = 24;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(15, 211);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 24);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "Статус";
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Работающий",
+            "Не работающий"});
+            this.cbStatus.Location = new System.Drawing.Point(186, 208);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(208, 30);
+            this.cbStatus.TabIndex = 55;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отображениеToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1132, 28);
+            this.menuStrip1.TabIndex = 23;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // отображениеToolStripMenuItem
+            // 
+            this.отображениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всехКромеНеРаботающихToolStripMenuItem,
+            this.вToolStripMenuItem});
+            this.отображениеToolStripMenuItem.Name = "отображениеToolStripMenuItem";
+            this.отображениеToolStripMenuItem.Size = new System.Drawing.Size(229, 24);
+            this.отображениеToolStripMenuItem.Text = "Отображение руководителей";
+            // 
+            // всехКромеНеРаботающихToolStripMenuItem
+            // 
+            this.всехКромеНеРаботающихToolStripMenuItem.Name = "всехКромеНеРаботающихToolStripMenuItem";
+            this.всехКромеНеРаботающихToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехКромеНеРаботающихToolStripMenuItem.Text = "Работающих";
+            this.всехКромеНеРаботающихToolStripMenuItem.Click += new System.EventHandler(this.всехКромеНеРаботающихToolStripMenuItem_Click);
+            // 
+            // вToolStripMenuItem
+            // 
+            this.вToolStripMenuItem.Name = "вToolStripMenuItem";
+            this.вToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.вToolStripMenuItem.Text = "Не работающих";
+            this.вToolStripMenuItem.Click += new System.EventHandler(this.вToolStripMenuItem_Click);
+            // 
             // Rucovoditeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 434);
+            this.ClientSize = new System.Drawing.Size(1132, 457);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Rucovoditeli";
             this.Text = "Руководители";
@@ -266,7 +335,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -289,5 +361,11 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem отображениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всехКромеНеРаботающихToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вToolStripMenuItem;
     }
 }

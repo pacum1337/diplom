@@ -20,11 +20,10 @@ namespace UchetPractica
 
         bool colOrg = false;
 
-        private void OrgLoadData()
+        private void OrgLoadData(string sqlLoadData = "SELECT * FROM Organizations WHERE Status=N'active'")
         {
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
-                string sqlLoadData = "SELECT * FROM Organizations";
                 connect.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(sqlLoadData, connect);
                 DataSet ds = new DataSet();
@@ -56,6 +55,7 @@ namespace UchetPractica
             dataGridView1.Columns[10].HeaderText = "ОКОГУ";
             dataGridView1.Columns[11].HeaderText = "ОКТМО";
             dataGridView1.Columns[12].HeaderText = "Кол-во документов с этой организацией";
+            dataGridView1.Columns[13].Visible = false;
         }
 
         private void выходИзПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +68,7 @@ namespace UchetPractica
             SettingOrganizations setting = new SettingOrganizations();
             setting.lHeader.Text = "Добавление организации";
             setting.AddRed = true;
+            setting.cbStatus.Text = "Активная";
             setting.ShowDialog();
             OrgLoadData();
         }
@@ -93,6 +94,12 @@ namespace UchetPractica
                     setting.tbOKATO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[9].Value);
                     setting.tbOKOGY.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[10].Value);
                     setting.tbOKTMO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value);
+
+                    string status = Convert.ToString(dataGridView1.CurrentRow.Cells[13].Value);
+                    if (status == "active")
+                        setting.cbStatus.Text = "Работающая";
+                    else
+                        setting.cbStatus.Text = "Не работающая";
                     setting.ShowDialog();
                     OrgLoadData();
                 }
@@ -184,6 +191,17 @@ namespace UchetPractica
         private void button1_Click(object sender, EventArgs e)
         {
             OrgLoadData();
+        }
+
+        private void всехКромеСкрытыхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrgLoadData();
+        }
+
+        private void всехToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * FROM Organizations WHERE Status!=N'active'";
+            OrgLoadData(sql);
         }
     }
 }

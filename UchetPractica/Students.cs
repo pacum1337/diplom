@@ -509,22 +509,30 @@ namespace UchetPractica
                 }
                 else//Редактирование группы
                 {
-                    string sqlEditStud = String.Format("UPDATE Groups SET GroupNumber = '{0}', " +
-                        "Specialty = N'{1}', Code = N'{2}', Status = N'{3}'" +
-                        " WHERE Id = '{4}'", 
-                        groupNumber, specialty, groupCode, status, selectGroupId);
-                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                    try
                     {
-                        connection.Open();
-                        SqlCommand command = new SqlCommand(sqlEditStud, connection);
-                        int h = command.ExecuteNonQuery();
-                        if (h > 0)
+                        string sqlEditStud = String.Format("UPDATE Groups SET GroupNumber = '{0}', " +
+                           "Specialty = N'{1}', Code = N'{2}', Status = N'{3}'" +
+                           " WHERE Id = '{4}'",
+                           groupNumber, specialty, groupCode, status, selectGroupId);
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
-                            MessageBox.Show("Информация изменена");
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlEditStud, connection);
+                            int h = command.ExecuteNonQuery();
+                            if (h > 0)
+                            {
+                                MessageBox.Show("Информация изменена");
+                            }
                         }
+                        GroupsShowData();
+                        pGroup.Visible = false;
                     }
-                    GroupsShowData();
-                    pGroup.Visible = false;
+                    catch
+                    {
+                        MessageBox.Show("Такая группа уже есть!");
+                    }
+                    
                 }
             } 
         }

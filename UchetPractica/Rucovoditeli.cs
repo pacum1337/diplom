@@ -23,14 +23,13 @@ namespace UchetPractica
             InitializeComponent();
         }
 
-        private void LoadData()
-        {
-            string sqlGroups = "SELECT R.Id, O.Name as OrgName, R.Name as RucName, " +
-                "R.Surname, R.Patronymic " +
+        private void LoadData(string sqlGroups = "SELECT R.Id, O.Name as OrgName, R.Name as RucName, " +
+                "R.Surname, R.Patronymic, R.Status " +
                 "FROM Rucovoditeli AS R " +
                 "INNER JOIN Organizations AS O " +
-                "ON R.OrgId = O.Id";
-            
+                "ON R.OrgId = O.Id " +
+                "WHERE R.Status='active'")
+        {
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
                 connect.Open();
@@ -52,10 +51,12 @@ namespace UchetPractica
             }
             dataGridView1.Columns[0].Visible = false;
 
-            dataGridView1.Columns[1].HeaderText = "Организация";
+            dataGridView1.Columns[1].HeaderText = "Название организации";
             dataGridView1.Columns[2].HeaderText = "Имя";
             dataGridView1.Columns[3].HeaderText = "Фамилия";
             dataGridView1.Columns[4].HeaderText = "Отчество";
+
+            dataGridView1.Columns[5].Visible = false;
 
             dataGridView1.Columns[1].Width = 160;
         }
@@ -97,6 +98,7 @@ namespace UchetPractica
             tbName.Text = "";
             textBox4.Text = "";
             textBox1.Text = "";
+            cbStatus.Text = "Активный";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -112,13 +114,19 @@ namespace UchetPractica
                     string orgName = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
                     string name = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
                     string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
-                    string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+                    string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
+                    string status;
+                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value) == "active")
+                        status = "Работающий";
+                    else
+                        status = "Не работающий";
 
                     CBLoad();
                     cbOrg.Text = orgName;
                     tbName.Text = name;
                     textBox4.Text = surname;
                     textBox1.Text = patr;
+                    cbStatus.Text = status;
                 }
                 else
                 {
@@ -152,6 +160,11 @@ namespace UchetPractica
                 string name = tbName.Text.Trim();
                 string surname = textBox4.Text.Trim();
                 string patr = textBox1.Text.Trim();
+                string status;
+                if (cbStatus.Text == "Работающий")
+                    status = "active";
+                else
+                    status = "no active";
                 if (addRed)//Добавление студента 
                 {
                     bool haveSoStud = false;
@@ -175,9 +188,9 @@ namespace UchetPractica
                     if (!haveSoStud)
                     {
                         string sqlAddStud = String.Format("INSERT INTO Rucovoditeli " +
-                            "(OrgId, Name, Surname,Patronymic) " +
-                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
-                            , id, name, surname, patr);
+                            "(OrgId, Name, Surname,Patronymic,Status) " +
+                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
+                            , id, name, surname, patr, status);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -194,8 +207,8 @@ namespace UchetPractica
                 else//Редактирование группы
                 {
                     string sqlEditStud = String.Format("UPDATE Rucovoditeli SET OrgId = '{0}', " +
-                        "Name = N'{1}', Surname = N'{2}', Patronymic = N'{3}' " +
-                        "WHERE Id = '{4}'", id, name, surname, patr, selectRucId);
+                        "Name = N'{1}', Surname = N'{2}', Patronymic = N'{3}', Status=N'{4}' " +
+                        "WHERE Id = '{5}'", id, name, surname, patr, status, selectRucId);
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
                         connection.Open();
@@ -250,6 +263,22 @@ namespace UchetPractica
                 MessageBox.Show("Нет записей для удаления!");
             }
             panel1.Visible = false;
+        }
+
+        private void всехКромеНеРаботающихToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void вToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sqlGroups = "SELECT R.Id, O.Name as OrgName, R.Name as RucName, " +
+                "R.Surname, R.Patronymic, R.Status " +
+                "FROM Rucovoditeli AS R " +
+                "INNER JOIN Organizations AS O " +
+                "ON R.OrgId = O.Id " +
+                "WHERE R.Status!='active'";
+            LoadData(sqlGroups);
         }
     }
 }

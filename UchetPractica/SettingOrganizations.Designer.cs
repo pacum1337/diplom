@@ -56,6 +56,8 @@
             this.bCancel = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выхлжИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -351,11 +353,36 @@
             this.выхлжИзПрограммыToolStripMenuItem.Text = "Выход из программы";
             this.выхлжИзПрограммыToolStripMenuItem.Click += new System.EventHandler(this.выхлжИзПрограммыToolStripMenuItem_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(158, 308);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 24);
+            this.label13.TabIndex = 74;
+            this.label13.Text = "Статус";
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Работающая",
+            "Не работающая"});
+            this.cbStatus.Location = new System.Drawing.Point(236, 309);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(189, 30);
+            this.cbStatus.TabIndex = 73;
+            // 
             // SettingOrganizations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label12);
@@ -423,5 +450,7 @@
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem выхлжИзПрограммыToolStripMenuItem;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.ComboBox cbStatus;
     }
 }

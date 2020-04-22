@@ -68,6 +68,12 @@ namespace UchetPractica
                 string okogy = tbOKOGY.Text.Trim();
                 string oktmo = tbOKTMO.Text.Trim();
 
+                string status;
+                if (cbStatus.Text == "Работающая")
+                    status = "active";
+                else
+                    status = "no active";
+
 
                 if (addRed)//Добавление организации 
                 {
@@ -92,11 +98,11 @@ namespace UchetPractica
                     {
                         string sqlAddGroup = String.Format("INSERT INTO Organizations " +
                             "(Name, Address, DateReristration, Director, OGRN, " +
-                            "INN, KPP, OKPO, OKATO, OKOGY, OKTMO, DocCount) " +
+                            "INN, KPP, OKPO, OKATO, OKOGY, OKTMO, DocCount, Status) " +
                             "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}', " +
-                            "N'{5}',N'{6}',N'{7}',N'{8}',N'{9}', N'{10}',N'{11}')"
+                            "N'{5}',N'{6}',N'{7}',N'{8}',N'{9}', N'{10}',N'{11}',N'{12}')"
                             , nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo, 0);
+                            okato, okogy, oktmo, 0, status);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -116,10 +122,10 @@ namespace UchetPractica
                         string sqlEditStud = String.Format("UPDATE Organizations SET Name=N'{0}', " +
                             "Address=N'{1}', DateReristration=N'{2}', Director=N'{3}', OGRN=N'{4}', " +
                             "INN=N'{5}', KPP=N'{6}', OKPO=N'{7}', OKATO=N'{8}', OKOGY=N'{9}', " +
-                            "OKTMO=N'{10}' " +
-                            "WHERE Id = '{11}'",
+                            "OKTMO=N'{10}', Status=N'{11}' " +
+                            "WHERE Id = '{12}'",
                             nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo, selectedOrgId);
+                            okato, okogy, oktmo,status, selectedOrgId);
                         using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
                             connection.Open();

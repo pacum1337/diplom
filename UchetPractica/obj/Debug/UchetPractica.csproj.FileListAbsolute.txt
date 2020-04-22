@@ -85,11 +85,9 @@ C:\Study\Диплом\Новая папка\UchetPractica\bin\Debug\ExcelDataRea
 C:\Study\Диплом\Новая папка\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.csproj.ResolveComReference.cache
-C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocAdd.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Documents.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Auth.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocumentsWork.resources
-C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Groups.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Organizations.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Profile.resources
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.Rucovoditeli.resources

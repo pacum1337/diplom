@@ -38,6 +38,9 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.отображениеОрганизацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всехКромеСкрытыхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всехToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.парсингДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -84,6 +87,7 @@
             this.button3.TabIndex = 20;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // bCancel
@@ -140,6 +144,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отображениеОрганизацийToolStripMenuItem,
             this.парсингДанныхToolStripMenuItem,
             this.выходИзПрограммыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -147,6 +152,29 @@
             this.menuStrip1.Size = new System.Drawing.Size(1184, 28);
             this.menuStrip1.TabIndex = 33;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // отображениеОрганизацийToolStripMenuItem
+            // 
+            this.отображениеОрганизацийToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всехКромеСкрытыхToolStripMenuItem,
+            this.всехToolStripMenuItem});
+            this.отображениеОрганизацийToolStripMenuItem.Name = "отображениеОрганизацийToolStripMenuItem";
+            this.отображениеОрганизацийToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.отображениеОрганизацийToolStripMenuItem.Text = "Отображение организаций";
+            // 
+            // всехКромеСкрытыхToolStripMenuItem
+            // 
+            this.всехКромеСкрытыхToolStripMenuItem.Name = "всехКромеСкрытыхToolStripMenuItem";
+            this.всехКромеСкрытыхToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.всехКромеСкрытыхToolStripMenuItem.Text = "Всех, кроме не ативных";
+            this.всехКромеСкрытыхToolStripMenuItem.Click += new System.EventHandler(this.всехКромеСкрытыхToolStripMenuItem_Click);
+            // 
+            // всехToolStripMenuItem
+            // 
+            this.всехToolStripMenuItem.Name = "всехToolStripMenuItem";
+            this.всехToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.всехToolStripMenuItem.Text = "Всех, кроме активных";
+            this.всехToolStripMenuItem.Click += new System.EventHandler(this.всехToolStripMenuItem_Click);
             // 
             // парсингДанныхToolStripMenuItem
             // 
@@ -216,5 +244,8 @@
         private System.Windows.Forms.ToolStripMenuItem выходИзПрограммыToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem отображениеОрганизацийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всехКромеСкрытыхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всехToolStripMenuItem;
     }
 }
