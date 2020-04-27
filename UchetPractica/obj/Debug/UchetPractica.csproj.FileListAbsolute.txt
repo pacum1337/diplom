@@ -101,3 +101,31 @@ C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractic
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.pdb
 C:\Study\Диплом\Новая папка\UchetPractica\obj\Debug\UchetPractica.DocRaspredelenAdd.resources
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\UchetPractica.exe.config
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\UchetPractica.exe
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\UchetPractica.pdb
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.dll
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.pdb
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.xml
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csproj.ResolveComReference.cache
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.DocRaspredelenAdd.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Documents.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Auth.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.DocumentsWork.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Organizations.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Profile.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Rucovoditeli.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.SettingOrganizations.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Students.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Main.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Properties.Resources.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Reg.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csproj.GenerateResource.cache
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csproj.CopyComplete
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.exe
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.pdb
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Students_StudToNewGroup.resources

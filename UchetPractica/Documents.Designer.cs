@@ -103,12 +103,12 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(818, 180);
+            this.bCancel.Location = new System.Drawing.Point(12, 514);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(262, 55);
+            this.bCancel.Size = new System.Drawing.Size(117, 55);
             this.bCancel.TabIndex = 52;
-            this.bCancel.Text = "Отмена";
+            this.bCancel.Text = "Назад";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
@@ -128,7 +128,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(26, 331);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 158);
             this.panel1.TabIndex = 54;
@@ -308,18 +308,17 @@
             // 
             this.lGroupNum.AutoSize = true;
             this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupNum.Location = new System.Drawing.Point(12, 524);
+            this.lGroupNum.Location = new System.Drawing.Point(149, 530);
             this.lGroupNum.Name = "lGroupNum";
             this.lGroupNum.Size = new System.Drawing.Size(512, 24);
             this.lGroupNum.TabIndex = 63;
             this.lGroupNum.Text = "Отображаются документы о распределении студентов";
-            this.lGroupNum.Visible = false;
             // 
             // Documents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 564);
+            this.ClientSize = new System.Drawing.Size(1099, 578);
             this.Controls.Add(this.lGroupNum);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -330,7 +329,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Documents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Архив документов";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Documents_FormClosed);
             this.Load += new System.EventHandler(this.Documents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

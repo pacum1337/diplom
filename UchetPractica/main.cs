@@ -321,34 +321,36 @@ namespace UchetPractica
             Application.Restart();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DocumentsWork documents = new DocumentsWork();
-            documents.ShowDialog();
-        }
-
         private void bEnter_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             Students students = new Students();
             students.ShowDialog();
+            this.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             Organizations organizations = new Organizations();
             organizations.ShowDialog();
+            this.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             Rucovoditeli rucovoditeli = new Rucovoditeli();
             rucovoditeli.ShowDialog();
+            this.Visible = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
             Documents arhiv = new Documents();
             arhiv.ShowDialog();
+            this.Visible = true;
         }
 
         private void redactProfileToolStripMenuItem_Click(object sender, EventArgs e)

@@ -235,7 +235,7 @@ namespace UchetPractica
                 rucOrg[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 for (int j = 0; j < rucOrgStr.Length; j++)
                 {
-                    rucOrg[i].Items.Add(rucOrgStr[1]);
+                    rucOrg[i].Items.Add(rucOrgStr[j]);
 
                     //
                     rucOrg[i].Text = rucOrgStr[j];

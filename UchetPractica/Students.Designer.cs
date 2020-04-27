@@ -55,7 +55,7 @@
             this.ExportДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExelExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShablonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smiStudNewGr = new System.Windows.Forms.ToolStripMenuItem();
             this.pGroup = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.cbStatusGroup = new System.Windows.Forms.ComboBox();
@@ -116,7 +116,8 @@
             this.cbStatusStud.FormattingEnabled = true;
             this.cbStatusStud.Items.AddRange(new object[] {
             "Обучается",
-            "Не обучается"});
+            "Отчислен",
+            "Ак. отпуск"});
             this.cbStatusStud.Location = new System.Drawing.Point(232, 210);
             this.cbStatusStud.Name = "cbStatusStud";
             this.cbStatusStud.Size = new System.Drawing.Size(208, 30);
@@ -258,7 +259,7 @@
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(116, 55);
             this.bCancel.TabIndex = 11;
-            this.bCancel.Text = "Отмена";
+            this.bCancel.Text = "Назад";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
@@ -304,14 +305,15 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ShowAboutToolStripMenuItem,
             this.ExportДанныхToolStripMenuItem,
-            this.выходИзПрограммыToolStripMenuItem});
+            this.smiStudNewGr});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1388, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1388, 28);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -322,7 +324,7 @@
             this.GroupShow,
             this.OldGroupsToolStripMenuItem});
             this.ShowAboutToolStripMenuItem.Name = "ShowAboutToolStripMenuItem";
-            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.ShowAboutToolStripMenuItem.Text = "Отображение данных о";
             // 
             // StudentsShow
@@ -352,7 +354,7 @@
             this.ExelExportToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.ExportДанныхToolStripMenuItem.Name = "ExportДанныхToolStripMenuItem";
-            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.ExportДанныхToolStripMenuItem.Text = "Импорт данных";
             // 
             // ExelExportToolStripMenuItem
@@ -369,12 +371,13 @@
             this.ShablonToolStripMenuItem.Text = "Скачать шаблон Exel для импорта";
             this.ShablonToolStripMenuItem.Click += new System.EventHandler(this.ShablonToolStripMenuItem_Click);
             // 
-            // выходИзПрограммыToolStripMenuItem
+            // smiStudNewGr
             // 
-            this.выходИзПрограммыToolStripMenuItem.Name = "выходИзПрограммыToolStripMenuItem";
-            this.выходИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
-            this.выходИзПрограммыToolStripMenuItem.Text = "Выход из программы";
-            this.выходИзПрограммыToolStripMenuItem.Click += new System.EventHandler(this.ExitFromAppToolStripMenuItem_Click);
+            this.smiStudNewGr.Name = "smiStudNewGr";
+            this.smiStudNewGr.Size = new System.Drawing.Size(263, 24);
+            this.smiStudNewGr.Text = "Перевод студента в другую группу";
+            this.smiStudNewGr.Visible = false;
+            this.smiStudNewGr.Click += new System.EventHandler(this.smiStudNewGr_Click);
             // 
             // pGroup
             // 
@@ -412,7 +415,7 @@
             this.cbStatusGroup.FormattingEnabled = true;
             this.cbStatusGroup.Items.AddRange(new object[] {
             "Обучается",
-            "Не обучается"});
+            "Обучение окончено"});
             this.cbStatusGroup.Location = new System.Drawing.Point(234, 175);
             this.cbStatusGroup.Name = "cbStatusGroup";
             this.cbStatusGroup.Size = new System.Drawing.Size(208, 30);
@@ -549,11 +552,12 @@
             this.Controls.Add(this.bDel);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pGroup);
             this.Controls.Add(this.pStud);
+            this.Controls.Add(this.pGroup);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Students";
             this.Text = "Группы и студенты";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Students_FormClosed);
             this.Load += new System.EventHandler(this.Students_Load);
             this.pStud.ResumeLayout(false);
             this.pStud.PerformLayout();
@@ -603,7 +607,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ToolStripMenuItem выходИзПрограммыToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label lGroupNum;
         private System.Windows.Forms.ToolStripMenuItem OldGroupsToolStripMenuItem;
@@ -612,5 +615,6 @@
         private System.Windows.Forms.ComboBox cbStatusGroup;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbStatusStud;
+        private System.Windows.Forms.ToolStripMenuItem smiStudNewGr;
     }
 }

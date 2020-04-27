@@ -18,6 +18,8 @@ namespace UchetPractica
         int[] orgId = new int[0];
         int lenght = 0;
         int selectRucId = -1;
+        private bool close = true;
+
         public Rucovoditeli()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace UchetPractica
                 "FROM Rucovoditeli AS R " +
                 "INNER JOIN Organizations AS O " +
                 "ON R.OrgId = O.Id " +
-                "WHERE R.Status='active'")
+                "WHERE R.Status='1' AND O.Status = '1'")
         {
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
@@ -98,7 +100,7 @@ namespace UchetPractica
             tbName.Text = "";
             textBox4.Text = "";
             textBox1.Text = "";
-            cbStatus.Text = "Активный";
+            cbStatus.Text = "Работающий";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -115,10 +117,10 @@ namespace UchetPractica
                     string name = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
                     string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
                     string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
-                    string status;
-                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value) == "active")
+                    string status = "";
+                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value) == "1")
                         status = "Работающий";
-                    else
+                    else if(Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value) == "2")
                         status = "Не работающий";
 
                     CBLoad();
@@ -160,11 +162,11 @@ namespace UchetPractica
                 string name = tbName.Text.Trim();
                 string surname = textBox4.Text.Trim();
                 string patr = textBox1.Text.Trim();
-                string status;
+                string status = "";
                 if (cbStatus.Text == "Работающий")
-                    status = "active";
-                else
-                    status = "no active";
+                    status = "1";
+                else if(cbStatus.Text == "Не работающий")
+                    status = "2";
                 if (addRed)//Добавление студента 
                 {
                     bool haveSoStud = false;
@@ -268,6 +270,7 @@ namespace UchetPractica
         private void всехКромеНеРаботающихToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadData();
+            label5.Visible = false;
         }
 
         private void вToolStripMenuItem_Click(object sender, EventArgs e)
@@ -277,8 +280,23 @@ namespace UchetPractica
                 "FROM Rucovoditeli AS R " +
                 "INNER JOIN Organizations AS O " +
                 "ON R.OrgId = O.Id " +
-                "WHERE R.Status!='active'";
+                "WHERE R.Status!='1' OR O.Status != '1'";
             LoadData(sqlGroups);
+            label5.Visible = true;
+        }
+
+        private void Rucovoditeli_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (close)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            close = false;
+            Close();
         }
     }
 }

@@ -165,15 +165,15 @@
             // всехКромеСкрытыхToolStripMenuItem
             // 
             this.всехКромеСкрытыхToolStripMenuItem.Name = "всехКромеСкрытыхToolStripMenuItem";
-            this.всехКромеСкрытыхToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
-            this.всехКромеСкрытыхToolStripMenuItem.Text = "Всех, кроме не ативных";
+            this.всехКромеСкрытыхToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехКромеСкрытыхToolStripMenuItem.Text = "Активных";
             this.всехКромеСкрытыхToolStripMenuItem.Click += new System.EventHandler(this.всехКромеСкрытыхToolStripMenuItem_Click);
             // 
             // всехToolStripMenuItem
             // 
             this.всехToolStripMenuItem.Name = "всехToolStripMenuItem";
-            this.всехToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
-            this.всехToolStripMenuItem.Text = "Всех, кроме активных";
+            this.всехToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехToolStripMenuItem.Text = "Не активных";
             this.всехToolStripMenuItem.Click += new System.EventHandler(this.всехToolStripMenuItem_Click);
             // 
             // парсингДанныхToolStripMenuItem
@@ -220,6 +220,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Organizations";
             this.Text = "Организации";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Organizations_FormClosing);
             this.Load += new System.EventHandler(this.Organizations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

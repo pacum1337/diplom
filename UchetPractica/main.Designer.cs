@@ -42,12 +42,12 @@
             this.группы3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.группы4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отключитьУведомленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отключитьДоСледующейНеделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bEnter = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.отключитьДоСледующейНеделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -168,6 +168,13 @@
             this.отключитьУведомленияToolStripMenuItem.Text = "Отключить уведомления";
             this.отключитьУведомленияToolStripMenuItem.Click += new System.EventHandler(this.отключитьУведомленияToolStripMenuItem_Click);
             // 
+            // отключитьДоСледующейНеделиToolStripMenuItem
+            // 
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Name = "отключитьДоСледующейНеделиToolStripMenuItem";
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Text = "Отключить до следующей недели";
+            this.отключитьДоСледующейНеделиToolStripMenuItem.Click += new System.EventHandler(this.отключитьДоСледующейНеделиToolStripMenuItem_Click);
+            // 
             // bEnter
             // 
             this.bEnter.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -233,13 +240,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(56, 22);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.Visible = false;
-            // 
-            // отключитьДоСледующейНеделиToolStripMenuItem
-            // 
-            this.отключитьДоСледующейНеделиToolStripMenuItem.Name = "отключитьДоСледующейНеделиToolStripMenuItem";
-            this.отключитьДоСледующейНеделиToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
-            this.отключитьДоСледующейНеделиToolStripMenuItem.Text = "Отключить до следующей недели";
-            this.отключитьДоСледующейНеделиToolStripMenuItem.Click += new System.EventHandler(this.отключитьДоСледующейНеделиToolStripMenuItem_Click);
             // 
             // Main
             // 

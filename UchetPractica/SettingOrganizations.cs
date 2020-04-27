@@ -68,11 +68,11 @@ namespace UchetPractica
                 string okogy = tbOKOGY.Text.Trim();
                 string oktmo = tbOKTMO.Text.Trim();
 
-                string status;
+                string status = "";
                 if (cbStatus.Text == "Работающая")
-                    status = "active";
-                else
-                    status = "no active";
+                    status = "1";
+                else if(cbStatus.Text == "Не работающая")
+                    status = "2";
 
 
                 if (addRed)//Добавление организации 

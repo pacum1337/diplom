@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace UchetPractica
 {
+
     public partial class Students : Form
     {
         int selectStudId = -1;
@@ -23,6 +24,13 @@ namespace UchetPractica
         bool colGroup = false;
         int showGroupId = -1;
         string showGroupNum = "";
+        private bool close = true;
+
+        /*
+        1 - обучается
+        2 - отчислен\не обучается
+        3 - ак. отпуск
+        */
 
         public Students()
         {
@@ -120,11 +128,21 @@ namespace UchetPractica
             dataGridView1.Columns[3].Width = 120;
             dataGridView1.Columns[4].Width = 120;
             dataGridView1.Columns[5].Width = 120;
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1[5, i].Value.ToString() == "1")
+                    dataGridView1[5, i].Value = "Обучается";
+                else if (dataGridView1[5, i].Value.ToString() == "2")
+                    dataGridView1[5, i].Value = "Отчислен";
+                else if (dataGridView1[5, i].Value.ToString() == "3")
+                    dataGridView1[5, i].Value = "Ак. отпуск";
+            }
         }
 
         private void GroupsShowData(string sqlGroups = "SELECT Id, GroupNumber, " +
             "Specialty, Cours, StudentsCount, Code, Status " +
-            "FROM Groups WHERE Cours <= 4 AND Status=N'Обучается'")
+            "FROM Groups WHERE Cours <= 4 AND Status=N'1'")
         {
             dataGridView1.DataSource = null;
 
@@ -163,6 +181,14 @@ namespace UchetPractica
             dataGridView1.Columns[4].Width = 80;
             dataGridView1.Columns[5].Width = 80;
             dataGridView1.Columns[6].Width = 120;
+
+            for(int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if(dataGridView1[6, i].Value.ToString() == "1")
+                    dataGridView1[6, i].Value = "Обучается";
+                else if(dataGridView1[6, i].Value.ToString() == "2")
+                    dataGridView1[6, i].Value = "Обучение окончено";
+            }
         }
         private void CountStuds()
         {
@@ -183,8 +209,8 @@ namespace UchetPractica
                 }
             }
 
-            
-            for(int i = 0;i< grId.Length; i++)
+
+            for (int i = 0; i < grId.Length; i++)
             {
                 //расчет кол-ва студентов
                 int studCount = 0;
@@ -240,8 +266,19 @@ namespace UchetPractica
             return 0;
         }
 
+        private void ChangeStatusGroup()
+        {
+            string sqlEditStud = String.Format("UPDATE Groups SET Status = '2' WHERE Cours > '4'");
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlEditStud, connection);
+                int h = command.ExecuteNonQuery();
+            }
+        }
         private void bCancel_Click(object sender, EventArgs e)
         {
+            close = false;
             Close();
         }
 
@@ -290,73 +327,80 @@ namespace UchetPractica
         private void bEditShow_Click(object sender, EventArgs e)
         {
             addRed = false;
-            if (isGroup)
+            if(dataGridView1.CurrentRow.Cells[0].Value != null)
             {
-                if (colGroup)
+                if (isGroup)
                 {
-                    selectGroupId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                    if (selectGroupId > 0)
+                    if (colGroup)
                     {
-                        pStud.Visible = false;
-                        pGroup.Visible = true;
+                        selectGroupId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                        if (selectGroupId > 0)
+                        {
+                            pStud.Visible = false;
+                            pGroup.Visible = true;
 
-                        string groupNumber = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
-                        string specialty = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
-                        string groupCode = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
-                        string status = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
+                            string groupNumber = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+                            string specialty = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+                            string groupCode = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
+                            string status = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
 
-                        tbGroupNum.Text = groupNumber;
-                        tbSpecialty.Text = specialty;
-                        tbGroupCode.Text = groupCode;
-                        cbStatusGroup.Text = status;
+                            tbGroupNum.Text = groupNumber;
+                            tbSpecialty.Text = specialty;
+                            tbGroupCode.Text = groupCode;
+                            cbStatusGroup.Text = status;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Выберите группу для исправления!");
+                            pGroup.Visible = false;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Выберите группу для исправления!");
-                        pGroup.Visible = false;
+                        MessageBox.Show("Нет записей для изменения");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Нет записей для изменения");
+                    if (colStud)
+                    {
+                        selectStudId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                        if (selectStudId > 0)
+                        {
+                            pGroup.Visible = false;
+                            pStud.Visible = true;
+                            string name = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+                            string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+                            string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+                            string status = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
+
+                            tbGrNum.Text = showGroupNum;
+                            tbName.Text = name;
+                            tbSurname.Text = surname;
+                            tbPatr.Text = patr;
+                            cbStatusStud.Text = status;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Выберите студента для исправления!");
+                            pStud.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нет записей для изменения");
+                    }
                 }
             }
             else
             {
-                if (colStud)
-                {
-                    selectStudId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                    if (selectStudId > 0)
-                    {
-                        pGroup.Visible = false;
-                        pStud.Visible = true;
-                        string name = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
-                        string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
-                        string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
-                        string status = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
-
-                        tbGrNum.Text = showGroupNum;
-                        tbName.Text = name;
-                        tbSurname.Text = surname;
-                        tbPatr.Text = patr;
-                        cbStatusStud.Text = status;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Выберите студента для исправления!");
-                        pStud.Visible = false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Нет записей для изменения");
-                }
+                MessageBox.Show("Не выбрана строка!");
             }
         }
 
         private void bEnterShow_Click(object sender, EventArgs e)
         {
-            if(tbName.Text.Length < 2)
+            if (tbName.Text.Length < 2)
             {
                 MessageBox.Show("Имя слишком короткое!");
             }
@@ -375,7 +419,13 @@ namespace UchetPractica
                 string name = tbName.Text.Trim();
                 string surname = tbSurname.Text.Trim();
                 string patr = tbPatr.Text.Trim();
-                string status = cbStatusStud.Text;
+                string status = "";
+                if (cbStatusStud.Text == "Обучается")
+                    status = "1";
+                else if(cbStatusStud.Text == "Отчислен")
+                    status = "2";
+                else if(cbStatusStud.Text == "Ак. отпуск")
+                    status = "3";
                 if (addRed)//Добавление студента 
                 {
                     bool haveSoStud = false;
@@ -467,7 +517,11 @@ namespace UchetPractica
                 int cours = GetCourse(tbGroupNum.Text.Trim());
                 int studCount = 0;
                 string groupCode = tbGroupCode.Text.Trim();
-                string status = cbStatusGroup.Text;
+                string status = "";
+                if (cbStatusGroup.Text == "Обучается")
+                    status = "1";
+                else if (cbStatusGroup.Text == "Обучение окончено")
+                    status = "2";
 
                 if (addRed)//Добавление группы 
                 {
@@ -532,9 +586,9 @@ namespace UchetPractica
                     {
                         MessageBox.Show("Такая группа уже есть!");
                     }
-                    
+
                 }
-            } 
+            }
         }
 
         private void bDel_Click(object sender, EventArgs e)
@@ -643,6 +697,7 @@ namespace UchetPractica
             if (isGroup)
             {
                 isGroup = false;
+                smiStudNewGr.Visible = true;
                 if (colGroup)
                 {
                     showGroupId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
@@ -683,11 +738,12 @@ namespace UchetPractica
             pGroup.Visible = false;
             isGroup = true;
             lGroupNum.Visible = false;
+            smiStudNewGr.Visible = false;
         }
 
         private void ExelExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sqlStatusGroup = String.Format("UPDATE Groups SET Status=N'Не обучается'");
+            string sqlStatusGroup = String.Format("UPDATE Groups SET Status=N'2'");
 
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
             {
@@ -696,7 +752,7 @@ namespace UchetPractica
                 int number = command.ExecuteNonQuery();
             }
 
-            string sqlStatusStud = String.Format("UPDATE Students SET Status=N'Не обучается'");
+            string sqlStatusStud = String.Format("UPDATE Students SET Status=N'2'");
 
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
             {
@@ -713,177 +769,177 @@ namespace UchetPractica
             {
                 /*try
                 {*/
-                    string excelPath;
-                    using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls" })
+                string excelPath;
+                using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls" })
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        excelPath = openFileDialog.FileName;
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            excelPath = openFileDialog.FileName;
-                            using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                             {
-                                using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                                DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
                                 {
-                                    DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
-                                    {
-                                        ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { }
-                                    });
-                                    tableCollection = result.Tables;
-                                    foreach (DataTable table in tableCollection)
-                                    {
-                                        DataTable dt = tableCollection[table.TableName.ToString()];
-                                        dataGridView2.DataSource = dt;
-                                        string groupNum = "";//group info
-                                        string groupCode = "";
-                                        string groupSpecialty = "";
-                                        bool haveSoGroup = false;
-                                        int cours = 0;
-                                        int newGroupId = -1;
-                                        int oldGroupId = -1;
-                                        int len = 0;
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { }
+                                });
+                                tableCollection = result.Tables;
+                                foreach (DataTable table in tableCollection)
+                                {
+                                    DataTable dt = tableCollection[table.TableName.ToString()];
+                                    dataGridView2.DataSource = dt;
+                                    string groupNum = "";//group info
+                                    string groupCode = "";
+                                    string groupSpecialty = "";
+                                    bool haveSoGroup = false;
+                                    int cours = 0;
+                                    int newGroupId = -1;
+                                    int oldGroupId = -1;
+                                    int len = 0;
 
-                                        bool excelControl = true;
+                                    bool excelControl = true;
 
-                                        string name = "";//stud info
-                                        string surname = "";
-                                        string patr = "";
-                                        for (int i = 0; i < dt.Rows.Count; i++)
+                                    string name = "";//stud info
+                                    string surname = "";
+                                    string patr = "";
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+
+                                        if (i == 0)
                                         {
-
-                                            if (i == 0)
+                                            string num = dataGridView2[1, i].Value.ToString().Trim();
+                                            int strIndex = num.IndexOf("№");
+                                            num = num.Remove(0, strIndex + 2);
+                                            groupNum = num.Trim();
+                                            cours = GetCourse(groupNum);
+                                        }
+                                        else if (i == 1)
+                                        {
+                                            string Text = dataGridView2[1, i].Value.ToString().Trim();
+                                            string[] words = Text.Split(' ');
+                                            string spec = "";
+                                            groupCode = words[0].Trim();
+                                            for (int j = 1; j < words.Length; j++)
                                             {
-                                                string num = dataGridView2[1, i].Value.ToString().Trim();
-                                                int strIndex = num.IndexOf("№");
-                                                num = num.Remove(0, strIndex + 2);
-                                                groupNum = num.Trim();
-                                                cours = GetCourse(groupNum);
+                                                spec += words[j];
+                                                spec += " ";
                                             }
-                                            else if (i == 1)
-                                            {
-                                                string Text = dataGridView2[1, i].Value.ToString().Trim();
-                                                string[] words = Text.Split(' ');
-                                                string spec = "";
-                                                groupCode = words[0].Trim();
-                                                for (int j = 1; j < words.Length; j++)
-                                                {
-                                                    spec += words[j];
-                                                    spec += " ";
-                                                }
-                                                groupSpecialty = spec.Trim();
+                                            groupSpecialty = spec.Trim();
 
-                                                //Проверка на существование группы
-                                                string sqlGroupProv = String.Format("SELECT * FROM Groups WHERE " +
-                                                    "GroupNumber=N'{0}'", groupNum);
+                                            //Проверка на существование группы
+                                            string sqlGroupProv = String.Format("SELECT * FROM Groups WHERE " +
+                                                "GroupNumber=N'{0}'", groupNum);
+                                            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                            {
+                                                connection.Open();
+                                                SqlCommand command = new SqlCommand(sqlGroupProv, connection);
+                                                SqlDataReader sqlReader = command.ExecuteReader();
+                                                if (sqlReader.HasRows)
+                                                {
+                                                    sqlReader.Read();
+                                                    oldGroupId = sqlReader.GetInt32(0);
+                                                    haveSoGroup = true;
+                                                }
+                                            }
+
+                                            if (haveSoGroup)//Изменение статуса существующей группы с таким же номером
+                                            {
+                                                string sqlDelGroup = String.Format("UPDATE Groups SET Status=N'Обучается' " +
+                                                    "WHERE GroupNumber=N'{0}'", groupNum);
+
+                                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+                                                {
+                                                    connection.Open();
+                                                    SqlCommand command = new SqlCommand(sqlDelGroup, connection);
+                                                    int number = command.ExecuteNonQuery();
+                                                }
+                                                //Получение id созданной группы
+                                                string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
+
                                                 using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                                                 {
                                                     connection.Open();
-                                                    SqlCommand command = new SqlCommand(sqlGroupProv, connection);
-                                                    SqlDataReader sqlReader = command.ExecuteReader();
-                                                    if (sqlReader.HasRows)
+                                                    SqlCommand sql = new SqlCommand(sqlString, connection);
+                                                    SqlDataReader readerSerch = sql.ExecuteReader();
+
+                                                    if (readerSerch.HasRows)
                                                     {
-                                                        sqlReader.Read();
-                                                        oldGroupId = sqlReader.GetInt32(0);
-                                                        haveSoGroup = true;
-                                                    }
-                                                }
-
-                                                if (haveSoGroup)//Изменение статуса существующей группы с таким же номером
-                                                {
-                                                    string sqlDelGroup = String.Format("UPDATE Groups SET Status=N'Обучается' " +
-                                                        "WHERE GroupNumber=N'{0}'", groupNum);
-
-                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
-                                                    {
-                                                        connection.Open();
-                                                        SqlCommand command = new SqlCommand(sqlDelGroup, connection);
-                                                        int number = command.ExecuteNonQuery();
-                                                    }
-                                                    //Получение id созданной группы
-                                                    string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
-
-                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                                                    {
-                                                        connection.Open();
-                                                        SqlCommand sql = new SqlCommand(sqlString, connection);
-                                                        SqlDataReader readerSerch = sql.ExecuteReader();
-
-                                                        if (readerSerch.HasRows)
-                                                        {
-                                                            readerSerch.Read();
-                                                            newGroupId = readerSerch.GetInt32(0);
-                                                        }
-                                                    }
-                                                }
-                                                else//Добавление в бд новой группы
-                                                {
-                                                    string sqlAddGroup = String.Format("INSERT INTO Groups " +
-                                                    "(GroupNumber, Specialty, Cours, StudentsCount, Code, Status) " +
-                                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
-                                                    , groupNum, groupSpecialty, cours, 0, groupCode, "Обучается");
-
-                                                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
-                                                    {
-                                                        connect.Open();
-                                                        SqlCommand command = new SqlCommand(sqlAddGroup, connect);
-                                                        int h = command.ExecuteNonQuery();
-                                                        if (h == 0) MessageBox.Show("Error!!");
-                                                    }
-
-                                                    //Получение id созданной группы
-                                                    string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
-
-                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                                                    {
-                                                        connection.Open();
-                                                        SqlCommand sql = new SqlCommand(sqlString, connection);
-                                                        SqlDataReader readerSerch = sql.ExecuteReader();
-
-                                                        if (readerSerch.HasRows)
-                                                        {
-                                                            readerSerch.Read();
-                                                            newGroupId = readerSerch.GetInt32(0);
-                                                        }
+                                                        readerSerch.Read();
+                                                        newGroupId = readerSerch.GetInt32(0);
                                                     }
                                                 }
                                             }
-                                            if (i > 4 && dataGridView2[2, i].Value.ToString() == "")
+                                            else//Добавление в бд новой группы
                                             {
-                                                excelControl = false;
-                                            }
-                                            else if (i > 4 && excelControl)
-                                            {
-                                                string Text = dataGridView2[2, i].Value.ToString().Trim();
-                                                string[] words = Text.Split(' ');
-                                                string[] items = new string[0];
-                                                int countItems = 0;
-                                                for(int g = 0; g < words.Length; g++)
+                                                string sqlAddGroup = String.Format("INSERT INTO Groups " +
+                                                "(GroupNumber, Specialty, Cours, StudentsCount, Code, Status) " +
+                                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                                                , groupNum, groupSpecialty, cours, 0, groupCode, "Обучается");
+
+                                                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                                                 {
-                                                
+                                                    connect.Open();
+                                                    SqlCommand command = new SqlCommand(sqlAddGroup, connect);
+                                                    int h = command.ExecuteNonQuery();
+                                                    if (h == 0) MessageBox.Show("Error!!");
+                                                }
+
+                                                //Получение id созданной группы
+                                                string sqlString = String.Format("SELECT Id FROM Groups WHERE GroupNumber='{0}'", groupNum);
+
+                                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                                {
+                                                    connection.Open();
+                                                    SqlCommand sql = new SqlCommand(sqlString, connection);
+                                                    SqlDataReader readerSerch = sql.ExecuteReader();
+
+                                                    if (readerSerch.HasRows)
+                                                    {
+                                                        readerSerch.Read();
+                                                        newGroupId = readerSerch.GetInt32(0);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        if (i > 4 && dataGridView2[2, i].Value.ToString() == "")
+                                        {
+                                            excelControl = false;
+                                        }
+                                        else if (i > 4 && excelControl)
+                                        {
+                                            string Text = dataGridView2[2, i].Value.ToString().Trim();
+                                            string[] words = Text.Split(' ');
+                                            string[] items = new string[0];
+                                            int countItems = 0;
+                                            for (int g = 0; g < words.Length; g++)
+                                            {
+
                                                 if (words[g] == "" || words[g] == " ")
-                                                    {
-                                                        continue;
-                                                    }
+                                                {
+                                                    continue;
+                                                }
                                                 else
                                                 {
                                                     countItems++;
                                                     Array.Resize(ref items, countItems);
                                                     items[countItems - 1] = words[g];
                                                 }
-                                                    
-                                                }
-                                                surname = items[0];
-                                                name = items[1];
-                                                if (items.Length > 2)
-                                                {
-                                                    patr = items[2];
-                                                }
-                                                else
-                                                {
-                                                    patr = "";
-                                                }
+
+                                            }
+                                            surname = items[0];
+                                            name = items[1];
+                                            if (items.Length > 2)
+                                            {
+                                                patr = items[2];
+                                            }
+                                            else
+                                            {
+                                                patr = "";
+                                            }
 
 
                                             string sqlProvStud = String.Format("SELECT * FROM Students WHERE " +
-                                                "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'", 
+                                                "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'",
                                                 newGroupId, name, surname, patr);
                                             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                                             {
@@ -921,14 +977,14 @@ namespace UchetPractica
                                                 }
                                             }
 
-                                            
-                                            }
+
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                }
                 /*}
                 catch (Exception ex)
                 {
@@ -965,12 +1021,57 @@ namespace UchetPractica
 
         private void OldGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM Groups WHERE Cours > 4 OR Status!=N'Обучается'";
+            ChangeStatusGroup();
+            string sql = "SELECT * FROM Groups WHERE Cours > 4 OR Status!=N'1'";
             GroupsShowData(sql);
             pStud.Visible = false;
             pGroup.Visible = false;
             isGroup = true;
             lGroupNum.Visible = false;
+            smiStudNewGr.Visible = false;
+        }
+
+        private void Students_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (close)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void smiStudNewGr_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Cells[0].Value != null)
+            {
+                if (colStud)
+                {
+                    selectStudId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                    if (selectStudId > 0)
+                    {
+                        string name = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+                        string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+                        string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+                        Students_StudToNewGroup newGroup = new Students_StudToNewGroup();
+                        newGroup.lGroupNum.Text = surname + " " + name + " " + patr;
+                        newGroup.label3.Text = selectStudId.ToString();
+                        newGroup.ShowDialog();
+                        StudentsShowData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Выберите студента для исправления!");
+                        pStud.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет записей для изменения");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не выбранна строка!");
+            }
         }
     }
 }

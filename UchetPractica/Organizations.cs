@@ -19,8 +19,9 @@ namespace UchetPractica
         }
 
         bool colOrg = false;
+        bool close = true;
 
-        private void OrgLoadData(string sqlLoadData = "SELECT * FROM Organizations WHERE Status=N'active'")
+        private void OrgLoadData(string sqlLoadData = "SELECT * FROM Organizations WHERE Status=N'1'")
         {
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
@@ -68,7 +69,7 @@ namespace UchetPractica
             SettingOrganizations setting = new SettingOrganizations();
             setting.lHeader.Text = "Добавление организации";
             setting.AddRed = true;
-            setting.cbStatus.Text = "Активная";
+            setting.cbStatus.Text = "Работающая";
             setting.ShowDialog();
             OrgLoadData();
         }
@@ -96,9 +97,9 @@ namespace UchetPractica
                     setting.tbOKTMO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value);
 
                     string status = Convert.ToString(dataGridView1.CurrentRow.Cells[13].Value);
-                    if (status == "active")
+                    if (status == "1")
                         setting.cbStatus.Text = "Работающая";
-                    else
+                    else if(status == "2")
                         setting.cbStatus.Text = "Не работающая";
                     setting.ShowDialog();
                     OrgLoadData();
@@ -161,6 +162,7 @@ namespace UchetPractica
 
         private void bCancel_Click(object sender, EventArgs e)
         {
+            close = false;
             Close();
         }
 
@@ -200,8 +202,16 @@ namespace UchetPractica
 
         private void всехToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM Organizations WHERE Status!=N'active'";
+            string sql = "SELECT * FROM Organizations WHERE Status=N'2'";
             OrgLoadData(sql);
+        }
+
+        private void Organizations_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (close)
+            {
+                Application.Exit();
+            }
         }
     }
 }
