@@ -1,14 +1,8 @@
 ﻿using ExcelDataReader;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UchetPractica
@@ -85,7 +79,6 @@ namespace UchetPractica
             return cours;
 
         }
-
         private void StudentsShowData()
         {
             dataGridView1.DataSource = null;
@@ -139,7 +132,6 @@ namespace UchetPractica
                     dataGridView1[5, i].Value = "Ак. отпуск";
             }
         }
-
         private void GroupsShowData(string sqlGroups = "SELECT Id, GroupNumber, " +
             "Specialty, Cours, StudentsCount, Code, Status " +
             "FROM Groups WHERE Cours <= 4 AND Status=N'1'")
@@ -182,11 +174,11 @@ namespace UchetPractica
             dataGridView1.Columns[5].Width = 80;
             dataGridView1.Columns[6].Width = 120;
 
-            for(int i = 0; i < dataGridView1.RowCount; i++)
+            for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                if(dataGridView1[6, i].Value.ToString() == "1")
+                if (dataGridView1[6, i].Value.ToString() == "1")
                     dataGridView1[6, i].Value = "Обучается";
-                else if(dataGridView1[6, i].Value.ToString() == "2")
+                else if (dataGridView1[6, i].Value.ToString() == "2")
                     dataGridView1[6, i].Value = "Обучение окончено";
             }
         }
@@ -237,7 +229,6 @@ namespace UchetPractica
                 }
             }
         }
-
         private int GetCountStuds()
         {
             //расчет кол-ва студентов
@@ -265,7 +256,6 @@ namespace UchetPractica
             }
             return 0;
         }
-
         private void ChangeStatusGroup()
         {
             string sqlEditStud = String.Format("UPDATE Groups SET Status = '2' WHERE Cours > '4'");
@@ -276,6 +266,79 @@ namespace UchetPractica
                 int h = command.ExecuteNonQuery();
             }
         }
+        private void ExcelImportStudents(string Text,string name,string surname, string patr, int newGroupId, string status)
+        {
+            string[] words = Text.Split(' ');
+            string[] items = new string[0];
+            int countItems = 0;
+            for (int g = 0; g < words.Length; g++)
+            {
+
+                if (words[g] == "" || words[g] == " ")
+                {
+                    continue;
+                }
+                else
+                {
+                    countItems++;
+                    Array.Resize(ref items, countItems);
+                    items[countItems - 1] = words[g];
+                }
+
+            }
+            surname = items[0];
+            name = items[1];
+            if (items.Length > 2)
+            {
+                patr = items[2];
+            }
+            else
+            {
+                patr = "";
+            }
+
+
+            string sqlProvStud = String.Format("SELECT * FROM Students WHERE " +
+                "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'",
+                newGroupId, name, surname, patr);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlProvStud, connection);
+                SqlDataReader sqlReader = command.ExecuteReader();
+                if (sqlReader.HasRows)
+                {
+                    string sqlStatusEdit = String.Format("UPDATE Students SET Status=N'{0}' WHERE " +
+                        "GroupId=N'{1}' AND Name=N'{2}' AND Surname=N'{3}' AND Patronymic=N'{4}'",
+                         status, newGroupId, name, surname, patr);
+
+                    using (SqlConnection con = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+                    {
+                        con.Open();
+                        SqlCommand com = new SqlCommand(sqlStatusEdit, con);
+                        int number = com.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    //Добавление студентов
+                    string sqlAddStud = String.Format("INSERT INTO Students " +
+                                "(GroupId, Name, Surname,Patronymic, Status) " +
+                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
+                                , newGroupId, name, surname, patr, status);
+
+                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                    {
+                        connect.Open();
+                        SqlCommand comm = new SqlCommand(sqlAddStud, connect);
+                        int h = comm.ExecuteNonQuery();
+                        if (h == 0) MessageBox.Show("Error!!");
+                    }
+                }
+            }
+        }
+
+
         private void bCancel_Click(object sender, EventArgs e)
         {
             close = false;
@@ -327,7 +390,7 @@ namespace UchetPractica
         private void bEditShow_Click(object sender, EventArgs e)
         {
             addRed = false;
-            if(dataGridView1.CurrentRow.Cells[0].Value != null)
+            if (dataGridView1.CurrentRow.Cells[0].Value != null)
             {
                 if (isGroup)
                 {
@@ -422,9 +485,9 @@ namespace UchetPractica
                 string status = "";
                 if (cbStatusStud.Text == "Обучается")
                     status = "1";
-                else if(cbStatusStud.Text == "Отчислен")
+                else if (cbStatusStud.Text == "Отчислен")
                     status = "2";
-                else if(cbStatusStud.Text == "Ак. отпуск")
+                else if (cbStatusStud.Text == "Ак. отпуск")
                     status = "3";
                 if (addRed)//Добавление студента 
                 {
@@ -743,23 +806,7 @@ namespace UchetPractica
 
         private void ExelExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sqlStatusGroup = String.Format("UPDATE Groups SET Status=N'2'");
-
-            using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlStatusGroup, connection);
-                int number = command.ExecuteNonQuery();
-            }
-
-            string sqlStatusStud = String.Format("UPDATE Students SET Status=N'2'");
-
-            using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlStatusStud, connection);
-                int number = command.ExecuteNonQuery();
-            }
+            
 
             DataTableCollection tableCollection;
             DialogResult dr = MessageBox.Show("При импорте все старые данные будут перезаписаны на новые\n" +
@@ -774,6 +821,21 @@ namespace UchetPractica
                 {
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
+                        string sqlStatusGroup = String.Format("UPDATE Groups SET Status=N'2'");
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlStatusGroup, connection);
+                            int number = command.ExecuteNonQuery();
+                        }
+                        string sqlStatusStud = String.Format("UPDATE Students SET Status=N'2'");
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlStatusStud, connection);
+                            int number = command.ExecuteNonQuery();
+                        }
+
                         excelPath = openFileDialog.FileName;
                         using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
@@ -798,13 +860,17 @@ namespace UchetPractica
                                     int len = 0;
 
                                     bool excelControl = true;
+                                    bool dropedStuds = false;
+                                    bool vasDropsed = false;
+                                    bool perevedennie = false;
+                                    bool missPerevedennie = false;
+                                    bool akOtpusk = false;
 
                                     string name = "";//stud info
                                     string surname = "";
                                     string patr = "";
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
-
                                         if (i == 0)
                                         {
                                             string num = dataGridView2[1, i].Value.ToString().Trim();
@@ -812,6 +878,8 @@ namespace UchetPractica
                                             num = num.Remove(0, strIndex + 2);
                                             groupNum = num.Trim();
                                             cours = GetCourse(groupNum);
+                                            
+                                            continue;
                                         }
                                         else if (i == 1)
                                         {
@@ -844,7 +912,7 @@ namespace UchetPractica
 
                                             if (haveSoGroup)//Изменение статуса существующей группы с таким же номером
                                             {
-                                                string sqlDelGroup = String.Format("UPDATE Groups SET Status=N'Обучается' " +
+                                                string sqlDelGroup = String.Format("UPDATE Groups SET Status=N'1' " +
                                                     "WHERE GroupNumber=N'{0}'", groupNum);
 
                                                 using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
@@ -874,7 +942,7 @@ namespace UchetPractica
                                                 string sqlAddGroup = String.Format("INSERT INTO Groups " +
                                                 "(GroupNumber, Specialty, Cours, StudentsCount, Code, Status) " +
                                                 "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
-                                                , groupNum, groupSpecialty, cours, 0, groupCode, "Обучается");
+                                                , groupNum, groupSpecialty, cours, 0, groupCode, "1");
 
                                                 using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                                                 {
@@ -900,84 +968,74 @@ namespace UchetPractica
                                                     }
                                                 }
                                             }
+                                            continue;
                                         }
-                                        if (i > 4 && dataGridView2[2, i].Value.ToString() == "")
+                                        if (i > 4 && dataGridView2[2, i].Value.ToString() == "" && excelControl)
                                         {
                                             excelControl = false;
                                         }
                                         else if (i > 4 && excelControl)
                                         {
                                             string Text = dataGridView2[2, i].Value.ToString().Trim();
-                                            string[] words = Text.Split(' ');
-                                            string[] items = new string[0];
-                                            int countItems = 0;
-                                            for (int g = 0; g < words.Length; g++)
-                                            {
+                                            ExcelImportStudents(Text,name,surname, patr, newGroupId, "1");
+                                            continue;
 
-                                                if (words[g] == "" || words[g] == " ")
+                                        }
+                                        if ((dataGridView2[2, i].Value.ToString() != "" || dataGridView2[1, i].Value.ToString() != "") 
+                                            && !excelControl && !vasDropsed)
+                                        {
+                                            if (dropedStuds)
+                                            {
+                                                string Text = dataGridView2[2, i].Value.ToString().Trim();
+                                                if (Text == "")
                                                 {
+                                                    vasDropsed = true;
                                                     continue;
                                                 }
-                                                else
-                                                {
-                                                    countItems++;
-                                                    Array.Resize(ref items, countItems);
-                                                    items[countItems - 1] = words[g];
-                                                }
-
-                                            }
-                                            surname = items[0];
-                                            name = items[1];
-                                            if (items.Length > 2)
-                                            {
-                                                patr = items[2];
+                                                ExcelImportStudents(Text, name, surname, patr, newGroupId, "2");
                                             }
                                             else
                                             {
-                                                patr = "";
+                                                dropedStuds = true;
                                             }
-
-
-                                            string sqlProvStud = String.Format("SELECT * FROM Students WHERE " +
-                                                "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'",
-                                                newGroupId, name, surname, patr);
-                                            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            if (dropedStuds)
                                             {
-                                                connection.Open();
-                                                SqlCommand command = new SqlCommand(sqlProvStud, connection);
-                                                SqlDataReader sqlReader = command.ExecuteReader();
-                                                if (sqlReader.HasRows)
-                                                {
-                                                    string sqlStatusEdit = String.Format("UPDATE Students SET Status=N'Обучается' WHERE " +
-                                                        "GroupId=N'{0}' AND Name=N'{1}' AND Surname=N'{2}' AND Patronymic=N'{3}'",
-                                                         newGroupId, name, surname, patr);
-
-                                                    using (SqlConnection con = new SqlConnection(Strings.ConStr))//Удаление самой группы из бд
-                                                    {
-                                                        con.Open();
-                                                        SqlCommand com = new SqlCommand(sqlStatusEdit, con);
-                                                        int number = com.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    //Добавление студентов
-                                                    string sqlAddStud = String.Format("INSERT INTO Students " +
-                                                                "(GroupId, Name, Surname,Patronymic, Status) " +
-                                                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
-                                                                , newGroupId, name, surname, patr, "Обучается");
-
-                                                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
-                                                    {
-                                                        connect.Open();
-                                                        SqlCommand comm = new SqlCommand(sqlAddStud, connect);
-                                                        int h = comm.ExecuteNonQuery();
-                                                        if (h == 0) MessageBox.Show("Error!!");
-                                                    }
-                                                }
+                                                dropedStuds = false;
+                                                vasDropsed = true;
+                                                continue;
                                             }
-
-
+                                        }
+                                        string temp = dataGridView2[2, i].Value.ToString();
+                                        string temp1 = dataGridView2[1, i].Value.ToString();
+                                        int res;
+                                        if (i > 4 && (dataGridView2[2, i].Value.ToString() != "" || dataGridView2[1, i].Value.ToString() != "")
+                                            && vasDropsed && !int.TryParse(dataGridView2[1, i].Value.ToString(), out res))
+                                        {
+                                            perevedennie = true;
+                                            continue;
+                                        }
+                                        else if (dataGridView2[2, i].Value.ToString() == "" && vasDropsed && perevedennie)
+                                        {
+                                            missPerevedennie = true;
+                                        }
+                                        if ((dataGridView2[2, i].Value.ToString() != "" || dataGridView2[1, i].Value.ToString() != "")
+                                            && missPerevedennie)
+                                        {
+                                            if (akOtpusk)
+                                            {
+                                                string Text = dataGridView2[2, i].Value.ToString().Trim();
+                                                if (Text == "")
+                                                    continue;
+                                                ExcelImportStudents(Text, name, surname, patr, newGroupId, "3");
+                                            }
+                                            else
+                                            {
+                                                akOtpusk = true;
+                                            }
                                         }
                                     }
                                 }
