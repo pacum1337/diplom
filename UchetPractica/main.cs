@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -307,12 +308,31 @@ namespace UchetPractica
             }
         }
 
+        private void StudyProcessPeriod()
+        {
+            string sql = "SELECT StudyProcessPeriod FROM SystemTable";
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0))
+                        lStudyProcess.Text = "Загружен график учебного процесса " + reader.GetString(0);
+                    else
+                        lStudyProcess.Text = "График учебного процесса не загружен в базу данных";
+                }
+            }
+        }
+
         private void Main_Load(object sender, EventArgs e)
         {
             AutoAuth();
             DeleteOldGroups();
             AutoChangeCourse();
             StudyProcessMessages();
+            StudyProcessPeriod();
         }
 
         protected void UserExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -392,7 +412,7 @@ namespace UchetPractica
 
                                 string sqlDelProcess = "DELETE FROM StudyProcess";
 
-                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление студентов группы из бд
+                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))//Удаление старого ГУП
                                 {
                                     connection.Open();
                                     SqlCommand command = new SqlCommand(sqlDelProcess, connection);
@@ -423,6 +443,21 @@ namespace UchetPractica
                                                 {
                                                     startX = j;
                                                     startY = i;
+                                                }
+
+                                                string s = dataGridView1[j, i].Value.ToString().Trim().ToLower();
+                                                Regex regex = new Regex(@"^\w*\s?(\d{4}\s?-\s?\d{4})\w*");
+                                                MatchCollection matches = regex.Matches(s);
+                                                if (matches.Count > 0)
+                                                {
+                                                    string sqlEditGYP = String.Format("UPDATE SystemTable SET StudyProcessPeriod = N'{0}'", matches[0]);
+                                                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                                    {
+                                                        connection.Open();
+                                                        SqlCommand command = new SqlCommand(sqlEditGYP, connection);
+                                                        command.ExecuteNonQuery();
+                                                    }
+                                                    StudyProcessPeriod();
                                                 }
 
                                                 if(i == startY + 2 && startY != -1)
