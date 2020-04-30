@@ -18,6 +18,7 @@ namespace UchetPractica
 
         private int selectedOrgId = -1;
         public int SelectedOrgId { get => selectedOrgId; set => selectedOrgId = value; }
+        public bool resOrg = false;
         public SettingOrganizations()
         {
             InitializeComponent();
@@ -67,7 +68,9 @@ namespace UchetPractica
                 string okato = tbOKATO.Text.Trim();
                 string okogy = tbOKOGY.Text.Trim();
                 string oktmo = tbOKTMO.Text.Trim();
-
+                string studyOrg = "";
+                if (checkBox1.Checked)
+                    studyOrg = "1";
                 string status = "";
                 if (cbStatus.Text == "Работающая")
                     status = "1";
@@ -98,11 +101,11 @@ namespace UchetPractica
                     {
                         string sqlAddGroup = String.Format("INSERT INTO Organizations " +
                             "(Name, Address, DateReristration, Director, OGRN, " +
-                            "INN, KPP, OKPO, OKATO, OKOGY, OKTMO, DocCount, Status) " +
+                            "INN, KPP, OKPO, OKATO, OKOGY, OKTMO, DocCount, Status, StudyOrg) " +
                             "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}', " +
-                            "N'{5}',N'{6}',N'{7}',N'{8}',N'{9}', N'{10}',N'{11}',N'{12}')"
+                            "N'{5}',N'{6}',N'{7}',N'{8}',N'{9}', N'{10}',N'{11}',N'{12}', N'{13}')"
                             , nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo, 0, status);
+                            okato, okogy, oktmo, 0, status, studyOrg);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -112,6 +115,7 @@ namespace UchetPractica
                             if (h == 0) MessageBox.Show("Error!!");
                             else MessageBox.Show("Добавлена новая организация!");
                         }
+                        resOrg = true;
                         Close();
                     }
                 }
@@ -122,10 +126,10 @@ namespace UchetPractica
                         string sqlEditStud = String.Format("UPDATE Organizations SET Name=N'{0}', " +
                             "Address=N'{1}', DateReristration=N'{2}', Director=N'{3}', OGRN=N'{4}', " +
                             "INN=N'{5}', KPP=N'{6}', OKPO=N'{7}', OKATO=N'{8}', OKOGY=N'{9}', " +
-                            "OKTMO=N'{10}', Status=N'{11}' " +
-                            "WHERE Id = '{12}'",
+                            "OKTMO=N'{10}', Status=N'{11}', StudyOrg=N'{12}' " +
+                            "WHERE Id = '{13}'",
                             nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo,status, selectedOrgId);
+                            okato, okogy, oktmo,status, studyOrg, selectedOrgId);
                         using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
                             connection.Open();
@@ -136,6 +140,7 @@ namespace UchetPractica
                                 MessageBox.Show("Информация изменена");
                             }
                         }
+                        resOrg = true;
                         Close();
                     }
                     catch
@@ -143,6 +148,7 @@ namespace UchetPractica
                         MessageBox.Show("Организация с таким ИНН уже есть!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                
             }
         }
 

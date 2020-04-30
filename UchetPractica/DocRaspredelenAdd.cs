@@ -13,6 +13,13 @@ namespace UchetPractica
 {
     public partial class DocRaspredelenAdd : Form
     {
+        //даты из ГУП
+        DateTime[] start = new DateTime[0];
+        DateTime[] end = new DateTime[0];
+        int dateLen = 0;
+        
+
+
         int[] groupsId = new int[0];
         int lenght = 0;
         int lines;
@@ -330,9 +337,7 @@ namespace UchetPractica
                 }
             }
             string sqlDateStart = "SELECT WeekDateStart, WeekDateEnd FROM StudyProcess GROUP BY WeekDateStart, WeekDateEnd";
-            DateTime[] start = new DateTime[0];
-            DateTime[] end = new DateTime[0];
-            int dateLen = 0;
+            
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
@@ -347,45 +352,22 @@ namespace UchetPractica
                     end[dateLen - 1] = DateTime.Parse(reader.GetString(1));
                 }
             }
-            DateTime fthSept = new DateTime(DateTime.Now.Year, 9, 1);
-            DateTime now = DateTime.Now;
-            if (now < fthSept)
-                fthSept.AddYears(-1);
             DateTime temp;
-           
             for (int i = 0; i < dateLen; i++)
             {
                 for(int j=i+1;j< dateLen; j++)
                 {
                     if (start[i] > start[j])
                     {
-                        if(start[i] >= fthSept && start[j] >= fthSept)
-                        {
-                            temp = start[j];
-                            start[j] = start[i];
-                            start[i] = temp;
-                        }
-                        else if(start[i] < fthSept && start[j] < fthSept)
-                        {
-                            temp = start[i];
-                            start[i] = start[j];
-                            start[j] = temp;
-                        }
+                        temp = start[i];
+                        start[i] = start[j];
+                        start[j] = temp;
                     }
                     if (end[i] > end[j])
                     {
-                        if (end[i] >= fthSept && end[j] >= fthSept)
-                        {
-                            temp = end[j];
-                            end[j] = end[i];
-                            end[i] = temp;
-                        }
-                        else if (end[i] < fthSept && end[j] < fthSept)
-                        {
-                            temp = end[i];
-                            end[i] = end[j];
-                            end[j] = temp;
-                        }
+                        temp = end[i];
+                        end[i] = end[j];
+                        end[j] = temp;
                     }
                 }
             }
@@ -428,6 +410,30 @@ namespace UchetPractica
             }
             AddResprContent(docId);
             Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
+            if (!checkBox1.Checked)
+            {
+                for (int i = 0; i < dateLen; i++)
+                {
+                    comboBox1.Items.Add(start[i]);
+                    comboBox2.Items.Add(end[i]);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dateLen; i++)
+                {
+                    if(start[i]>=DateTime.Now)
+                        comboBox1.Items.Add(start[i]);
+                    if (end[i] >= DateTime.Now)
+                        comboBox2.Items.Add(end[i]);
+                }
+            }
         }
     }
 }

@@ -58,6 +58,7 @@
             this.выхлжИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label13 = new System.Windows.Forms.Label();
             this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -376,11 +377,25 @@
             this.cbStatus.Size = new System.Drawing.Size(189, 30);
             this.cbStatus.TabIndex = 73;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(236, 357);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(285, 28);
+            this.checkBox1.TabIndex = 75;
+            this.checkBox1.Text = "Ваша учебная организация?";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            // 
             // SettingOrganizations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 422);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.bCancel);
@@ -452,5 +467,6 @@
         private System.Windows.Forms.ToolStripMenuItem выхлжИзПрограммыToolStripMenuItem;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.ComboBox cbStatus;
+        public System.Windows.Forms.CheckBox checkBox1;
     }
 }

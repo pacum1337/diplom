@@ -21,6 +21,7 @@ namespace UchetPractica
         bool colOrg = false;
         bool close = true;
 
+
         private void OrgLoadData(string sqlLoadData = "SELECT * FROM Organizations WHERE Status=N'1'")
         {
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
@@ -57,8 +58,39 @@ namespace UchetPractica
             dataGridView1.Columns[11].HeaderText = "ОКТМО";
             dataGridView1.Columns[12].HeaderText = "Кол-во документов с этой организацией";
             dataGridView1.Columns[13].Visible = false;
+            dataGridView1.Columns[14].Visible = false;
         }
 
+        private void ProvStudyOrg()
+        {
+            string sqlSU = "SELECT Id FROM Organizations WHERE StudyOrg = 1";
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlSU, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    MessageBox.Show("В базе данных нет учебной организации, в которой происходит учет!\n" +
+                        "Требуется внести ее в базу данных!");
+                    SettingOrganizations setting = new SettingOrganizations();
+                    setting.lHeader.Text = "Добавление учебной организации";
+                    setting.AddRed = true;
+                    setting.cbStatus.Text = "Работающая";
+                    setting.checkBox1.Visible = true;
+                    setting.checkBox1.Checked = true;
+                    setting.ShowDialog();
+                    if (!setting.resOrg)
+                    {
+                        MessageBox.Show("Данные о учебной организации не внесены!\n" +
+                            "Надеюсь, что в следущий раз получится)");
+                        close = false;
+                        Close();
+                    }
+                }
+                OrgLoadData();
+            }
+        }
         private void выходИзПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -117,7 +149,7 @@ namespace UchetPractica
 
         private void Organizations_Load(object sender, EventArgs e)
         {
-            OrgLoadData();
+            ProvStudyOrg();
         }
 
         private void button3_Click(object sender, EventArgs e)

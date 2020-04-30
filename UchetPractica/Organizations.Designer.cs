@@ -41,8 +41,6 @@
             this.отображениеОрганизацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехКромеСкрытыхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.парсингДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходИзПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -144,9 +142,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отображениеОрганизацийToolStripMenuItem,
-            this.парсингДанныхToolStripMenuItem,
-            this.выходИзПрограммыToolStripMenuItem});
+            this.отображениеОрганизацийToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 28);
@@ -175,19 +171,6 @@
             this.всехToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.всехToolStripMenuItem.Text = "Не активных";
             this.всехToolStripMenuItem.Click += new System.EventHandler(this.всехToolStripMenuItem_Click);
-            // 
-            // парсингДанныхToolStripMenuItem
-            // 
-            this.парсингДанныхToolStripMenuItem.Name = "парсингДанныхToolStripMenuItem";
-            this.парсингДанныхToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.парсингДанныхToolStripMenuItem.Text = "Парсинг данных";
-            // 
-            // выходИзПрограммыToolStripMenuItem
-            // 
-            this.выходИзПрограммыToolStripMenuItem.Name = "выходИзПрограммыToolStripMenuItem";
-            this.выходИзПрограммыToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
-            this.выходИзПрограммыToolStripMenuItem.Text = "Выход из программы";
-            this.выходИзПрограммыToolStripMenuItem.Click += new System.EventHandler(this.выходИзПрограммыToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -241,8 +224,6 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem парсингДанныхToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходИзПрограммыToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem отображениеОрганизацийToolStripMenuItem;
