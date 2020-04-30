@@ -43,6 +43,7 @@
             this.всехToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -142,7 +143,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отображениеОрганизацийToolStripMenuItem});
+            this.отображениеОрганизацийToolStripMenuItem,
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 28);
@@ -161,14 +163,14 @@
             // всехКромеСкрытыхToolStripMenuItem
             // 
             this.всехКромеСкрытыхToolStripMenuItem.Name = "всехКромеСкрытыхToolStripMenuItem";
-            this.всехКромеСкрытыхToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехКромеСкрытыхToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.всехКромеСкрытыхToolStripMenuItem.Text = "Активных";
             this.всехКромеСкрытыхToolStripMenuItem.Click += new System.EventHandler(this.всехКромеСкрытыхToolStripMenuItem_Click);
             // 
             // всехToolStripMenuItem
             // 
             this.всехToolStripMenuItem.Name = "всехToolStripMenuItem";
-            this.всехToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.всехToolStripMenuItem.Text = "Не активных";
             this.всехToolStripMenuItem.Click += new System.EventHandler(this.всехToolStripMenuItem_Click);
             // 
@@ -184,6 +186,13 @@
             this.button1.Text = "Сброс";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // изменитьОбразовательнуюОрганизациюToolStripMenuItem
+            // 
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Name = "изменитьОбразовательнуюОрганизациюToolStripMenuItem";
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Size = new System.Drawing.Size(320, 24);
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Text = "Изменить образовательную организацию";
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Click += new System.EventHandler(this.изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click);
             // 
             // Organizations
             // 
@@ -229,5 +238,6 @@
         private System.Windows.Forms.ToolStripMenuItem отображениеОрганизацийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехКромеСкрытыхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem изменитьОбразовательнуюОрганизациюToolStripMenuItem;
     }
 }

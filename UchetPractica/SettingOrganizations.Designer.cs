@@ -71,7 +71,6 @@
             this.lHeader.Size = new System.Drawing.Size(88, 24);
             this.lHeader.TabIndex = 39;
             this.lHeader.Text = "Надпись";
-            this.lHeader.Visible = false;
             // 
             // label7
             // 

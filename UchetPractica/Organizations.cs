@@ -79,6 +79,7 @@ namespace UchetPractica
                     setting.cbStatus.Text = "Работающая";
                     setting.checkBox1.Visible = true;
                     setting.checkBox1.Checked = true;
+                    setting.cbStatus.Enabled = false;
                     setting.ShowDialog();
                     if (!setting.resOrg)
                     {
@@ -127,13 +128,21 @@ namespace UchetPractica
                     setting.tbOKATO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[9].Value);
                     setting.tbOKOGY.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[10].Value);
                     setting.tbOKTMO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value);
-
                     string status = Convert.ToString(dataGridView1.CurrentRow.Cells[13].Value);
-                    if (status == "1")
+                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[14].Value) == "1")
+                    {
+                        setting.cbStatus.Enabled = false;
                         setting.cbStatus.Text = "Работающая";
-                    else if(status == "2")
-                        setting.cbStatus.Text = "Не работающая";
+                    }
+                    else
+                    {
+                        if (status == "1")
+                            setting.cbStatus.Text = "Работающая";
+                        else if (status == "2")
+                            setting.cbStatus.Text = "Не работающая";
+                    }
                     setting.ShowDialog();
+
                     OrgLoadData();
                 }
                 else
@@ -244,6 +253,43 @@ namespace UchetPractica
             {
                 Application.Exit();
             }
+        }
+
+        private void изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int oldId = -1;
+            string sqlSU = "SELECT Id FROM Organizations WHERE StudyOrg = 1";
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlSU, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    oldId = reader.GetInt32(0);
+                }
+            }
+
+            SettingOrganizations setting = new SettingOrganizations();
+            setting.lHeader.Text = "Добавление учебной организации";
+            setting.AddRed = true;
+            setting.cbStatus.Text = "Работающая";
+            setting.checkBox1.Visible = true;
+            setting.checkBox1.Checked = true;
+            setting.cbStatus.Enabled = false;
+            setting.ShowDialog();
+            if (setting.resOrg)
+            {
+                string sqlDelOrg = String.Format("DELETE FROM Organizations WHERE Id = '{0}'", oldId);
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlDelOrg, connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            OrgLoadData();
         }
     }
 }
