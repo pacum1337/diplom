@@ -324,6 +324,15 @@ namespace UchetPractica
                         lStudyProcess.Text = "График учебного процесса не загружен в базу данных";
                 }
             }
+            string sqlProv = "SELECT MIN(Id) FROM StudyProcess";
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlProv, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)
+                    lStudyProcess.Text = "График учебного процесса не загружен в базу данных";
+            }
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -399,6 +408,7 @@ namespace UchetPractica
                     {
                         if (openFileDialog.ShowDialog() == DialogResult.OK)
                         {
+                            this.Cursor = CursorOnLoad.ChangeCoursor(this.Cursor);
                             excelPath = openFileDialog.FileName;
                             using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                             {
@@ -530,6 +540,7 @@ namespace UchetPractica
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            this.Cursor = CursorOnLoad.ChangeCoursor(this.Cursor);
         }
 
         private void ShablonToolStripMenuItem_Click(object sender, EventArgs e)

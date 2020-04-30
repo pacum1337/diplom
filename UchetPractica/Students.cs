@@ -814,9 +814,9 @@ namespace UchetPractica
                 "Вы уверены, что хотите импортировать данные?", "Подтверждение действия", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                /*try
-                {*/
-                string excelPath;
+                try
+                {
+                    string excelPath;
                 using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls" })
                 {
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -1043,11 +1043,11 @@ namespace UchetPractica
                         }
                     }
                 }
-                /*}
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                }
                 CountStuds();
                 if (isGroup)
                 {

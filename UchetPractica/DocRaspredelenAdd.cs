@@ -329,6 +329,71 @@ namespace UchetPractica
                     groupsId[lenght - 1] = reader.GetInt32(0);
                 }
             }
+            string sqlDateStart = "SELECT WeekDateStart, WeekDateEnd FROM StudyProcess GROUP BY WeekDateStart, WeekDateEnd";
+            DateTime[] start = new DateTime[0];
+            DateTime[] end = new DateTime[0];
+            int dateLen = 0;
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlDateStart, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                while (reader.Read())
+                {
+                    dateLen++;
+                    Array.Resize(ref start, dateLen);
+                    Array.Resize(ref end, dateLen);
+                    start[dateLen - 1] = DateTime.Parse(reader.GetString(0));
+                    end[dateLen - 1] = DateTime.Parse(reader.GetString(1));
+                }
+            }
+            DateTime fthSept = new DateTime(DateTime.Now.Year, 9, 1);
+            DateTime now = DateTime.Now;
+            if (now < fthSept)
+                fthSept.AddYears(-1);
+            DateTime temp;
+           
+            for (int i = 0; i < dateLen; i++)
+            {
+                for(int j=i+1;j< dateLen; j++)
+                {
+                    if (start[i] > start[j])
+                    {
+                        if(start[i] >= fthSept && start[j] >= fthSept)
+                        {
+                            temp = start[j];
+                            start[j] = start[i];
+                            start[i] = temp;
+                        }
+                        else if(start[i] < fthSept && start[j] < fthSept)
+                        {
+                            temp = start[i];
+                            start[i] = start[j];
+                            start[j] = temp;
+                        }
+                    }
+                    if (end[i] > end[j])
+                    {
+                        if (end[i] >= fthSept && end[j] >= fthSept)
+                        {
+                            temp = end[j];
+                            end[j] = end[i];
+                            end[i] = temp;
+                        }
+                        else if (end[i] < fthSept && end[j] < fthSept)
+                        {
+                            temp = end[i];
+                            end[i] = end[j];
+                            end[j] = temp;
+                        }
+                    }
+                }
+            }
+            for(int i = 0; i < dateLen; i++)
+            {
+                comboBox1.Items.Add(start[i]);
+                comboBox2.Items.Add(end[i]);
+            }
         }
 
         private void bEnter_Click(object sender, EventArgs e)
@@ -337,8 +402,7 @@ namespace UchetPractica
             string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
                 "(GroupId, DateStart, DateEnd,UnqueId) " +
                 "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
-                , selectedGroup, dtpDateReg.Value.ToString("dd/MM/yyyy"),
-                dateTimePicker1.Value.ToString("dd/MM/yyyy"), uniqId);
+                , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId);
 
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
