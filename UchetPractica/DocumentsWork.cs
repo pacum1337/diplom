@@ -80,6 +80,7 @@ namespace UchetPractica
             table.Cell(1, 6).Range.Bold = 2;
             table.Cell(1, 6).Range.Text = "Руководитель практики";
             table.Columns.AutoFit();
+
             for (int i = 2; i < colStud + 2; i++)
             {
                 for (int j = 1; j <= 6; j++)
