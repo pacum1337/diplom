@@ -79,67 +79,87 @@ namespace UchetPractica
                 {
                     if(cbSU.Text != "")
                     {
-                        if(superPas != "")
+                        bool haveSoUser = false;
+                        string sqlProv = String.Format("SELECT * FROM Users WHERE Login=N'{0}'", login);
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
-                            byte[] checkSum2 = md5.ComputeHash(Encoding.UTF8.GetBytes(pas1 + hash));
-                            string password = BitConverter.ToString(checkSum2).Replace("-", String.Empty);
-
-                            bool superCheck = true;//cbSuperuser checked
-                            string sqlReg ="";
-                            if (cbSuperReg.Checked)
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlProv, connection);
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.HasRows)
                             {
-                                DialogResult dr = MessageBox.Show("Вы уверены, что хотите создать \nпользователя с ролью 'SuperUser'?", "Подтверждение действия",
-                                MessageBoxButtons.YesNo);
-                                if (dr == DialogResult.Yes)
+                                haveSoUser = true;
+                            }
+                        }
+
+                        if(!haveSoUser)
+                        {
+                            if (superPas != "")
+                            {
+                                byte[] checkSum2 = md5.ComputeHash(Encoding.UTF8.GetBytes(pas1 + hash));
+                                string password = BitConverter.ToString(checkSum2).Replace("-", String.Empty);
+
+                                bool superCheck = true;//cbSuperuser checked
+                                string sqlReg = "";
+                                if (cbSuperReg.Checked)
                                 {
-                                    sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password, " +
-                                    "SuperUser) " +
-                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}', 1)", name, surname, login, password);
+                                    DialogResult dr = MessageBox.Show("Вы уверены, что хотите создать \nпользователя с ролью 'SuperUser'?", "Подтверждение действия",
+                                    MessageBoxButtons.YesNo);
+                                    if (dr == DialogResult.Yes)
+                                    {
+                                        sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password, " +
+                                        "SuperUser) " +
+                                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}', 1)", name, surname, login, password);
+                                    }
+                                    else
+                                    {
+                                        superCheck = false;
+                                    }
                                 }
                                 else
                                 {
-                                    superCheck = false;
+                                    sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password) " +
+                                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')", name, surname, login, password);
+                                }
+
+
+                                bool isSuper = false;
+                                string sqlString = String.Format("SELECT * FROM Users WHERE Id='{0}' AND Password=N'{1}'"
+                                    , superUsers[cbSU.SelectedIndex].ToString(), superPas);
+                                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                                {
+                                    connection.Open();
+                                    SqlCommand sql = new SqlCommand(sqlString, connection);
+                                    SqlDataReader reader = sql.ExecuteReader();
+
+                                    if (reader.HasRows)
+                                    {
+                                        isSuper = true;
+                                    }
+                                    else MessageBox.Show("Не верно введен пароль SuperUser");
+                                }
+
+                                if (isSuper && superCheck)
+                                {
+                                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                                    {
+                                        connect.Open();
+                                        SqlCommand command = new SqlCommand(sqlReg, connect);
+                                        int h = command.ExecuteNonQuery();
+                                        if (h == 0) MessageBox.Show("Error!!");
+                                        else MessageBox.Show("Пользователь зарегистрирован!");
+                                        Close();
+                                    }
                                 }
                             }
                             else
                             {
-                                sqlReg = String.Format("INSERT INTO Users (Name, Surname, Login, Password) " +
-                                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')", name, surname, login, password);
-                            }
-
-
-                            bool isSuper = false;
-                            string sqlString = String.Format("SELECT * FROM Users WHERE Id='{0}' AND Password=N'{1}'"
-                                , superUsers[cbSU.SelectedIndex].ToString(), superPas);
-                            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                            {
-                                connection.Open();
-                                SqlCommand sql = new SqlCommand(sqlString, connection);
-                                SqlDataReader reader = sql.ExecuteReader();
-
-                                if (reader.HasRows)
-                                {
-                                    isSuper = true;
-                                }
-                                else MessageBox.Show("Не верно введен пароль SuperUser");
-                            }
-
-                            if (isSuper && superCheck)
-                            {
-                                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
-                                {
-                                    connect.Open();
-                                    SqlCommand command = new SqlCommand(sqlReg, connect);
-                                    int h = command.ExecuteNonQuery();
-                                    if (h == 0) MessageBox.Show("Error!!");
-                                    else MessageBox.Show("Пользователь зарегистрирован!");
-                                    Close();
-                                }
+                                MessageBox.Show("Не введен пароль SuperUser!");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Не введен пароль SuperUser!");
+                            MessageBox.Show("Пользователь с таким логином уже есть!");
                         }
                     }
                     else

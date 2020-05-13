@@ -110,7 +110,6 @@ C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.pdb
 C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.xml
 C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.DataSet.pdb
 C:\Study\Диплом\проект\UchetPractica\bin\Debug\ExcelDataReader.DataSet.xml
-C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csproj.ResolveComReference.cache
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.DocRaspredelenAdd.resources
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Documents.resources
@@ -129,3 +128,4 @@ C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csproj.
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.pdb
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Students_StudToNewGroup.resources
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
