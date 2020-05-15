@@ -47,7 +47,7 @@ namespace UchetPractica
 
         //руководители от организации
         ComboBox[] rucOrg;
-        string[] rucOrgStr;
+        string[][] rucOrgStr;
         int[] rucOrgId;
         int lenRucOrg;
 
@@ -63,6 +63,7 @@ namespace UchetPractica
         {
             InitializeComponent();
         }
+
         private void GetRucovodOrg()
         {
             string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
@@ -76,12 +77,16 @@ namespace UchetPractica
                 lenghtStud = 0;
                 while (reader.Read())
                 {
+                    for(int i = 0; i < lines; i++)
+                    {
+
                     lenRucOrg++;
                     Array.Resize(ref rucOrgId, lenRucOrg);
-                    Array.Resize(ref rucOrgStr, lenRucOrg);
+                    Array.Resize(ref rucOrgStr[i], lenRucOrg);
                     rucOrgId[lenRucOrg - 1] = reader.GetInt32(0);
-                    rucOrgStr[lenRucOrg - 1] = reader.GetString(1) + " " +
+                    rucOrgStr[i][lenRucOrg - 1] = reader.GetString(1) + " " +
                         reader.GetString(2) + " " + reader.GetString(3);
+                    }
                 }
             }
         }
@@ -121,6 +126,7 @@ namespace UchetPractica
                     reader.Read();
                     lines = reader.GetInt32(0);
 
+                    rucOrgStr = new string[lines][];
                     studLabels = new Label[reader.GetInt32(0)];
                     prPlace = new ComboBox[reader.GetInt32(0)];
                     rucColl = new ComboBox[reader.GetInt32(0)];
@@ -150,6 +156,8 @@ namespace UchetPractica
                     prPlaceStr[lenPlace - 1] = reader.GetString(1);
                 }
             }
+
+
         }
         private void GetStudLabel()
         {
@@ -212,9 +220,9 @@ namespace UchetPractica
                 for(int j = 0;j< prPlaceStr.Length; j++)
                 {
                     prPlace[i].Items.Add(prPlaceStr[j]);
-
+                    prPlace[i].SelectedIndexChanged += PlaceOnClick;
                     //
-                    prPlace[i].Text = prPlaceStr[j];
+                    //prPlace[i].Text = prPlaceStr[j];
 
                 }
                 prPlace[i].DropDownStyle = ComboBoxStyle.DropDownList;
@@ -230,7 +238,7 @@ namespace UchetPractica
                     rucColl[i].Items.Add(rucColleStr[j]);
 
                     //
-                    rucColl[i].Text = rucColleStr[0];
+                    rucColl[i].Text = rucColleStr[j];
                 }
                 rucColl[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucColl[i]);
@@ -239,13 +247,14 @@ namespace UchetPractica
                 rucOrg[i] = new ComboBox();
                 rucOrg[i].Top = 10 + otstup * i;
                 rucOrg[i].Left = 540;
+                rucOrg[i].Enabled = false;
                 rucOrg[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 for (int j = 0; j < rucOrgStr.Length; j++)
                 {
-                    rucOrg[i].Items.Add(rucOrgStr[j]);
+                    rucOrg[i].Items.Add(rucOrgStr[i][j]);
 
                     //
-                    rucOrg[i].Text = rucOrgStr[j];
+                    rucOrg[i].Text = rucOrgStr[i][0];
                 }
                 rucOrg[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucOrg[i]);
@@ -284,6 +293,16 @@ namespace UchetPractica
 
                 //
                 tbType[i].Text = "1";
+            }
+        }
+        private void PlaceOnClick(object sender, EventArgs eventArgs)
+        {
+            for(int i = 0; i < lines; i++)
+            {
+                if (prPlace[i].Text != "")
+                {
+                    rucOrg[i].Enabled = true;
+                }
             }
         }
         private void AddResprContent(int docId)

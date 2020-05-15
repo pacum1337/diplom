@@ -129,3 +129,4 @@ C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.exe
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.pdb
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.Students_StudToNewGroup.resources
 C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.csprojAssemblyReference.cache
+C:\Study\Диплом\проект\UchetPractica\obj\Debug\UchetPractica.ProfModule.resources

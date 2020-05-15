@@ -631,5 +631,13 @@ namespace UchetPractica
                 if (h == 0) MessageBox.Show("Error!!");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            ProfModule prof = new ProfModule();
+            prof.ShowDialog();
+            this.Visible = true;
+        }
     }
 }
