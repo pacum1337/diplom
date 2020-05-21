@@ -13,18 +13,16 @@ namespace UchetPractica
 {
     public partial class DocRaspredelenAdd : Form
     {
-        //даты из ГУП
-        DateTime[] start = new DateTime[0];
-        DateTime[] end = new DateTime[0];
-        int dateLen = 0;
-        
-
-
         int[] groupsId = new int[0];
         int lenght = 0;
         int lines;
         int selectedGroup = -1;
         Panel panel = new Panel();
+
+        //даты из ГУП
+        DateTime[] start = new DateTime[0];
+        DateTime[] end = new DateTime[0];
+        int dateLen = 0;
 
         //студенты
         string[] sudentsInfo = new string[0];
@@ -50,6 +48,7 @@ namespace UchetPractica
         string[][] rucOrgStr;
         int[][] rucOrgId;
         int lenRucOrg;
+        string[] cbValueArr;
 
         //Текст бокс номер договора
         TextBox[] tbNum;
@@ -102,6 +101,11 @@ namespace UchetPractica
                     lines = reader.GetInt32(0);
 
                     rucOrgStr = new string[lines][];
+                    cbValueArr = new string[lines];
+                    for (int i = 0; i < lines; i++)
+                    {
+                        cbValueArr[i] = "";
+                    }
                     studLabels = new Label[reader.GetInt32(0)];
                     prPlace = new ComboBox[reader.GetInt32(0)];
                     rucColl = new ComboBox[reader.GetInt32(0)];
@@ -223,13 +227,6 @@ namespace UchetPractica
                 rucOrg[i].Left = 540;
                 rucOrg[i].Enabled = false;
                 rucOrg[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
-                /*for (int j = 0; j < rucOrgStr.Length; j++)
-                {
-                    rucOrg[i].Items.Add(rucOrgStr[i][j]);
-
-                    //
-                    rucOrg[i].Text = rucOrgStr[i][0];
-                }*/
                 rucOrg[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucOrg[i]);
 
@@ -296,18 +293,23 @@ namespace UchetPractica
 
         private void PlaceOnClick(object sender, EventArgs eventArgs)
         {
-            for(int i = 0; i < lines; i++)
+            for (int i = 0; i < lines; i++)
             {
                 if (prPlace[i].Text != "")
                 {
-                    rucOrg[i].Enabled = true;
-                    rucOrg[i].Items.Clear();
-                    GetRucovodOrg(i, prPlaceId[prPlace[i].SelectedIndex]);
-                    for (int j = 0; j < rucOrgStr[i].Length; j++)
+                    if(cbValueArr[i] != prPlace[i].Text)
                     {
-                        if(rucOrgStr[i][j]!=null)
-                            rucOrg[i].Items.Add(rucOrgStr[i][j]);
+                        cbValueArr[i] = prPlace[i].Text;
+                        rucOrg[i].Enabled = true;
+                        rucOrg[i].Items.Clear();
+                        GetRucovodOrg(i, prPlaceId[prPlace[i].SelectedIndex]);
+                        for (int j = 0; j < rucOrgStr[i].Length; j++)
+                        {
+                            if (rucOrgStr[i][j] != null)
+                                rucOrg[i].Items.Add(rucOrgStr[i][j]);
+                        }
                     }
+                    
                 }
             }
         }
@@ -316,11 +318,11 @@ namespace UchetPractica
             for(int i = 0; i < lines; i++)
             {
                 string sqlAddStud = String.Format("INSERT INTO DocumentRaspreselenieContent " +
-                "(DocRaspredId, StudId, RucCollegeId, RucOrgId, DogovorNum, DogovorDate, DogovorType) " +
-                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}')"
+                "(DocRaspredId, StudId, RucCollegeId, RucOrgId, DogovorNum, DogovorDate, DogovorType, OrgId) " +
+                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}')"
                 , docId, sudentsId[i], rucCollId[rucColl[i].SelectedIndex],
-                rucOrgId[rucOrg[i].SelectedIndex], tbNum[i].Text,
-                tbDate[i].Text, tbType[i].Text);
+                rucOrgId[i][rucOrg[i].SelectedIndex], tbNum[i].Text,
+                tbDate[i].Text, tbType[i].Text, prPlaceId[prPlace[i].SelectedIndex]);
 
                 using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                 {
@@ -330,19 +332,61 @@ namespace UchetPractica
                 }
             }
         }
+        private void LoadPM()
+        {
+            comboBox4.Enabled = true;
+            string specCode = "";
+            string prType = comboBox3.Text;    
 
+            string sqlProv = String.Format("SELECT Code FROM Groups WHERE " +
+                    "GroupNumber=N'{0}'",cbSU.Text);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlProv, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    specCode = reader.GetString(0);
+                }
+            }
+
+
+            string sqlPM = String.Format("SELECT Id, Name FROM ProfModule WHERE " +
+                    "SpecCode=N'{0}' AND TypePractic=N'{1}'", specCode, prType);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                DataTable dt = new DataTable();
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sqlPM, connection);
+                    SqlDataReader myReader = cmd.ExecuteReader();
+                    dt.Load(myReader);
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Нет записей!");
+                    Close();
+                }
+                comboBox4.DataSource = dt;
+                comboBox4.ValueMember = "Id";
+                comboBox4.DisplayMember = "Name";
+                comboBox4.SelectedIndex = -1;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        
-
         private void cbSU_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Controls.Remove(panel);
-            selectedGroup = groupsId[cbSU.SelectedIndex];
-            PrintWorkPlace();
+            
+            if (comboBox3.Text != "" && cbSU.Text != "")
+                LoadPM();
+            else
+                comboBox4.Enabled = false;
         }
 
         private void DocRaspredelenAdd_Load(object sender, EventArgs e)
@@ -407,9 +451,9 @@ namespace UchetPractica
         {
             string uniqId = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
             string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
-                "(GroupId, DateStart, DateEnd,UnqueId) " +
-                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
-                , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId);
+                "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
+                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId, comboBox4.Text, comboBox3.Text);
 
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
@@ -461,9 +505,23 @@ namespace UchetPractica
             }
         }
 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.Text != "" && cbSU.Text != "")
+                LoadPM();
+            else
+                comboBox4.Enabled = false;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if(comboBox4.Text != "")
+            {
+                this.Controls.Remove(panel);
+                selectedGroup = groupsId[cbSU.SelectedIndex];
+                PrintWorkPlace();
+            }
         }
+
     }
 }

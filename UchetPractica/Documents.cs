@@ -71,6 +71,7 @@ namespace UchetPractica
         private void button6_Click(object sender, EventArgs e)
         {
             DocumentsWork work = new DocumentsWork();
+            work.SelectedDocgId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             work.ShowDialog();
         }
 
@@ -82,6 +83,7 @@ namespace UchetPractica
         private void button5_Click(object sender, EventArgs e)
         {
             DocRaspredelenAdd raspredelenAdd = new DocRaspredelenAdd();
+            raspredelenAdd.Width = 1797;
             raspredelenAdd.ShowDialog();
             LoadDocRaspred();
         }

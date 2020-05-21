@@ -140,10 +140,16 @@ namespace UchetPractica
             {
                 MessageBox.Show("Введите код спеиальности!");
             }
+            else if (comboBox1.Text == "")
+            {
+                MessageBox.Show("Выберите тип практики!");
+            }
             else
             {
                 string name = tbName.Text.Trim();
                 string code = cbCode.Text.Trim();
+                string typePr = comboBox1.Text;
+
                 string status = "";
                 if (cbStatusStud.Text == "Отображается")
                     status = "1";
@@ -155,7 +161,7 @@ namespace UchetPractica
                     bool haveSoStud = false;
 
                     string sqlProv = String.Format("SELECT * FROM ProfModule WHERE " +
-                    "Name = N'{0}' AND SpecCode = N'{1}'", name, code);
+                    "Name = N'{0}' AND SpecCode = N'{1}' AND TypePractic = N'{2}'", name, code, typePr);
 
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
@@ -172,9 +178,9 @@ namespace UchetPractica
                     if (!haveSoStud)
                     {
                         string sqlAddStud = String.Format("INSERT INTO ProfModule " +
-                            "(Name, SpecCode, Status) " +
-                            "VALUES (N'{0}',N'{1}',N'{2}')"
-                            , name, code, status);
+                            "(Name, SpecCode, Status, TypePractic) " +
+                            "VALUES (N'{0}',N'{1}',N'{2}',N'{3}')"
+                            , name, code, status, typePr);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -191,8 +197,8 @@ namespace UchetPractica
                 else//Редактирование студента
                 {
                     string sqlEditStud = String.Format("UPDATE ProfModule SET Name = '{0}', " +
-                        "SpecCode = N'{1}', Status = N'{2}' " +
-                        " WHERE Id = '{3}'", name, code, status, selectStudId);
+                        "SpecCode = N'{1}', Status = N'{2}', TypePractic = N'{3}'" +
+                        " WHERE Id = '{4}'", name, code, status, typePr, selectStudId);
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
                         connection.Open();
@@ -207,6 +213,11 @@ namespace UchetPractica
                     pStud.Visible = false;
                 }
             }
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

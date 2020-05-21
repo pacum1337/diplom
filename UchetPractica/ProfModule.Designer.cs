@@ -33,6 +33,8 @@
             this.bEditShow = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
             this.pStud = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbStatusStud = new System.Windows.Forms.ComboBox();
             this.cbCode = new System.Windows.Forms.ComboBox();
@@ -96,9 +98,12 @@
             this.bCancel.TabIndex = 28;
             this.bCancel.Text = "Назад";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // pStud
             // 
+            this.pStud.Controls.Add(this.label2);
+            this.pStud.Controls.Add(this.comboBox1);
             this.pStud.Controls.Add(this.label10);
             this.pStud.Controls.Add(this.cbStatusStud);
             this.pStud.Controls.Add(this.cbCode);
@@ -115,11 +120,36 @@
             this.pStud.TabIndex = 32;
             this.pStud.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(19, 146);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 24);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Тип практики";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Уп",
+            "Уп (р)",
+            "Пп",
+            "Пд"});
+            this.comboBox1.Location = new System.Drawing.Point(213, 143);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(208, 30);
+            this.comboBox1.TabIndex = 59;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(19, 146);
+            this.label10.Location = new System.Drawing.Point(19, 182);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 24);
             this.label10.TabIndex = 58;
@@ -133,7 +163,7 @@
             this.cbStatusStud.Items.AddRange(new object[] {
             "Отображается",
             "Скрытое"});
-            this.cbStatusStud.Location = new System.Drawing.Point(213, 143);
+            this.cbStatusStud.Location = new System.Drawing.Point(213, 179);
             this.cbStatusStud.Name = "cbStatusStud";
             this.cbStatusStud.Size = new System.Drawing.Size(208, 30);
             this.cbStatusStud.TabIndex = 57;
@@ -248,5 +278,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbStatusStud;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

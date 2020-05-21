@@ -44,6 +44,9 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -71,7 +74,7 @@
             // 
             this.bEnter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnter.Location = new System.Drawing.Point(1308, 466);
+            this.bEnter.Location = new System.Drawing.Point(1543, 549);
             this.bEnter.Name = "bEnter";
             this.bEnter.Size = new System.Drawing.Size(212, 51);
             this.bEnter.TabIndex = 26;
@@ -83,7 +86,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(1308, 549);
+            this.button1.Location = new System.Drawing.Point(1304, 549);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(212, 51);
             this.button1.TabIndex = 27;
@@ -145,7 +148,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(1318, 251);
+            this.label7.Location = new System.Drawing.Point(1553, 94);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 24);
             this.label7.TabIndex = 55;
@@ -155,7 +158,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(1318, 333);
+            this.label8.Location = new System.Drawing.Point(1553, 176);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(196, 24);
             this.label8.TabIndex = 57;
@@ -166,7 +169,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1304, 278);
+            this.comboBox1.Location = new System.Drawing.Point(1539, 121);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(216, 30);
             this.comboBox1.TabIndex = 58;
@@ -176,7 +179,7 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1304, 360);
+            this.comboBox2.Location = new System.Drawing.Point(1539, 203);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(216, 30);
             this.comboBox2.TabIndex = 59;
@@ -185,7 +188,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(1304, 396);
+            this.checkBox1.Location = new System.Drawing.Point(1539, 239);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(210, 52);
             this.checkBox1.TabIndex = 60;
@@ -217,12 +220,49 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(216, 30);
             this.comboBox3.TabIndex = 61;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(1318, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 24);
+            this.label10.TabIndex = 64;
+            this.label10.Text = "ПМ";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.Enabled = false;
+            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(1304, 121);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(216, 30);
+            this.comboBox4.TabIndex = 63;
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(1304, 203);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(216, 88);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "Отобразить форму заполнения";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // DocRaspredelenAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1781, 612);
+            this.ClientSize = new System.Drawing.Size(1779, 612);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.checkBox1);
@@ -239,6 +279,8 @@
             this.Controls.Add(this.bEnter);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbSU);
+            this.MaximumSize = new System.Drawing.Size(1797, 659);
+            this.MinimumSize = new System.Drawing.Size(1797, 659);
             this.Name = "DocRaspredelenAdd";
             this.Text = "DocRaspredelenAdd";
             this.Load += new System.EventHandler(this.DocRaspredelenAdd_Load);
@@ -265,5 +307,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button2;
     }
 }
