@@ -64,7 +64,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(634, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(609, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -181,7 +181,7 @@
             // 
             this.bEnter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnter.Location = new System.Drawing.Point(120, 159);
+            this.bEnter.Location = new System.Drawing.Point(147, 159);
             this.bEnter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEnter.Name = "bEnter";
             this.bEnter.Size = new System.Drawing.Size(165, 82);
@@ -207,7 +207,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(291, 161);
+            this.button3.Location = new System.Drawing.Point(318, 161);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(165, 82);
@@ -260,9 +260,9 @@
             this.button2.Location = new System.Drawing.Point(391, 75);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 82);
+            this.button2.Size = new System.Drawing.Size(165, 82);
             this.button2.TabIndex = 40;
-            this.button2.Text = "Производственные модули";
+            this.button2.Text = "ПМ";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -270,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 277);
+            this.ClientSize = new System.Drawing.Size(609, 277);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lStudyProcess);
             this.Controls.Add(this.dataGridView1);

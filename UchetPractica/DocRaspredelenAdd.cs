@@ -48,7 +48,7 @@ namespace UchetPractica
         //руководители от организации
         ComboBox[] rucOrg;
         string[][] rucOrgStr;
-        int[] rucOrgId;
+        int[][] rucOrgId;
         int lenRucOrg;
 
         //Текст бокс номер договора
@@ -64,32 +64,7 @@ namespace UchetPractica
             InitializeComponent();
         }
 
-        private void GetRucovodOrg()
-        {
-            string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
-                "FROM Rucovoditeli",
-                selectedGroup);
-            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-            {
-                connection.Open();
-                SqlCommand sql = new SqlCommand(sqlStuds, connection);
-                SqlDataReader reader = sql.ExecuteReader();
-                lenghtStud = 0;
-                while (reader.Read())
-                {
-                    for(int i = 0; i < lines; i++)
-                    {
-
-                    lenRucOrg++;
-                    Array.Resize(ref rucOrgId, lenRucOrg);
-                    Array.Resize(ref rucOrgStr[i], lenRucOrg);
-                    rucOrgId[lenRucOrg - 1] = reader.GetInt32(0);
-                    rucOrgStr[i][lenRucOrg - 1] = reader.GetString(1) + " " +
-                        reader.GetString(2) + " " + reader.GetString(3);
-                    }
-                }
-            }
-        }
+        
         private void GetRucovodCollege()
         {
             string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
@@ -187,7 +162,6 @@ namespace UchetPractica
             GetStudLabel();
             GetPracticPlace();
             GetRucovodCollege();
-            GetRucovodOrg();
 
             panel = new Panel();
             panel.Location = new Point(12, 80);
@@ -217,10 +191,10 @@ namespace UchetPractica
                 prPlace[i].Top = 10 + otstup * i;
                 prPlace[i].Left = 200;
                 prPlace[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
-                for(int j = 0;j< prPlaceStr.Length; j++)
+                prPlace[i].SelectedIndexChanged += PlaceOnClick;
+                for (int j = 0;j< prPlaceStr.Length; j++)
                 {
                     prPlace[i].Items.Add(prPlaceStr[j]);
-                    prPlace[i].SelectedIndexChanged += PlaceOnClick;
                     //
                     //prPlace[i].Text = prPlaceStr[j];
 
@@ -249,13 +223,13 @@ namespace UchetPractica
                 rucOrg[i].Left = 540;
                 rucOrg[i].Enabled = false;
                 rucOrg[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
-                for (int j = 0; j < rucOrgStr.Length; j++)
+                /*for (int j = 0; j < rucOrgStr.Length; j++)
                 {
                     rucOrg[i].Items.Add(rucOrgStr[i][j]);
 
                     //
                     rucOrg[i].Text = rucOrgStr[i][0];
-                }
+                }*/
                 rucOrg[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucOrg[i]);
 
@@ -295,6 +269,31 @@ namespace UchetPractica
                 tbType[i].Text = "1";
             }
         }
+
+        private void GetRucovodOrg(int num, int orgId)
+        {
+            string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
+                "FROM Rucovoditeli WHERE OrgId = {0}", orgId);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlStuds, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                lenghtStud = 0;
+                Array.Resize(ref rucOrgId, lines);
+                Array.Resize(ref rucOrgStr, lines);
+                while (reader.Read())
+                {
+                    lenghtStud++;
+                    Array.Resize(ref rucOrgId[num], lenghtStud);
+                    Array.Resize(ref rucOrgStr[num], lenghtStud);
+                    rucOrgId[num][lenghtStud - 1] = reader.GetInt32(0);
+                    rucOrgStr[num][lenghtStud - 1] = reader.GetString(1) + " " +
+                        reader.GetString(2) + " " + reader.GetString(3);
+                }
+            }
+        }
+
         private void PlaceOnClick(object sender, EventArgs eventArgs)
         {
             for(int i = 0; i < lines; i++)
@@ -302,6 +301,13 @@ namespace UchetPractica
                 if (prPlace[i].Text != "")
                 {
                     rucOrg[i].Enabled = true;
+                    rucOrg[i].Items.Clear();
+                    GetRucovodOrg(i, prPlaceId[prPlace[i].SelectedIndex]);
+                    for (int j = 0; j < rucOrgStr[i].Length; j++)
+                    {
+                        if(rucOrgStr[i][j]!=null)
+                            rucOrg[i].Items.Add(rucOrgStr[i][j]);
+                    }
                 }
             }
         }
@@ -453,6 +459,11 @@ namespace UchetPractica
                         comboBox2.Items.Add(end[i]);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

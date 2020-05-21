@@ -52,13 +52,9 @@ namespace UchetPractica
             dataGridView1.Columns[5].HeaderText = "ОГРН";
             dataGridView1.Columns[6].HeaderText = "ИНН";
             dataGridView1.Columns[7].HeaderText = "КПП";
-            dataGridView1.Columns[8].HeaderText = "ОКПО";
-            dataGridView1.Columns[9].HeaderText = "ОКАТО";
-            dataGridView1.Columns[10].HeaderText = "ОКОГУ";
-            dataGridView1.Columns[11].HeaderText = "ОКТМО";
-            dataGridView1.Columns[12].HeaderText = "Кол-во документов с этой организацией";
-            dataGridView1.Columns[13].Visible = false;
-            dataGridView1.Columns[14].Visible = false;
+            dataGridView1.Columns[8].HeaderText = "Кол-во документов с этой организацией";
+            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
         }
 
         private void ProvStudyOrg()
@@ -124,12 +120,8 @@ namespace UchetPractica
                     setting.tbOGRN.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
                     setting.tbINN.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
                     setting.tbKPP.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[7].Value);
-                    setting.tbOKPO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value);
-                    setting.tbOKATO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[9].Value);
-                    setting.tbOKOGY.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[10].Value);
-                    setting.tbOKTMO.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value);
-                    string status = Convert.ToString(dataGridView1.CurrentRow.Cells[13].Value);
-                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[14].Value) == "1")
+                    string status = Convert.ToString(dataGridView1.CurrentRow.Cells[10].Value);
+                    if (Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value) == "1")
                     {
                         setting.cbStatus.Enabled = false;
                         setting.cbStatus.Text = "Работающая";

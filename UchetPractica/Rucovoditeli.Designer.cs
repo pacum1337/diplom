@@ -306,14 +306,14 @@
             // всехКромеНеРаботающихToolStripMenuItem
             // 
             this.всехКромеНеРаботающихToolStripMenuItem.Name = "всехКромеНеРаботающихToolStripMenuItem";
-            this.всехКромеНеРаботающихToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.всехКромеНеРаботающихToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.всехКромеНеРаботающихToolStripMenuItem.Text = "Работающих";
             this.всехКромеНеРаботающихToolStripMenuItem.Click += new System.EventHandler(this.всехКромеНеРаботающихToolStripMenuItem_Click);
             // 
             // вToolStripMenuItem
             // 
             this.вToolStripMenuItem.Name = "вToolStripMenuItem";
-            this.вToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.вToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.вToolStripMenuItem.Text = "Не работающих";
             this.вToolStripMenuItem.Click += new System.EventHandler(this.вToolStripMenuItem_Click);
             // 

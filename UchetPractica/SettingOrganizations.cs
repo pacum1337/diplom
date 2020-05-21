@@ -64,10 +64,6 @@ namespace UchetPractica
                 string ogrn = tbOGRN.Text.Trim();
                 string inn = tbINN.Text.Trim();
                 string kpp = tbKPP.Text.Trim();
-                string okpo = tbOKPO.Text.Trim();
-                string okato = tbOKATO.Text.Trim();
-                string okogy = tbOKOGY.Text.Trim();
-                string oktmo = tbOKTMO.Text.Trim();
                 string studyOrg = "";
                 if (checkBox1.Checked)
                     studyOrg = "1";
@@ -101,11 +97,10 @@ namespace UchetPractica
                     {
                         string sqlAddGroup = String.Format("INSERT INTO Organizations " +
                             "(Name, Address, DateReristration, Director, OGRN, " +
-                            "INN, KPP, OKPO, OKATO, OKOGY, OKTMO, DocCount, Status, StudyOrg) " +
+                            "INN, KPP, DocCount, Status, StudyOrg) " +
                             "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}', " +
-                            "N'{5}',N'{6}',N'{7}',N'{8}',N'{9}', N'{10}',N'{11}',N'{12}', N'{13}')"
-                            , nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo, 0, status, studyOrg);
+                            "N'{5}',N'{6}',N'{7}',N'{8}', N'{9}')"
+                            , nameOrg, address, date, director, ogrn, inn, kpp, 0, status, studyOrg);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -125,11 +120,9 @@ namespace UchetPractica
                     {
                         string sqlEditStud = String.Format("UPDATE Organizations SET Name=N'{0}', " +
                             "Address=N'{1}', DateReristration=N'{2}', Director=N'{3}', OGRN=N'{4}', " +
-                            "INN=N'{5}', KPP=N'{6}', OKPO=N'{7}', OKATO=N'{8}', OKOGY=N'{9}', " +
-                            "OKTMO=N'{10}', Status=N'{11}', StudyOrg=N'{12}' " +
-                            "WHERE Id = '{13}'",
-                            nameOrg, address, date, director, ogrn, inn, kpp, okpo,
-                            okato, okogy, oktmo,status, studyOrg, selectedOrgId);
+                            "INN=N'{5}', KPP=N'{6}', Status=N'{7}', StudyOrg=N'{8}' " +
+                            "WHERE Id = '{9}'",
+                            nameOrg, address, date, director, ogrn, inn, kpp,status, studyOrg, selectedOrgId);
                         using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
                             connection.Open();
