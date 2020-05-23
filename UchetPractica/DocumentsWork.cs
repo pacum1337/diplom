@@ -231,5 +231,16 @@ namespace UchetPractica
             }
             wordApp.Visible = true;
         }
+
+        private void DocumentsWork_Load(object sender, EventArgs e)
+        {
+            int space = 0;
+            label2.Left = label1.Left + label1.Width + lDocId.Width + space;
+            lGroupName.Left = label2.Left + label2.Width;
+            label3.Left = lGroupName.Left + lGroupName.Width;
+            lDateStart.Left = label3.Left + label3.Width;
+            label4.Left = lDateStart.Left + lDateStart.Width;
+            lDateEnd.Left = label4.Left + label4.Width;
+        }
     }
 }

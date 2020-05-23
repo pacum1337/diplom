@@ -72,6 +72,10 @@ namespace UchetPractica
         {
             DocumentsWork work = new DocumentsWork();
             work.SelectedDocgId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            work.lDocId.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+            work.lGroupName.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+            work.lDateStart.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+            work.lDateEnd.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
             work.ShowDialog();
         }
 

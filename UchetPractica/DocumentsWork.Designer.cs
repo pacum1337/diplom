@@ -140,7 +140,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(203, 68);
+            this.label5.Location = new System.Drawing.Point(192, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 24);
             this.label5.TabIndex = 51;
@@ -160,7 +160,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(695, 68);
+            this.label8.Location = new System.Drawing.Point(717, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(17, 24);
             this.label8.TabIndex = 53;
@@ -182,7 +182,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(498, 119);
+            this.button3.Location = new System.Drawing.Point(522, 119);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(200, 55);
@@ -207,7 +207,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(708, 119);
+            this.button2.Location = new System.Drawing.Point(775, 119);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 55);
@@ -240,6 +240,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DocumentsWork";
             this.Text = "Работа с документом";
+            this.Load += new System.EventHandler(this.DocumentsWork_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,19 +250,19 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lDocId;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lGroupName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lDateStart;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lDateEnd;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lPracticType;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Label lDocId;
+        public System.Windows.Forms.Label lGroupName;
+        public System.Windows.Forms.Label lDateStart;
+        public System.Windows.Forms.Label lDateEnd;
+        public System.Windows.Forms.Label lPracticType;
     }
 }

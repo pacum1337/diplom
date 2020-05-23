@@ -382,7 +382,7 @@ namespace UchetPractica
         }
         private void cbSU_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            this.Controls.Remove(panel);
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -449,36 +449,106 @@ namespace UchetPractica
 
         private void bEnter_Click(object sender, EventArgs e)
         {
-            string uniqId = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
-            string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
-                "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
-                "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
-                , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId, comboBox4.Text, comboBox3.Text);
-
-            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+            bool flag = true;
+            if(cbSU.Text == "")
             {
-                connect.Open();
-                SqlCommand command = new SqlCommand(sqlAddStud, connect);
-                int h = command.ExecuteNonQuery();
-                if (h == 0) MessageBox.Show("Error!!");
+                label5.ForeColor = Color.Red;
+                flag = false;
             }
-            int docId = -1;
-            string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
-                    "UnqueId='{0}'", uniqId);
-
-            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            else
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlProv, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
+                label5.ForeColor = Color.Black;
+            }
+
+            if (comboBox3.Text == "")
+            {
+                label9.ForeColor = Color.Red;
+                flag = false;
+            }
+            else
+            {
+                label9.ForeColor = Color.Black;
+            }
+
+            if (comboBox4.Text == "")
+            {
+                label10.ForeColor = Color.Red;
+                flag = false;
+            }
+            else
+            {
+                label10.ForeColor = Color.Black;
+            }
+
+            if (comboBox1.Text == "")
+            {
+                label7.ForeColor = Color.Red;
+                flag = false;
+            }
+            else
+            {
+                label7.ForeColor = Color.Black;
+            }
+
+            if (comboBox2.Text == "")
+            {
+                label8.ForeColor = Color.Red;
+                flag = false;
+            }
+            else
+            {
+                label8.ForeColor = Color.Black;
+            }
+
+            for (int i = 0; i < lines; i++)
+            {
+                if (prPlace[i].Text == "" || rucColl[i].Text == "" || rucOrg[i].Text == "")
                 {
-                    reader.Read();
-                    docId = reader.GetInt32(0);
+                    studLabels[i].ForeColor = Color.Red;
+                    flag = false;
+                }
+                else
+                {
+                    studLabels[i].ForeColor = Color.Black;
                 }
             }
-            AddResprContent(docId);
-            Close();
+            if (flag)
+            {
+                string uniqId = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
+                string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
+                    "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
+                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                    , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId, comboBox4.Text, comboBox3.Text);
+
+                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                {
+                    connect.Open();
+                    SqlCommand command = new SqlCommand(sqlAddStud, connect);
+                    int h = command.ExecuteNonQuery();
+                    if (h == 0) MessageBox.Show("Error!!");
+                }
+                int docId = -1;
+                string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
+                        "UnqueId='{0}'", uniqId);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlProv, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        docId = reader.GetInt32(0);
+                    }
+                }
+                AddResprContent(docId);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Проверьте правильность введенных данных!");
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -507,6 +577,7 @@ namespace UchetPractica
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.Controls.Remove(panel);
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -515,13 +586,27 @@ namespace UchetPractica
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(comboBox4.Text != "")
+            if(comboBox4.Text != "" && comboBox3.Text != "" && cbSU.Text != "")
             {
-                this.Controls.Remove(panel);
                 selectedGroup = groupsId[cbSU.SelectedIndex];
                 PrintWorkPlace();
+                bEnter.Enabled = true;
+                label5.ForeColor = Color.Black;
+                label9.ForeColor = Color.Black;
+                label10.ForeColor = Color.Black;
+            }
+            else
+            {
+                label5.ForeColor = Color.Red;
+                label9.ForeColor = Color.Red;
+                label10.ForeColor = Color.Red;
+                MessageBox.Show("Введите корректные данные!");
             }
         }
 
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Controls.Remove(panel);
+        }
     }
 }
