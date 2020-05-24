@@ -67,8 +67,7 @@ namespace UchetPractica
         private void GetRucovodCollege()
         {
             string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
-                "FROM Rucovoditeli",
-                selectedGroup);
+                "FROM Rucovoditeli");
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
@@ -376,6 +375,76 @@ namespace UchetPractica
                 comboBox4.SelectedIndex = -1;
             }
         }
+        private void LoadDate()
+        {
+            comboBox1.Enabled = true;
+            comboBox2.Enabled = true;
+            string group = cbSU.Text;
+            string type = comboBox3.Text.ToLower();
+            string sqlDateStart = String.Format("SELECT WeekDateStart, WeekDateEnd FROM StudyProcess " +
+                "WHERE GroupNumber = N'{0}' AND WeekType = N'{1}' " +
+                "GROUP BY WeekDateStart, WeekDateEnd", group, type);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlDateStart, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        dateLen++;
+                        Array.Resize(ref start, dateLen);
+                        Array.Resize(ref end, dateLen);
+                        start[dateLen - 1] = DateTime.Parse(reader.GetString(0));
+                        end[dateLen - 1] = DateTime.Parse(reader.GetString(1));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет подходящих дат для этой группы с этим типом практики.\n" +
+                        "Отредактируйте ГУП или впишите свои даты!");
+                }
+                
+            }
+            DateTime temp;
+            for (int i = 0; i < dateLen; i++)
+            {
+                for (int j = i + 1; j < dateLen; j++)
+                {
+                    if (start[i] > start[j])
+                    {
+                        temp = start[i];
+                        start[i] = start[j];
+                        start[j] = temp;
+                    }
+                    if (end[i] > end[j])
+                    {
+                        temp = end[i];
+                        end[i] = end[j];
+                        end[j] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < dateLen; i++)
+            {
+                if (i >= 1)
+                {
+                    if (start[i].AddDays(-7) == start[i - 1])
+                        continue;
+                }
+                comboBox1.Items.Add(start[i]);
+            }
+            for (int i = 0; i < dateLen; i++)
+            {
+                if (i < dateLen - 1)
+                {
+                    if (end[i].AddDays(7) == end[i + 1])
+                        continue;
+                }
+                comboBox2.Items.Add(end[i]);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
@@ -383,6 +452,9 @@ namespace UchetPractica
         private void cbSU_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Controls.Remove(panel);
+            bEnter.Enabled = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -405,46 +477,7 @@ namespace UchetPractica
                     groupsId[lenght - 1] = reader.GetInt32(0);
                 }
             }
-            string sqlDateStart = "SELECT WeekDateStart, WeekDateEnd FROM StudyProcess GROUP BY WeekDateStart, WeekDateEnd";
             
-            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-            {
-                connection.Open();
-                SqlCommand sql = new SqlCommand(sqlDateStart, connection);
-                SqlDataReader reader = sql.ExecuteReader();
-                while (reader.Read())
-                {
-                    dateLen++;
-                    Array.Resize(ref start, dateLen);
-                    Array.Resize(ref end, dateLen);
-                    start[dateLen - 1] = DateTime.Parse(reader.GetString(0));
-                    end[dateLen - 1] = DateTime.Parse(reader.GetString(1));
-                }
-            }
-            DateTime temp;
-            for (int i = 0; i < dateLen; i++)
-            {
-                for(int j=i+1;j< dateLen; j++)
-                {
-                    if (start[i] > start[j])
-                    {
-                        temp = start[i];
-                        start[i] = start[j];
-                        start[j] = temp;
-                    }
-                    if (end[i] > end[j])
-                    {
-                        temp = end[i];
-                        end[i] = end[j];
-                        end[j] = temp;
-                    }
-                }
-            }
-            for(int i = 0; i < dateLen; i++)
-            {
-                comboBox1.Items.Add(start[i]);
-                comboBox2.Items.Add(end[i]);
-            }
         }
 
         private void bEnter_Click(object sender, EventArgs e)
@@ -578,6 +611,9 @@ namespace UchetPractica
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Controls.Remove(panel);
+            bEnter.Enabled = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -594,6 +630,7 @@ namespace UchetPractica
                 label5.ForeColor = Color.Black;
                 label9.ForeColor = Color.Black;
                 label10.ForeColor = Color.Black;
+                LoadDate();
             }
             else
             {
