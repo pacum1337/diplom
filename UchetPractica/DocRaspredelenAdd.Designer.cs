@@ -217,8 +217,8 @@
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Уп",
-            "Уп (р)",
+            "Пу",
+            "Пу(р)",
             "Пп",
             "Пд"});
             this.comboBox3.Location = new System.Drawing.Point(1539, 45);

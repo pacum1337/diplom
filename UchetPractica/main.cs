@@ -395,6 +395,8 @@ namespace UchetPractica
 
         private void ImportExcelGraphikToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string filePath = "";
+            string fileName = "";
             DataTableCollection tableCollection;
             DialogResult dr = MessageBox.Show("При импорте все старые данные будут перезаписаны на новые\n" +
                 "без возможности отмены действия.\n" +
@@ -408,6 +410,8 @@ namespace UchetPractica
                     {
                         if (openFileDialog.ShowDialog() == DialogResult.OK)
                         {
+                            filePath = openFileDialog.FileName;
+                            fileName = Path.GetFileName(filePath);
                             this.Cursor = CursorOnLoad.ChangeCoursor(this.Cursor);
                             excelPath = openFileDialog.FileName;
                             using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
@@ -540,6 +544,36 @@ namespace UchetPractica
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            string nameFromTable = "";
+            string sqlProv = String.Format("SELECT StydyProcessNowFileName FROM SystemTable");
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlProv, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if(!reader.IsDBNull(0))
+                        nameFromTable = reader.GetString(0);
+                }
+            }
+            if(nameFromTable != "")
+            {
+                File.Delete(Strings.excel_shablons_folder + nameFromTable);
+            }
+            if (!File.Exists(Strings.excel_shablons_folder + fileName))
+            {
+                File.Copy(filePath, Strings.excel_shablons_folder + fileName);
+            }
+            string sqlEditStud = String.Format("UPDATE SystemTable SET StydyProcessNowFileName = N'{0}'", fileName);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlEditStud, connection);
+                command.ExecuteNonQuery();
+            }
             this.Cursor = CursorOnLoad.ChangeCoursor(this.Cursor);
         }
 
@@ -556,7 +590,7 @@ namespace UchetPractica
 
         private void StudyMessages(string TypeMes)
         {
-            string sqlAuth = String.Format("UPDATE SystemTable SET StudyProcessMessages = '{0}'", TypeMes);
+            string sqlAuth = String.Format("UPDATE SystemTable SET StudyProcessMessages = N'{0}'", TypeMes);
 
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
@@ -638,6 +672,37 @@ namespace UchetPractica
             ProfModule prof = new ProfModule();
             prof.ShowDialog();
             this.Visible = true;
+        }
+
+        private void скачатьТекущийГУПToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string exclel_folder = Strings.excel_shablons_folder;
+            string excel_file = "";
+            string sqlProv = String.Format("SELECT StydyProcessNowFileName FROM SystemTable");
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlProv, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if (!reader.IsDBNull(0))
+                        excel_file = reader.GetString(0);
+                }
+            }
+            if(excel_file != "")
+            {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(Path.Combine(exclel_folder, excel_file), Path.Combine(fbd.SelectedPath, excel_file));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нет загруженного ГУП!");
+            }
         }
     }
 }

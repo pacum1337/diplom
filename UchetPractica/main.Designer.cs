@@ -50,6 +50,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lStudyProcess = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.скачатьТекущийГУПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             this.графикУПToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImportExcelGraphikToolStripMenuItem,
+            this.скачатьТекущийГУПToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.графикУПToolStripMenuItem.Name = "графикУПToolStripMenuItem";
             this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
@@ -103,14 +105,14 @@
             // ImportExcelGraphikToolStripMenuItem
             // 
             this.ImportExcelGraphikToolStripMenuItem.Name = "ImportExcelGraphikToolStripMenuItem";
-            this.ImportExcelGraphikToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
-            this.ImportExcelGraphikToolStripMenuItem.Text = "Импортировать график УП";
+            this.ImportExcelGraphikToolStripMenuItem.Size = new System.Drawing.Size(331, 26);
+            this.ImportExcelGraphikToolStripMenuItem.Text = "Импортировать новый график УП";
             this.ImportExcelGraphikToolStripMenuItem.Click += new System.EventHandler(this.ImportExcelGraphikToolStripMenuItem_Click);
             // 
             // ShablonToolStripMenuItem
             // 
             this.ShablonToolStripMenuItem.Name = "ShablonToolStripMenuItem";
-            this.ShablonToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
+            this.ShablonToolStripMenuItem.Size = new System.Drawing.Size(331, 26);
             this.ShablonToolStripMenuItem.Text = "Скачать шаблон Exel для импорта";
             this.ShablonToolStripMenuItem.Click += new System.EventHandler(this.ShablonToolStripMenuItem_Click);
             // 
@@ -234,7 +236,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(108, 254);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 183);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -265,6 +267,13 @@
             this.button2.Text = "ПМ";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // скачатьТекущийГУПToolStripMenuItem
+            // 
+            this.скачатьТекущийГУПToolStripMenuItem.Name = "скачатьТекущийГУПToolStripMenuItem";
+            this.скачатьТекущийГУПToolStripMenuItem.Size = new System.Drawing.Size(331, 26);
+            this.скачатьТекущийГУПToolStripMenuItem.Text = "Скачать текущий ГУП";
+            this.скачатьТекущийГУПToolStripMenuItem.Click += new System.EventHandler(this.скачатьТекущийГУПToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -318,6 +327,7 @@
         private System.Windows.Forms.ToolStripMenuItem отключитьДоСледующейНеделиToolStripMenuItem;
         private System.Windows.Forms.Label lStudyProcess;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem скачатьТекущийГУПToolStripMenuItem;
     }
 }
 
