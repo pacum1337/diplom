@@ -92,7 +92,7 @@
             this.pStud.Controls.Add(this.tbPatr);
             this.pStud.Controls.Add(this.tbName);
             this.pStud.Controls.Add(this.label5);
-            this.pStud.Location = new System.Drawing.Point(915, 44);
+            this.pStud.Location = new System.Drawing.Point(915, 46);
             this.pStud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pStud.Name = "pStud";
             this.pStud.Size = new System.Drawing.Size(461, 356);
@@ -267,7 +267,7 @@
             // 
             this.bDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bDel.Location = new System.Drawing.Point(368, 404);
+            this.bDel.Location = new System.Drawing.Point(538, 404);
             this.bDel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bDel.Name = "bDel";
             this.bDel.Size = new System.Drawing.Size(116, 55);
@@ -281,7 +281,7 @@
             // 
             this.bEditShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEditShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEditShow.Location = new System.Drawing.Point(709, 404);
+            this.bEditShow.Location = new System.Drawing.Point(792, 403);
             this.bEditShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEditShow.Name = "bEditShow";
             this.bEditShow.Size = new System.Drawing.Size(116, 55);
@@ -294,7 +294,7 @@
             // 
             this.bAddShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bAddShow.Location = new System.Drawing.Point(587, 404);
+            this.bAddShow.Location = new System.Drawing.Point(670, 403);
             this.bAddShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bAddShow.Name = "bAddShow";
             this.bAddShow.Size = new System.Drawing.Size(116, 55);
@@ -313,7 +313,7 @@
             this.smiStudNewGr});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1388, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1387, 30);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -330,21 +330,21 @@
             // StudentsShow
             // 
             this.StudentsShow.Name = "StudentsShow";
-            this.StudentsShow.Size = new System.Drawing.Size(196, 26);
+            this.StudentsShow.Size = new System.Drawing.Size(224, 26);
             this.StudentsShow.Text = "Студентах";
             this.StudentsShow.Click += new System.EventHandler(this.StudentsShow_Click);
             // 
             // GroupShow
             // 
             this.GroupShow.Name = "GroupShow";
-            this.GroupShow.Size = new System.Drawing.Size(196, 26);
+            this.GroupShow.Size = new System.Drawing.Size(224, 26);
             this.GroupShow.Text = "Группах";
             this.GroupShow.Click += new System.EventHandler(this.GroupShow_Click);
             // 
             // OldGroupsToolStripMenuItem
             // 
             this.OldGroupsToolStripMenuItem.Name = "OldGroupsToolStripMenuItem";
-            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.OldGroupsToolStripMenuItem.Text = "Другие группы";
             this.OldGroupsToolStripMenuItem.Click += new System.EventHandler(this.OldGroupsToolStripMenuItem_Click);
             // 
@@ -519,7 +519,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(150, 420);
+            this.dataGridView2.Location = new System.Drawing.Point(579, 420);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -532,7 +532,7 @@
             // 
             this.lGroupNum.AutoSize = true;
             this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupNum.Location = new System.Drawing.Point(914, 419);
+            this.lGroupNum.Location = new System.Drawing.Point(146, 420);
             this.lGroupNum.Name = "lGroupNum";
             this.lGroupNum.Size = new System.Drawing.Size(331, 24);
             this.lGroupNum.TabIndex = 38;
@@ -543,7 +543,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1388, 470);
+            this.ClientSize = new System.Drawing.Size(1387, 470);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.lGroupNum);
             this.Controls.Add(this.menuStrip1);
@@ -552,8 +552,8 @@
             this.Controls.Add(this.bDel);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pStud);
             this.Controls.Add(this.pGroup);
+            this.Controls.Add(this.pStud);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Students";
             this.Text = "Группы и студенты";

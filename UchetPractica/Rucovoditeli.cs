@@ -85,15 +85,18 @@ namespace UchetPractica
         private void button6_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            this.Width = 550;
         }
 
         private void Rucovoditeli_Load(object sender, EventArgs e)
         {
             LoadData();
+            this.Width = 550;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            this.Width = 860;
             addRed = true;
             panel1.Visible = true;
             CBLoad();
@@ -105,6 +108,7 @@ namespace UchetPractica
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Width = 860;
             addRed = false;
             if (colRuc)
             {
@@ -204,6 +208,7 @@ namespace UchetPractica
                         }
                         LoadData();
                         panel1.Visible = false;
+                        this.Width = 550;
                     }
                 }
                 else//Редактирование группы
@@ -223,6 +228,7 @@ namespace UchetPractica
                     }
                     LoadData();
                     panel1.Visible = false;
+                    this.Width = 550;
                 }
             }
         }
@@ -270,7 +276,6 @@ namespace UchetPractica
         private void всехКромеНеРаботающихToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadData();
-            label5.Visible = false;
         }
 
         private void вToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,7 +287,6 @@ namespace UchetPractica
                 "ON R.OrgId = O.Id " +
                 "WHERE R.Status!='1' OR O.Status != '1'";
             LoadData(sqlGroups);
-            label5.Visible = true;
         }
 
         private void Rucovoditeli_FormClosing(object sender, FormClosingEventArgs e)
@@ -297,6 +301,11 @@ namespace UchetPractica
         {
             close = false;
             Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

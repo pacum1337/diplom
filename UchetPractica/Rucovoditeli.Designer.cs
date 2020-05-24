@@ -51,7 +51,6 @@
             this.отображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехКромеНеРаботающихToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -61,7 +60,7 @@
             // 
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(178, 390);
+            this.button5.Location = new System.Drawing.Point(455, 391);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 55);
@@ -74,7 +73,7 @@
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(323, 390);
+            this.button4.Location = new System.Drawing.Point(577, 391);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 55);
@@ -87,7 +86,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(577, 390);
+            this.button3.Location = new System.Drawing.Point(333, 391);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 55);
@@ -293,6 +292,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1132, 28);
             this.menuStrip1.TabIndex = 23;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // отображениеToolStripMenuItem
             // 
@@ -317,24 +317,11 @@
             this.вToolStripMenuItem.Text = "Не работающих";
             this.вToolStripMenuItem.Click += new System.EventHandler(this.вToolStripMenuItem_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(466, 390);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(627, 48);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "P.S. Если кто-либо из руководителей находится в этой таблице,\r\nто скорее всего ор" +
-    "ганизация этого руководителя более не рабочая\r\n";
-            this.label5.Visible = false;
-            // 
             // Rucovoditeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 457);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -383,6 +370,5 @@
         private System.Windows.Forms.ToolStripMenuItem отображениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехКромеНеРаботающихToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вToolStripMenuItem;
-        private System.Windows.Forms.Label label5;
     }
 }

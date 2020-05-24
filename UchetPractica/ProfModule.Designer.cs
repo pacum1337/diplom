@@ -58,14 +58,14 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(538, 332);
+            this.dataGridView1.Size = new System.Drawing.Size(600, 332);
             this.dataGridView1.TabIndex = 0;
             // 
             // bAddShow
             // 
             this.bAddShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bAddShow.Location = new System.Drawing.Point(312, 349);
+            this.bAddShow.Location = new System.Drawing.Point(374, 349);
             this.bAddShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bAddShow.Name = "bAddShow";
             this.bAddShow.Size = new System.Drawing.Size(116, 55);
@@ -78,7 +78,7 @@
             // 
             this.bEditShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEditShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEditShow.Location = new System.Drawing.Point(434, 349);
+            this.bEditShow.Location = new System.Drawing.Point(496, 349);
             this.bEditShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEditShow.Name = "bEditShow";
             this.bEditShow.Size = new System.Drawing.Size(116, 55);
@@ -113,7 +113,7 @@
             this.pStud.Controls.Add(this.bCancelShow);
             this.pStud.Controls.Add(this.tbName);
             this.pStud.Controls.Add(this.label5);
-            this.pStud.Location = new System.Drawing.Point(556, 12);
+            this.pStud.Location = new System.Drawing.Point(618, 11);
             this.pStud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pStud.Name = "pStud";
             this.pStud.Size = new System.Drawing.Size(444, 332);
@@ -246,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 431);
+            this.ClientSize = new System.Drawing.Size(1077, 431);
             this.Controls.Add(this.pStud);
             this.Controls.Add(this.bAddShow);
             this.Controls.Add(this.bEditShow);

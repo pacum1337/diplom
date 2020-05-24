@@ -49,6 +49,7 @@ namespace UchetPractica
             dataGridView1.Columns[1].HeaderText = "Название ПМ";
             dataGridView1.Columns[2].HeaderText = "Код специальности";
             dataGridView1.Columns[3].HeaderText = "Статус";
+            dataGridView1.Columns[4].HeaderText = "Тип практики";
 
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
@@ -76,6 +77,7 @@ namespace UchetPractica
 
         private void bAddShow_Click(object sender, EventArgs e)
         {
+            this.Width = 820;
             addRed = true;
             pStud.Visible = true;
             tbName.Text = "";
@@ -87,10 +89,12 @@ namespace UchetPractica
         {
             LoadData();
             LoadCB();
+            this.Width = 485;
         }
 
         private void bEditShow_Click(object sender, EventArgs e)
         {
+            this.Width = 820;
             addRed = false;
             if (dataGridView1.CurrentRow.Cells[0].Value != null)
             {
@@ -127,6 +131,7 @@ namespace UchetPractica
 
         private void bCancelShow_Click(object sender, EventArgs e)
         {
+            this.Width = 485;
             pStud.Visible = false;
         }
 
@@ -192,6 +197,7 @@ namespace UchetPractica
                         }
                         LoadData();
                         pStud.Visible = false;
+                        this.Width = 485;
                     }
                 }
                 else//Редактирование студента
@@ -211,6 +217,7 @@ namespace UchetPractica
                     }
                     LoadData();
                     pStud.Visible = false;
+                    this.Width = 485;
                 }
             }
         }

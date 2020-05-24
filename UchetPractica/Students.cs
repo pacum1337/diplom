@@ -348,7 +348,7 @@ namespace UchetPractica
         private void bAddShow_Click(object sender, EventArgs e)//При нажатии добавления
         {
             addRed = true;
-
+            this.Width = 1055;
             if (isGroup)
             {
                 pStud.Visible = false;
@@ -374,6 +374,7 @@ namespace UchetPractica
 
         private void bCancelShow_Click(object sender, EventArgs e)
         {
+            this.Width = 710;
             pStud.Visible = false;
 
             tbName.Text = "";
@@ -385,11 +386,13 @@ namespace UchetPractica
         private void Students_Load(object sender, EventArgs e)
         {
             GroupsShowData();
+            this.Width = 710;
         }
 
         private void bEditShow_Click(object sender, EventArgs e)
         {
             addRed = false;
+            this.Width = 1055;
             if (dataGridView1.CurrentRow.Cells[0].Value != null)
             {
                 if (isGroup)
@@ -527,6 +530,7 @@ namespace UchetPractica
                         StudentsShowData();
                         pStud.Visible = false;
                         GetCountStuds();
+                        this.Width = 710;
                     }
                 }
                 else//Редактирование студента
@@ -546,12 +550,14 @@ namespace UchetPractica
                     }
                     StudentsShowData();
                     pStud.Visible = false;
+                    this.Width = 710;
                 }
             }
         }
 
         private void bShowGroupCancel_Click(object sender, EventArgs e)
         {
+            this.Width = 710;
             pGroup.Visible = false;
 
             tbGroupNum.Text = "";
@@ -622,6 +628,7 @@ namespace UchetPractica
                         }
                         GroupsShowData();
                         pGroup.Visible = false;
+                        this.Width = 710;
                     }
                 }
                 else//Редактирование группы
@@ -644,6 +651,7 @@ namespace UchetPractica
                         }
                         GroupsShowData();
                         pGroup.Visible = false;
+                        this.Width = 710;
                     }
                     catch
                     {
@@ -773,11 +781,13 @@ namespace UchetPractica
                         StudentsShowData();
                         pStud.Visible = false;
                         pGroup.Visible = false;
+                        this.Width = 710;
                     }
                     else
                     {
                         MessageBox.Show("Выберите группу студентов для отображения!");
                         pGroup.Visible = false;
+                        this.Width = 710;
                     }
                 }
                 else
@@ -796,6 +806,7 @@ namespace UchetPractica
 
         private void GroupShow_Click(object sender, EventArgs e)
         {
+            this.Width = 710;
             GroupsShowData();
             pStud.Visible = false;
             pGroup.Visible = false;
@@ -1079,6 +1090,7 @@ namespace UchetPractica
 
         private void OldGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Width = 710;
             ChangeStatusGroup();
             string sql = "SELECT * FROM Groups WHERE Cours > 4 OR Status!=N'1'";
             GroupsShowData(sql);
