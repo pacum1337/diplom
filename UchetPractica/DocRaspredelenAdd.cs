@@ -58,6 +58,7 @@ namespace UchetPractica
 
         //Текст бокс тип договора
         TextBox[] tbType;
+
         public DocRaspredelenAdd()
         {
             InitializeComponent();
@@ -198,9 +199,6 @@ namespace UchetPractica
                 for (int j = 0;j< prPlaceStr.Length; j++)
                 {
                     prPlace[i].Items.Add(prPlaceStr[j]);
-                    //
-                    //prPlace[i].Text = prPlaceStr[j];
-
                 }
                 prPlace[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(prPlace[i]);
@@ -213,9 +211,6 @@ namespace UchetPractica
                 for (int j = 0; j < rucColleStr.Length; j++)
                 {
                     rucColl[i].Items.Add(rucColleStr[j]);
-
-                    //
-                    rucColl[i].Text = rucColleStr[j];
                 }
                 rucColl[i].DropDownStyle = ComboBoxStyle.DropDownList;
                 panel.Controls.Add(rucColl[i]);
@@ -445,16 +440,24 @@ namespace UchetPractica
                 comboBox2.Items.Add(end[i]);
             }
         }
+
+        private void EnableOFF()
+        {
+            this.Controls.Remove(panel);
+            bEnter.Enabled = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+            pColRuc.Enabled = false;
+            comboBox5.Enabled = false;
+            comboBox6.Enabled = false;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
         }
         private void cbSU_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Controls.Remove(panel);
-            bEnter.Enabled = false;
-            comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
+            EnableOFF();
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -463,6 +466,7 @@ namespace UchetPractica
 
         private void DocRaspredelenAdd_Load(object sender, EventArgs e)
         {
+            //загрузка групп
             string sqlSU = "SELECT Id, GroupNumber FROM Groups";
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
@@ -477,7 +481,25 @@ namespace UchetPractica
                     groupsId[lenght - 1] = reader.GetInt32(0);
                 }
             }
-            
+
+
+            //загрузка руководителей для быстрой подстановки руководителя
+            string sqlColRuc = "SELECT R.Name, R.Surname, R.Patronymic " +
+                "FROM Rucovoditeli AS R " +
+                "INNER JOIN Organizations AS O " +
+                "ON R.OrgId = O.Id " +
+                "WHERE R.Status='1' AND O.Status = '1' AND O.StudyOrg = '1'";
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlColRuc, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox5.Items.Add(reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2));
+                    comboBox6.Items.Add(reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2));
+                }
+            }
         }
 
         private void bEnter_Click(object sender, EventArgs e)
@@ -610,10 +632,7 @@ namespace UchetPractica
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Controls.Remove(panel);
-            bEnter.Enabled = false;
-            comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
+            EnableOFF();
             if (comboBox3.Text != "" && cbSU.Text != "")
                 LoadPM();
             else
@@ -630,6 +649,7 @@ namespace UchetPractica
                 label5.ForeColor = Color.Black;
                 label9.ForeColor = Color.Black;
                 label10.ForeColor = Color.Black;
+                pColRuc.Enabled = true;
                 LoadDate();
             }
             else
@@ -641,9 +661,56 @@ namespace UchetPractica
             }
         }
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox5.Enabled = true;
+            comboBox6.Enabled = false;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox5.Enabled = false;
+            comboBox6.Enabled = false;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox5.Enabled = true;
+            comboBox6.Enabled = true;
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                for(int i = 0; i < lines; i++)
+                {
+                    rucColl[i].Text = comboBox5.Text;
+                }
+            }
+            else if (radioButton3.Checked)
+            {
+                for (int i = 0; i < lines / 2; i++)
+                {
+                    rucColl[i].Text = comboBox5.Text;
+                }
+            }
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                for (int i = lines / 2; i < lines; i++)
+                {
+                    rucColl[i].Text = comboBox6.Text;
+                }
+            }
+        }
+
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Controls.Remove(panel);
+
         }
     }
 }
