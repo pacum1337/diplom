@@ -636,9 +636,9 @@ namespace UchetPractica
                     try
                     {
                         string sqlEditStud = String.Format("UPDATE Groups SET GroupNumber = '{0}', " +
-                           "Specialty = N'{1}', Code = N'{2}', Status = N'{3}'" +
-                           " WHERE Id = '{4}'",
-                           groupNumber, specialty, groupCode, status, selectGroupId);
+                           "Specialty = N'{1}', Code = N'{2}', Status = N'{3}', Cours = N'{4}'" +
+                           " WHERE Id = '{5}'",
+                           groupNumber, specialty, groupCode, status, cours, selectGroupId);
                         using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
                             connection.Open();

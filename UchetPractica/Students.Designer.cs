@@ -324,27 +324,27 @@
             this.GroupShow,
             this.OldGroupsToolStripMenuItem});
             this.ShowAboutToolStripMenuItem.Name = "ShowAboutToolStripMenuItem";
-            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.ShowAboutToolStripMenuItem.Text = "Отображение данных о";
             // 
             // StudentsShow
             // 
             this.StudentsShow.Name = "StudentsShow";
-            this.StudentsShow.Size = new System.Drawing.Size(224, 26);
+            this.StudentsShow.Size = new System.Drawing.Size(196, 26);
             this.StudentsShow.Text = "Студентах";
             this.StudentsShow.Click += new System.EventHandler(this.StudentsShow_Click);
             // 
             // GroupShow
             // 
             this.GroupShow.Name = "GroupShow";
-            this.GroupShow.Size = new System.Drawing.Size(224, 26);
+            this.GroupShow.Size = new System.Drawing.Size(196, 26);
             this.GroupShow.Text = "Группах";
             this.GroupShow.Click += new System.EventHandler(this.GroupShow_Click);
             // 
             // OldGroupsToolStripMenuItem
             // 
             this.OldGroupsToolStripMenuItem.Name = "OldGroupsToolStripMenuItem";
-            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.OldGroupsToolStripMenuItem.Text = "Другие группы";
             this.OldGroupsToolStripMenuItem.Click += new System.EventHandler(this.OldGroupsToolStripMenuItem_Click);
             // 
@@ -354,7 +354,7 @@
             this.ExelExportToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.ExportДанныхToolStripMenuItem.Name = "ExportДанныхToolStripMenuItem";
-            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
             this.ExportДанныхToolStripMenuItem.Text = "Импорт данных";
             // 
             // ExelExportToolStripMenuItem
@@ -552,8 +552,8 @@
             this.Controls.Add(this.bDel);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.pGroup);
             this.Controls.Add(this.pStud);
+            this.Controls.Add(this.pGroup);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Students";
             this.Text = "Группы и студенты";
