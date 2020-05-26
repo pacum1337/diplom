@@ -67,8 +67,11 @@ namespace UchetPractica
         
         private void GetRucovodCollege()
         {
-            string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
-                "FROM Rucovoditeli");
+            string sqlStuds = String.Format("SELECT R.Id, R.Name, R.Surname, R.Patronymic " +
+                "FROM Rucovoditeli as R " +
+                "INNER JOIN Organizations AS O " +
+                "ON R.OrgId = O.Id " +
+                "WHERE R.Status='1' AND O.Status = '1' AND O.StudyOrg = '1'");
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
@@ -88,7 +91,7 @@ namespace UchetPractica
         }
         private void CountStuds()
         {
-            string sqlSU = String.Format("SELECT COUNT(*) FROM Students WHERE GroupId=N'{0}'",
+            string sqlSU = String.Format("SELECT COUNT(*) FROM Students WHERE GroupId=N'{0}' AND Status = '1'",
                 selectedGroup);
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
@@ -118,7 +121,7 @@ namespace UchetPractica
         }
         private void GetPracticPlace()
         {
-            string sqlStuds = String.Format("SELECT Id, Name FROM Organizations",
+            string sqlStuds = String.Format("SELECT Id, Name FROM Organizations WHERE Status = '1'",
                 selectedGroup);
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
@@ -140,8 +143,11 @@ namespace UchetPractica
         }
         private void GetStudLabel()
         {
-            string sqlStuds = String.Format("SELECT Id, Name, Surname, Patronymic " +
-                "FROM Students WHERE GroupId=N'{0}'",
+            string sqlStuds = String.Format("SELECT S.Id, S.Name, S.Surname, S.Patronymic " +
+                "FROM Students as S " +
+                "INNER JOIN Groups AS G " +
+                "ON S.GroupId = G.Id " +
+                "WHERE S.GroupId=N'{0}' AND G.Status = '1' AND S.Status = '1'",
                 selectedGroup);
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
@@ -467,7 +473,7 @@ namespace UchetPractica
         private void DocRaspredelenAdd_Load(object sender, EventArgs e)
         {
             //загрузка групп
-            string sqlSU = "SELECT Id, GroupNumber FROM Groups";
+            string sqlSU = "SELECT Id, GroupNumber FROM Groups WHERE Status='1'";
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
