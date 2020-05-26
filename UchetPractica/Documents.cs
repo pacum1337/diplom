@@ -31,7 +31,8 @@ namespace UchetPractica
         {
             string sqlGroups = "SELECT D.Id, G.GroupNumber, D.DateStart, D.DateEnd " +
                 "FROM DocumentRaspredelenie AS D " +
-                "INNER JOIN Groups AS G ON D.GroupId = G.Id ";
+                "INNER JOIN Groups AS G ON D.GroupId = G.Id " +
+                "WHERE PartOfPeriodsStatus IS NULL OR PartOfPeriodsStatus='1'";
             using (SqlConnection connect = new SqlConnection(Strings.ConStr))
             {
                 connect.Open();

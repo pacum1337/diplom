@@ -18,6 +18,8 @@ namespace UchetPractica
         int lines;
         int selectedGroup = -1;
         Panel panel = new Panel();
+        string uniqId = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
+
 
         //настраиваемые периоды
         Panel panelPerod = new Panel();
@@ -27,7 +29,9 @@ namespace UchetPractica
         DateTimePicker[] dateNewPerodEnd = new DateTimePicker[0];
         Label[] numPeriod = new Label[0];
         Label[] cherta = new Label[0];
-
+        string periodDateStart = "";
+        string periodDateEnd = "";
+        int addedPer = 0;
 
         //даты из ГУП
         DateTime[] start = new DateTime[0];
@@ -592,24 +596,32 @@ namespace UchetPractica
                 label10.ForeColor = Color.Black;
             }
 
-            if (comboBox1.Text == "")
+            if (!multiPeriod)
             {
-                label7.ForeColor = Color.Red;
-                flag = false;
-            }
-            else
-            {
-                label7.ForeColor = Color.Black;
-            }
+                if (comboBox1.Text == "")
+                {
+                    label7.ForeColor = Color.Red;
+                    flag = false;
+                }
+                else
+                {
+                    label7.ForeColor = Color.Black;
+                }
 
-            if (comboBox2.Text == "")
-            {
-                label8.ForeColor = Color.Red;
-                flag = false;
+                if (comboBox2.Text == "")
+                {
+                    label8.ForeColor = Color.Red;
+                    flag = false;
+                }
+                else
+                {
+                    label8.ForeColor = Color.Black;
+                }
             }
             else
             {
                 label8.ForeColor = Color.Black;
+                label7.ForeColor = Color.Black;
             }
 
             if (lines < 1)
@@ -632,36 +644,105 @@ namespace UchetPractica
             }
             if (flag)
             {
-                string uniqId = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
-                string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
-                    "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
-                    "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
-                    , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId, comboBox4.Text, comboBox3.Text);
-
-                using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                if (multiPeriod)
                 {
-                    connect.Open();
-                    SqlCommand command = new SqlCommand(sqlAddStud, connect);
-                    int h = command.ExecuteNonQuery();
-                    if (h == 0) MessageBox.Show("Error!!");
-                }
-                int docId = -1;
-                string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
-                        "UnqueId='{0}'", uniqId);
-
-                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlProv, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    if(periodCount >= 1)
                     {
-                        reader.Read();
-                        docId = reader.GetInt32(0);
+                        string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
+                        "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType,PartOfPeriodsStatus) " +
+                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}','2')"
+                        , selectedGroup, dateNewPerodStart[addedPer].Value.ToString("dd/MM/yyyy"), dateNewPerodEnd[addedPer].Value.ToString("dd/MM/yyyy"), 
+                        uniqId, comboBox4.Text, comboBox3.Text);
+
+                        using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                        {
+                            connect.Open();
+                            SqlCommand command = new SqlCommand(sqlAddStud, connect);
+                            int h = command.ExecuteNonQuery();
+                            if (h == 0) MessageBox.Show("Error!!");
+                        }
+                        int docId = -1;
+                        string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
+                                "UnqueId='{0}'", uniqId);
+
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlProv, connection);
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                docId = reader.GetInt32(0);
+                            }
+                        }
+                        AddResprContent(docId);
+                        //закрытие редактирования
+                        comboBox1.Enabled = false;
+                        comboBox2.Enabled = false;
+                        cbSU.Enabled = false;
+                        comboBox3.Enabled = false;
+                        comboBox5.Enabled = false;
+                        comboBox6.Enabled = false;
+                        button3.Enabled = false;
+                        panel1.Visible = true;
+                        panel2.Visible = false;
+                        pColRuc.Enabled = false;
+
+                        addedPer++;
+                        if(addedPer == periodCount)
+                        {
+                            string sqlAddMain = String.Format("INSERT INTO DocumentRaspredelenie " +
+                        "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType,PartOfPeriodsStatus) " +
+                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}','1')"
+                        , selectedGroup, dateNewPerodStart[0].Value.ToString("dd/MM/yyyy"), dateNewPerodEnd[periodCount - 1].Value.ToString("dd/MM/yyyy"), 
+                        uniqId, comboBox4.Text, comboBox3.Text);
+
+                            using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                            {
+                                connect.Open();
+                                SqlCommand command = new SqlCommand(sqlAddMain, connect);
+                                int h = command.ExecuteNonQuery();
+                                if (h == 0) MessageBox.Show("Error!!");
+                            }
+                            Close();
+                        }
                     }
+                    else
+                        MessageBox.Show("Не добавлено периодов практики!");
                 }
-                AddResprContent(docId);
-                Close();
+                else
+                {
+                    string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
+                        "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
+                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                        , selectedGroup, comboBox1.Text, comboBox2.Text, uniqId, comboBox4.Text, comboBox3.Text);
+
+                    using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                    {
+                        connect.Open();
+                        SqlCommand command = new SqlCommand(sqlAddStud, connect);
+                        int h = command.ExecuteNonQuery();
+                        if (h == 0) MessageBox.Show("Error!!");
+                    }
+                    int docId = -1;
+                    string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
+                            "UnqueId='{0}'", uniqId);
+
+                    using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand(sqlProv, connection);
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            docId = reader.GetInt32(0);
+                        }
+                    }
+                    AddResprContent(docId);
+                    Close();
+                }
             }
             else
             {
