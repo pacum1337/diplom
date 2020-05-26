@@ -19,6 +19,16 @@ namespace UchetPractica
         int selectedGroup = -1;
         Panel panel = new Panel();
 
+        //настраиваемые периоды
+        Panel panelPerod = new Panel();
+        bool multiPeriod = false;
+        int periodCount = 0;
+        DateTimePicker[] dateNewPerodStart = new DateTimePicker[0];
+        DateTimePicker[] dateNewPerodEnd = new DateTimePicker[0];
+        Label[] numPeriod = new Label[0];
+        Label[] cherta = new Label[0];
+
+
         //даты из ГУП
         DateTime[] start = new DateTime[0];
         DateTime[] end = new DateTime[0];
@@ -354,7 +364,7 @@ namespace UchetPractica
 
 
             string sqlPM = String.Format("SELECT Id, Name FROM ProfModule WHERE " +
-                    "SpecCode=N'{0}' AND TypePractic=N'{1}'", specCode, prType);
+                    "SpecCode=N'{0}' AND TypePractic=N'{1}' AND Status = '1'", specCode, prType);
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
@@ -380,6 +390,7 @@ namespace UchetPractica
         {
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
+            button3.Enabled = true;
             string group = cbSU.Text;
             string type = comboBox3.Text.ToLower();
             string sqlDateStart = String.Format("SELECT WeekDateStart, WeekDateEnd FROM StudyProcess " +
@@ -456,6 +467,46 @@ namespace UchetPractica
             pColRuc.Enabled = false;
             comboBox5.Enabled = false;
             comboBox6.Enabled = false;
+            button3.Enabled = false;
+            panel1.Visible = true;
+            panel2.Visible = false;
+        }
+
+        private void HideShowDate()
+        {
+            if (multiPeriod)
+            {
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                checkBox1.Enabled = false;
+                panel2.Visible = true;
+                panel1.Visible = false;
+                button3.Text = "Выбрать даты из ГУП";
+
+                //создание панели
+                panelPerod = new Panel();
+                panelPerod.Location = new Point(10, 10);
+                panelPerod.Size = new Size(300, 150);
+                panelPerod.AutoScroll = true;
+                if (panelPerod.AutoScrollMargin.Width < 5 ||
+                    panelPerod.AutoScrollMargin.Height < 5)
+                {
+                    panelPerod.SetAutoScrollMargin(5, 5);
+                }
+                panelPerod.BorderStyle = BorderStyle.FixedSingle;
+                panel2.Controls.Add(panelPerod);
+            }
+            else
+            {
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                checkBox1.Enabled = true;
+                panel2.Visible = false;
+                panel1.Visible = true;
+                button3.Text = "Добавить/изменить период практики";
+                panel2.Controls.Remove(panelPerod);
+                periodCount = 0;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -561,6 +612,12 @@ namespace UchetPractica
                 label8.ForeColor = Color.Black;
             }
 
+            if (lines < 1)
+            {
+                flag = false;
+                MessageBox.Show("Нечего добавлять!");
+            }
+            
             for (int i = 0; i < lines; i++)
             {
                 if (prPlace[i].Text == "" || rucColl[i].Text == "" || rucOrg[i].Text == "")
@@ -714,9 +771,82 @@ namespace UchetPractica
             }
         }
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            if (multiPeriod)
+                multiPeriod = false;
+            else
+                multiPeriod = true;
+            HideShowDate();
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(periodCount < 7)
+            {
+                int otstup = 30;
+                periodCount++;
+                Array.Resize(ref dateNewPerodStart, periodCount);
+                Array.Resize(ref dateNewPerodEnd, periodCount);
+                Array.Resize(ref numPeriod, periodCount);
+                Array.Resize(ref cherta, periodCount);
+                int i = periodCount - 1;
+
+                //номер периода
+                numPeriod[i] = new Label();
+                numPeriod[i].Top = 10 + otstup * i;
+                numPeriod[i].Left = 5;
+                numPeriod[i].Font = new Font("Arial", 10, FontStyle.Regular);
+                numPeriod[i].AutoSize = true;
+                numPeriod[i].Text = periodCount.ToString() + ")";
+                panelPerod.Controls.Add(numPeriod[i]);
+
+                //начальная дата
+                dateNewPerodStart[i] = new DateTimePicker();
+                dateNewPerodStart[i].Width = 100;
+                dateNewPerodStart[i].Top = 5 + otstup * i;
+                dateNewPerodStart[i].Left = 35;
+                dateNewPerodStart[i].Font = new Font("Arial", 10, FontStyle.Regular);
+                dateNewPerodStart[i].Format = DateTimePickerFormat.Short;
+                panelPerod.Controls.Add(dateNewPerodStart[i]);
+
+                //черточка)
+                cherta[i] = new Label();
+                cherta[i].Top = 5 + otstup * i;
+                cherta[i].Left = 145;
+                cherta[i].Font = new Font("Arial", 10, FontStyle.Regular);
+                cherta[i].Width = 15;
+                cherta[i].Text = "-";
+                panelPerod.Controls.Add(cherta[i]);
+
+                //конечная дата
+                dateNewPerodEnd[i] = new DateTimePicker();
+                dateNewPerodEnd[i].Width = 100;
+                dateNewPerodEnd[i].Top = 5 + otstup * i;
+                dateNewPerodEnd[i].Left = 170;
+                dateNewPerodEnd[i].Font = new Font("Arial", 10, FontStyle.Regular);
+                dateNewPerodEnd[i].Format = DateTimePickerFormat.Short;
+                panelPerod.Controls.Add(dateNewPerodEnd[i]);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(periodCount > 0)
+            {
+                int i = periodCount - 1;
+
+                panelPerod.Controls.Remove(numPeriod[i]);
+                panelPerod.Controls.Remove(dateNewPerodStart[i]);
+                panelPerod.Controls.Remove(cherta[i]);
+                panelPerod.Controls.Remove(dateNewPerodEnd[i]);
+
+                periodCount--;
+                Array.Resize(ref dateNewPerodStart, periodCount);
+                Array.Resize(ref dateNewPerodEnd, periodCount);
+                Array.Resize(ref numPeriod, periodCount);
+                Array.Resize(ref cherta, periodCount);
+            }
         }
     }
 }
