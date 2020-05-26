@@ -646,7 +646,7 @@ namespace UchetPractica
             {
                 if (multiPeriod)
                 {
-                    if(periodCount >= 1)
+                    if(periodCount > 1)
                     {
                         string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
                         "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType,PartOfPeriodsStatus) " +
@@ -707,6 +707,39 @@ namespace UchetPractica
                             }
                             Close();
                         }
+                    }
+                    else if(periodCount == 1)
+                    {
+                        string sqlAddStud = String.Format("INSERT INTO DocumentRaspredelenie " +
+                        "(GroupId, DateStart, DateEnd,UnqueId,ProfModule,PrType) " +
+                        "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+                        , selectedGroup, dateNewPerodStart[0].Value.ToString("dd/MM/yyyy"), dateNewPerodEnd[0].Value.ToString("dd/MM/yyyy"), 
+                        uniqId, comboBox4.Text, comboBox3.Text);
+
+                        using (SqlConnection connect = new SqlConnection(Strings.ConStr))
+                        {
+                            connect.Open();
+                            SqlCommand command = new SqlCommand(sqlAddStud, connect);
+                            int h = command.ExecuteNonQuery();
+                            if (h == 0) MessageBox.Show("Error!!");
+                        }
+                        int docId = -1;
+                        string sqlProv = String.Format("SELECT Id FROM DocumentRaspredelenie WHERE " +
+                                "UnqueId='{0}'", uniqId);
+
+                        using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                        {
+                            connection.Open();
+                            SqlCommand command = new SqlCommand(sqlProv, connection);
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                docId = reader.GetInt32(0);
+                            }
+                        }
+                        AddResprContent(docId);
+                        Close();
                     }
                     else
                         MessageBox.Show("Не добавлено периодов практики!");
