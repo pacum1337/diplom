@@ -313,7 +313,7 @@
             this.smiStudNewGr});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1387, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1387, 28);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -324,7 +324,7 @@
             this.GroupShow,
             this.OldGroupsToolStripMenuItem});
             this.ShowAboutToolStripMenuItem.Name = "ShowAboutToolStripMenuItem";
-            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.ShowAboutToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.ShowAboutToolStripMenuItem.Text = "Отображение данных о";
             // 
             // StudentsShow
@@ -354,7 +354,7 @@
             this.ExelExportToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.ExportДанныхToolStripMenuItem.Name = "ExportДанныхToolStripMenuItem";
-            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.ExportДанныхToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.ExportДанныхToolStripMenuItem.Text = "Импорт данных";
             // 
             // ExelExportToolStripMenuItem
@@ -519,7 +519,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(579, 420);
+            this.dataGridView2.Location = new System.Drawing.Point(569, 420);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -555,7 +555,10 @@
             this.Controls.Add(this.pStud);
             this.Controls.Add(this.pGroup);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1405, 517);
+            this.MinimumSize = new System.Drawing.Size(1405, 517);
             this.Name = "Students";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Группы и студенты";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Students_FormClosed);
             this.Load += new System.EventHandler(this.Students_Load);

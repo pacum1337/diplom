@@ -331,7 +331,10 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1150, 504);
+            this.MinimumSize = new System.Drawing.Size(1150, 504);
             this.Name = "Rucovoditeli";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Руководители";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Rucovoditeli_FormClosing);
             this.Load += new System.EventHandler(this.Rucovoditeli_Load);

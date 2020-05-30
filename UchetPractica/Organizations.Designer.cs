@@ -41,9 +41,9 @@
             this.отображениеОрганизацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехКромеСкрытыхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -174,6 +174,13 @@
             this.всехToolStripMenuItem.Text = "Не активных";
             this.всехToolStripMenuItem.Click += new System.EventHandler(this.всехToolStripMenuItem_Click);
             // 
+            // изменитьОбразовательнуюОрганизациюToolStripMenuItem
+            // 
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Name = "изменитьОбразовательнуюОрганизациюToolStripMenuItem";
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Size = new System.Drawing.Size(320, 24);
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Text = "Изменить образовательную организацию";
+            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Click += new System.EventHandler(this.изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click);
+            // 
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -186,13 +193,6 @@
             this.button1.Text = "Сброс";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // изменитьОбразовательнуюОрганизациюToolStripMenuItem
-            // 
-            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Name = "изменитьОбразовательнуюОрганизациюToolStripMenuItem";
-            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Size = new System.Drawing.Size(320, 24);
-            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Text = "Изменить образовательную организацию";
-            this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Click += new System.EventHandler(this.изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click);
             // 
             // Organizations
             // 
@@ -210,7 +210,10 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1202, 516);
+            this.MinimumSize = new System.Drawing.Size(1202, 516);
             this.Name = "Organizations";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Организации";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Organizations_FormClosing);
             this.Load += new System.EventHandler(this.Organizations_Load);

@@ -129,7 +129,7 @@
             this.dtpDateReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateReg.Location = new System.Drawing.Point(236, 179);
             this.dtpDateReg.Name = "dtpDateReg";
-            this.dtpDateReg.Size = new System.Drawing.Size(206, 28);
+            this.dtpDateReg.Size = new System.Drawing.Size(285, 28);
             this.dtpDateReg.TabIndex = 53;
             this.dtpDateReg.Value = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
             // 
@@ -160,7 +160,7 @@
             this.tbINN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbINN.MaxLength = 50;
             this.tbINN.Name = "tbINN";
-            this.tbINN.Size = new System.Drawing.Size(206, 28);
+            this.tbINN.Size = new System.Drawing.Size(285, 28);
             this.tbINN.TabIndex = 55;
             this.tbINN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbINN_KeyPress);
             // 
@@ -181,7 +181,7 @@
             this.tbOGRN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbOGRN.MaxLength = 50;
             this.tbOGRN.Name = "tbOGRN";
-            this.tbOGRN.Size = new System.Drawing.Size(206, 28);
+            this.tbOGRN.Size = new System.Drawing.Size(285, 28);
             this.tbOGRN.TabIndex = 57;
             this.tbOGRN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOGRN_KeyPress);
             // 
@@ -202,7 +202,7 @@
             this.tbKPP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbKPP.MaxLength = 50;
             this.tbKPP.Name = "tbKPP";
-            this.tbKPP.Size = new System.Drawing.Size(206, 28);
+            this.tbKPP.Size = new System.Drawing.Size(285, 28);
             this.tbKPP.TabIndex = 59;
             this.tbKPP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKPP_KeyPress);
             // 
@@ -270,7 +270,7 @@
             "Не работающая"});
             this.cbStatus.Location = new System.Drawing.Point(236, 309);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(206, 30);
+            this.cbStatus.Size = new System.Drawing.Size(285, 30);
             this.cbStatus.TabIndex = 73;
             // 
             // checkBox1
@@ -313,8 +313,11 @@
             this.Controls.Add(this.lHeader);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(818, 469);
+            this.MinimumSize = new System.Drawing.Size(818, 469);
             this.Name = "SettingOrganizations";
-            this.Text = "SettingOrganizations";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Настройки организации";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKPP_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

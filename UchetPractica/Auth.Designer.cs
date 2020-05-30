@@ -42,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(116, 84);
+            this.label1.Location = new System.Drawing.Point(122, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 24);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(104, 130);
+            this.label2.Location = new System.Drawing.Point(110, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 24);
             this.label2.TabIndex = 1;
@@ -74,7 +74,9 @@
             // 
             this.bEnter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnter.Location = new System.Drawing.Point(328, 252);
+            this.bEnter.Location = new System.Drawing.Point(337, 252);
+            this.bEnter.MaximumSize = new System.Drawing.Size(114, 46);
+            this.bEnter.MinimumSize = new System.Drawing.Size(114, 46);
             this.bEnter.Name = "bEnter";
             this.bEnter.Size = new System.Drawing.Size(114, 46);
             this.bEnter.TabIndex = 3;
@@ -85,7 +87,7 @@
             // tbLog
             // 
             this.tbLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbLog.Location = new System.Drawing.Point(186, 81);
+            this.tbLog.Location = new System.Drawing.Point(192, 79);
             this.tbLog.Name = "tbLog";
             this.tbLog.Size = new System.Drawing.Size(165, 28);
             this.tbLog.TabIndex = 5;
@@ -93,7 +95,7 @@
             // tbPas
             // 
             this.tbPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPas.Location = new System.Drawing.Point(186, 127);
+            this.tbPas.Location = new System.Drawing.Point(192, 125);
             this.tbPas.Name = "tbPas";
             this.tbPas.PasswordChar = '*';
             this.tbPas.Size = new System.Drawing.Size(165, 28);
@@ -104,7 +106,7 @@
             this.cbRemember.AutoSize = true;
             this.cbRemember.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbRemember.Location = new System.Drawing.Point(98, 192);
+            this.cbRemember.Location = new System.Drawing.Point(104, 190);
             this.cbRemember.Name = "cbRemember";
             this.cbRemember.Size = new System.Drawing.Size(183, 28);
             this.cbRemember.TabIndex = 7;
@@ -116,18 +118,19 @@
             this.lReg.AutoSize = true;
             this.lReg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lReg.Location = new System.Drawing.Point(316, 9);
+            this.lReg.Location = new System.Drawing.Point(294, 9);
             this.lReg.Name = "lReg";
             this.lReg.Size = new System.Drawing.Size(126, 24);
             this.lReg.TabIndex = 8;
             this.lReg.Text = "Регистрация";
+            this.lReg.Visible = false;
             this.lReg.Click += new System.EventHandler(this.lReg_Click);
             // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 310);
+            this.ClientSize = new System.Drawing.Size(463, 310);
             this.Controls.Add(this.lReg);
             this.Controls.Add(this.cbRemember);
             this.Controls.Add(this.tbPas);
@@ -137,11 +140,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.MaximumSize = new System.Drawing.Size(472, 357);
-            this.MinimumSize = new System.Drawing.Size(472, 357);
             this.Name = "Auth";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Авторизация пользователя";
+            this.Text = "Вход в приложение ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Auth_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

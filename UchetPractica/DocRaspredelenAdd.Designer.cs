@@ -475,7 +475,8 @@
             this.MaximumSize = new System.Drawing.Size(1787, 659);
             this.MinimumSize = new System.Drawing.Size(1787, 659);
             this.Name = "DocRaspredelenAdd";
-            this.Text = "DocRaspredelenAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Распределение студентов на практику";
             this.Load += new System.EventHandler(this.DocRaspredelenAdd_Load);
             this.pColRuc.ResumeLayout(false);
             this.pColRuc.PerformLayout();

@@ -238,7 +238,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1046, 237);
+            this.MinimumSize = new System.Drawing.Size(1046, 237);
             this.Name = "DocumentsWork";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с документом";
             this.Load += new System.EventHandler(this.DocumentsWork_Load);
             this.ResumeLayout(false);

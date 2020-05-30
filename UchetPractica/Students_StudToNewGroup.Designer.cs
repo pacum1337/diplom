@@ -81,7 +81,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(172, 91);
+            this.label3.Location = new System.Drawing.Point(54, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 24);
             this.label3.TabIndex = 55;
@@ -92,7 +92,7 @@
             // 
             this.bEnterShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnterShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnterShow.Location = new System.Drawing.Point(456, 117);
+            this.bEnterShow.Location = new System.Drawing.Point(205, 117);
             this.bEnterShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEnterShow.Name = "bEnterShow";
             this.bEnterShow.Size = new System.Drawing.Size(147, 55);
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 189);
+            this.ClientSize = new System.Drawing.Size(370, 189);
             this.Controls.Add(this.bEnterShow);
             this.Controls.Add(this.bCancelShow);
             this.Controls.Add(this.label3);
@@ -126,8 +126,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lGroupNum);
+            this.MaximumSize = new System.Drawing.Size(388, 236);
+            this.MinimumSize = new System.Drawing.Size(388, 236);
             this.Name = "Students_StudToNewGroup";
-            this.Text = "Students_StudToNewGroup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Перевод студента";
             this.Load += new System.EventHandler(this.Students_StudToNewGroup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -246,14 +246,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 431);
+            this.ClientSize = new System.Drawing.Size(1077, 417);
             this.Controls.Add(this.pStud);
             this.Controls.Add(this.bAddShow);
             this.Controls.Add(this.bEditShow);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
+            this.MaximumSize = new System.Drawing.Size(1095, 464);
+            this.MinimumSize = new System.Drawing.Size(1095, 464);
             this.Name = "ProfModule";
-            this.Text = "ProfModule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Проф. модули";
             this.Load += new System.EventHandler(this.ProfModule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pStud.ResumeLayout(false);
