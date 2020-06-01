@@ -61,6 +61,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.pColRuc.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -106,11 +107,11 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(1304, 549);
+            this.button1.Location = new System.Drawing.Point(128, 605);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(212, 51);
+            this.button1.Size = new System.Drawing.Size(123, 54);
             this.button1.TabIndex = 27;
-            this.button1.Text = "Отмена";
+            this.button1.Text = "Назад";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -445,11 +446,24 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(12, 605);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(110, 54);
+            this.button6.TabIndex = 75;
+            this.button6.Text = "Выйти";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
             // DocRaspredelenAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1769, 612);
+            this.ClientSize = new System.Drawing.Size(1769, 673);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
@@ -472,8 +486,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbSU);
             this.Controls.Add(this.panel2);
-            this.MaximumSize = new System.Drawing.Size(1787, 659);
-            this.MinimumSize = new System.Drawing.Size(1787, 659);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DocRaspredelenAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Распределение студентов на практику";
@@ -523,5 +537,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
     }
 }

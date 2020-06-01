@@ -14,7 +14,6 @@ namespace UchetPractica
     public partial class Documents : Form
     {
         private bool colCont;
-        private bool close = true;
 
         public Documents()
         {
@@ -65,7 +64,6 @@ namespace UchetPractica
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            close = false;
             Close();
         }
 
@@ -93,12 +91,9 @@ namespace UchetPractica
             LoadDocRaspred();
         }
 
-        private void Documents_FormClosed(object sender, FormClosedEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (close)
-            {
-                Application.Exit();
-            }
+            Application.Exit();
         }
     }
 }

@@ -53,6 +53,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.bCancel = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -68,7 +69,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(507, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(507, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,7 +79,7 @@
             this.redactProfileToolStripMenuItem,
             this.UserExitToolStripMenuItem});
             this.ProfileToolStripMenuItem.Name = "ProfileToolStripMenuItem";
-            this.ProfileToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
+            this.ProfileToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.ProfileToolStripMenuItem.Text = "Профиль";
             // 
             // redactProfileToolStripMenuItem
@@ -102,7 +103,7 @@
             this.скачатьТекущийГУПToolStripMenuItem,
             this.ShablonToolStripMenuItem});
             this.графикУПToolStripMenuItem.Name = "графикУПToolStripMenuItem";
-            this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 26);
+            this.графикУПToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
             this.графикУПToolStripMenuItem.Text = "График УП";
             // 
             // ImportExcelGraphikToolStripMenuItem
@@ -137,7 +138,7 @@
             this.отключитьУведомленияToolStripMenuItem,
             this.отключитьДоСледующейНеделиToolStripMenuItem});
             this.показУведомленийОППToolStripMenuItem.Name = "показУведомленийОППToolStripMenuItem";
-            this.показУведомленийОППToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.показУведомленийОППToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
             this.показУведомленийОППToolStripMenuItem.Text = "Показ уведомлений о ПП";
             // 
             // всеОтделенияToolStripMenuItem
@@ -219,7 +220,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(134, 295);
+            this.button3.Location = new System.Drawing.Point(130, 295);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(243, 82);
@@ -246,7 +247,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 387);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 95);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -293,11 +294,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Работа с данными";
             // 
+            // bCancel
+            // 
+            this.bCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bCancel.Location = new System.Drawing.Point(12, 354);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(110, 55);
+            this.bCancel.TabIndex = 42;
+            this.bCancel.Text = "Выйти";
+            this.bCancel.UseVisualStyleBackColor = false;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 421);
+            this.Controls.Add(this.bCancel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lStudyProcess);
             this.Controls.Add(this.dataGridView1);
@@ -305,7 +320,9 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(525, 468);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(525, 468);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -348,6 +365,7 @@
         private System.Windows.Forms.ToolStripMenuItem скачатьТекущийГУПToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button bCancel;
     }
 }
 

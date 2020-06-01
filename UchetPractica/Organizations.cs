@@ -19,7 +19,6 @@ namespace UchetPractica
         }
 
         bool colOrg = false;
-        bool close = true;
 
 
         private void OrgLoadData(string sqlLoadData = "SELECT * FROM Organizations WHERE Status=N'1'")
@@ -81,7 +80,6 @@ namespace UchetPractica
                     {
                         MessageBox.Show("Данные о учебной организации не внесены!\n" +
                             "Надеюсь, что в следущий раз получится)");
-                        close = false;
                         Close();
                     }
                 }
@@ -195,7 +193,6 @@ namespace UchetPractica
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            close = false;
             Close();
         }
 
@@ -239,14 +236,6 @@ namespace UchetPractica
             OrgLoadData(sql);
         }
 
-        private void Organizations_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (close)
-            {
-                Application.Exit();
-            }
-        }
-
         private void изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int oldId = -1;
@@ -282,6 +271,11 @@ namespace UchetPractica
                 }
             }
             OrgLoadData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

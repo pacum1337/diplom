@@ -704,5 +704,10 @@ namespace UchetPractica
                 MessageBox.Show("Нет загруженного ГУП!");
             }
         }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

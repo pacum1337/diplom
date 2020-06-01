@@ -110,7 +110,7 @@
             this.bCancelShow.Name = "bCancelShow";
             this.bCancelShow.Size = new System.Drawing.Size(137, 55);
             this.bCancelShow.TabIndex = 56;
-            this.bCancelShow.Text = "Отмена";
+            this.bCancelShow.Text = "Назад";
             this.bCancelShow.UseVisualStyleBackColor = true;
             this.bCancelShow.Click += new System.EventHandler(this.bCancelShow_Click);
             // 
@@ -126,7 +126,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lGroupNum);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(388, 236);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(388, 236);
             this.Name = "Students_StudToNewGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

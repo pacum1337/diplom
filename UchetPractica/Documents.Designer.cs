@@ -50,6 +50,7 @@
             this.типыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.распределениеСтудентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lGroupNum = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -103,10 +104,10 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(12, 514);
+            this.bCancel.Location = new System.Drawing.Point(128, 515);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(117, 55);
+            this.bCancel.Size = new System.Drawing.Size(117, 54);
             this.bCancel.TabIndex = 52;
             this.bCancel.Text = "Назад";
             this.bCancel.UseVisualStyleBackColor = true;
@@ -308,17 +309,31 @@
             // 
             this.lGroupNum.AutoSize = true;
             this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupNum.Location = new System.Drawing.Point(149, 530);
+            this.lGroupNum.Location = new System.Drawing.Point(251, 531);
             this.lGroupNum.Name = "lGroupNum";
             this.lGroupNum.Size = new System.Drawing.Size(512, 24);
             this.lGroupNum.TabIndex = 63;
             this.lGroupNum.Text = "Отображаются документы о распределении студентов";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(12, 515);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 54);
+            this.button1.TabIndex = 64;
+            this.button1.Text = "Выйти";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Documents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 578);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lGroupNum);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -333,7 +348,6 @@
             this.Name = "Documents";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Архив документов";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Documents_FormClosed);
             this.Load += new System.EventHandler(this.Documents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -369,5 +383,6 @@
         private System.Windows.Forms.ToolStripMenuItem типыДокументовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem распределениеСтудентовToolStripMenuItem;
         private System.Windows.Forms.Label lGroupNum;
+        private System.Windows.Forms.Button button1;
     }
 }

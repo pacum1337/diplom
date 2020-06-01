@@ -51,6 +51,7 @@
             this.отображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехКромеНеРаботающихToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -100,7 +101,7 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(12, 390);
+            this.bCancel.Location = new System.Drawing.Point(128, 390);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(116, 55);
@@ -317,11 +318,25 @@
             this.вToolStripMenuItem.Text = "Не работающих";
             this.вToolStripMenuItem.Click += new System.EventHandler(this.вToolStripMenuItem_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(12, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 54);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Выйти";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Rucovoditeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1132, 457);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -331,12 +346,13 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1150, 504);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1150, 504);
             this.Name = "Rucovoditeli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Руководители";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Rucovoditeli_FormClosing);
             this.Load += new System.EventHandler(this.Rucovoditeli_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -373,5 +389,6 @@
         private System.Windows.Forms.ToolStripMenuItem отображениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехКромеНеРаботающихToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

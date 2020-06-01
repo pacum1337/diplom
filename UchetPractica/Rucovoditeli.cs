@@ -18,7 +18,6 @@ namespace UchetPractica
         int[] orgId = new int[0];
         int lenght = 0;
         int selectRucId = -1;
-        private bool close = true;
 
         public Rucovoditeli()
         {
@@ -289,23 +288,19 @@ namespace UchetPractica
             LoadData(sqlGroups);
         }
 
-        private void Rucovoditeli_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (close)
-            {
-                Application.Exit();
-            }
-        }
-
         private void bCancel_Click(object sender, EventArgs e)
         {
-            close = false;
             Close();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -242,5 +242,10 @@ namespace UchetPractica
             label4.Left = lDateStart.Left + lDateStart.Width;
             lDateEnd.Left = label4.Left + label4.Width;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

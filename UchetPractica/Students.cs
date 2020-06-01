@@ -18,7 +18,6 @@ namespace UchetPractica
         bool colGroup = false;
         int showGroupId = -1;
         string showGroupNum = "";
-        private bool close = true;
 
         /*
         1 - обучается
@@ -341,7 +340,6 @@ namespace UchetPractica
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            close = false;
             Close();
         }
 
@@ -1101,14 +1099,6 @@ namespace UchetPractica
             smiStudNewGr.Visible = false;
         }
 
-        private void Students_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (close)
-            {
-                Application.Exit();
-            }
-        }
-
         private void smiStudNewGr_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow.Cells[0].Value != null)
@@ -1142,6 +1132,11 @@ namespace UchetPractica
             {
                 MessageBox.Show("Не выбранна строка!");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
