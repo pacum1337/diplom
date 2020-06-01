@@ -90,6 +90,10 @@ namespace UchetPractica
             LoadData();
             LoadCB();
             this.Width = 485;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void bEditShow_Click(object sender, EventArgs e)

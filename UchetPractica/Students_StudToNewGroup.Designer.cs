@@ -92,7 +92,7 @@
             // 
             this.bEnterShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEnterShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEnterShow.Location = new System.Drawing.Point(205, 117);
+            this.bEnterShow.Location = new System.Drawing.Point(426, 123);
             this.bEnterShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEnterShow.Name = "bEnterShow";
             this.bEnterShow.Size = new System.Drawing.Size(147, 55);
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 189);
+            this.ClientSize = new System.Drawing.Size(585, 189);
             this.Controls.Add(this.bEnterShow);
             this.Controls.Add(this.bCancelShow);
             this.Controls.Add(this.label3);
@@ -127,9 +127,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lGroupNum);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(388, 236);
+            this.MaximumSize = new System.Drawing.Size(603, 236);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(388, 236);
+            this.MinimumSize = new System.Drawing.Size(603, 236);
             this.Name = "Students_StudToNewGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Перевод студента";

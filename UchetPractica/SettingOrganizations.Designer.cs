@@ -53,8 +53,8 @@
             // lHeader
             // 
             this.lHeader.AutoSize = true;
-            this.lHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lHeader.Location = new System.Drawing.Point(37, 10);
+            this.lHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lHeader.Location = new System.Drawing.Point(68, 9);
             this.lHeader.Name = "lHeader";
             this.lHeader.Size = new System.Drawing.Size(88, 24);
             this.lHeader.TabIndex = 39;

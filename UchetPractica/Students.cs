@@ -173,6 +173,7 @@ namespace UchetPractica
             dataGridView1.Columns[5].Width = 80;
             dataGridView1.Columns[6].Width = 120;
 
+
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 if (dataGridView1[6, i].Value.ToString() == "1")
@@ -385,6 +386,11 @@ namespace UchetPractica
         {
             GroupsShowData();
             this.Width = 710;
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void bEditShow_Click(object sender, EventArgs e)

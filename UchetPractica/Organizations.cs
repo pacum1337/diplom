@@ -149,6 +149,10 @@ namespace UchetPractica
         private void Organizations_Load(object sender, EventArgs e)
         {
             ProvStudyOrg();
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
