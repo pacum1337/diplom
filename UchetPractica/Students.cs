@@ -18,6 +18,7 @@ namespace UchetPractica
         bool colGroup = false;
         int showGroupId = -1;
         string showGroupNum = "";
+        bool searching = false;
 
         /*
         1 - обучается
@@ -360,6 +361,12 @@ namespace UchetPractica
             }
             else
             {
+                if (searching)
+                {
+                    MessageBox.Show("Нельзя добавлять студентов в режиме поиска!");
+                    this.Width = 710;
+                    return;
+                }
                 pStud.Visible = true;
                 pGroup.Visible = false;
 
@@ -432,7 +439,7 @@ namespace UchetPractica
                 }
                 else
                 {
-                    if (colStud)
+                    if (colStud || searching)
                     {
                         selectStudId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                         if (selectStudId > 0)
@@ -443,8 +450,9 @@ namespace UchetPractica
                             string surname = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
                             string patr = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
                             string status = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
+                            string grNum = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
 
-                            tbGrNum.Text = showGroupNum;
+                            tbGrNum.Text = grNum;
                             tbName.Text = name;
                             tbSurname.Text = surname;
                             tbPatr.Text = patr;
@@ -539,9 +547,9 @@ namespace UchetPractica
                 }
                 else//Редактирование студента
                 {
-                    string sqlEditStud = String.Format("UPDATE Students SET GroupId = '{0}', " +
-                        "Name = N'{1}', Surname = N'{2}', Patronymic = N'{3}', Status=N'{4}' " +
-                        " WHERE Id = '{5}'", groupId, name, surname, patr, status, selectStudId);
+                    string sqlEditStud = String.Format("UPDATE Students SET  " +
+                        "Name = N'{0}', Surname = N'{1}', Patronymic = N'{2}', Status=N'{3}' " +
+                        " WHERE Id = '{4}'", name, surname, patr, status, selectStudId);
                     using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                     {
                         connection.Open();
@@ -552,7 +560,13 @@ namespace UchetPractica
                             MessageBox.Show("Информация изменена");
                         }
                     }
-                    StudentsShowData();
+                    if (searching)
+                    {
+                        GroupsShowData();
+                        tbSearch.Text = "";
+                    }
+                    else
+                        StudentsShowData();
                     pStud.Visible = false;
                     this.Width = 710;
                 }
@@ -769,6 +783,7 @@ namespace UchetPractica
 
         private void StudentsShow_Click(object sender, EventArgs e)
         {
+            tbSearch.Text = "";
             if (isGroup)
             {
                 isGroup = false;
@@ -781,6 +796,7 @@ namespace UchetPractica
                         showGroupNum = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
                         lGroupNum.Text = "Отображаются студенты группы № " + showGroupNum;
                         lGroupNum.Visible = true;
+                        label12.Visible = false;
 
                         StudentsShowData();
                         pStud.Visible = false;
@@ -816,7 +832,9 @@ namespace UchetPractica
             pGroup.Visible = false;
             isGroup = true;
             lGroupNum.Visible = false;
+            label12.Visible = true;
             smiStudNewGr.Visible = false;
+            tbSearch.Text = "";
         }
 
         private void ExelExportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1102,7 +1120,9 @@ namespace UchetPractica
             pGroup.Visible = false;
             isGroup = true;
             lGroupNum.Visible = false;
+            label12.Visible = true;
             smiStudNewGr.Visible = false;
+            tbSearch.Text = "";
         }
 
         private void smiStudNewGr_Click(object sender, EventArgs e)
@@ -1143,6 +1163,76 @@ namespace UchetPractica
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(tbSearch, "Введите название компании или её ИНН");
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            string search = tbSearch.Text;
+            if (search != "")
+            {
+                isGroup = false;
+                searching = true;
+                pStud.Visible = false;
+                pGroup.Visible = false;
+                this.Width = 710;
+                label12.Text = "Результаты поиска";
+
+                string sqlSearch = String.Format("SELECT S.Id, S.Name, S.Surname, " +
+                        "S.Patronymic, G.GroupNumber, S.Status " +
+                        "FROM Students AS S " +
+                        "INNER JOIN Groups AS G ON S.GroupId = G.Id " +
+                        "WHERE G.Status = 1 AND " +
+                        "(S.Name LIKE N'%{0}%' OR S.Surname LIKE N'%{0}%' OR S.Patronymic LIKE N'%{0}%')", search);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+
+                dataGridView1.Columns[0].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Имя";
+                dataGridView1.Columns[2].HeaderText = "Фамилия";
+                dataGridView1.Columns[3].HeaderText = "Отчество";
+                dataGridView1.Columns[4].HeaderText = "Номер группы";
+                dataGridView1.Columns[5].HeaderText = "Статус";
+
+                dataGridView1.Columns[1].Width = 120;
+                dataGridView1.Columns[2].Width = 120;
+                dataGridView1.Columns[3].Width = 120;
+                dataGridView1.Columns[4].Width = 120;
+                dataGridView1.Columns[5].Width = 120;
+
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    if (dataGridView1[5, i].Value.ToString() == "1")
+                        dataGridView1[5, i].Value = "Обучается";
+                    else if (dataGridView1[5, i].Value.ToString() == "2")
+                        dataGridView1[5, i].Value = "Отчислен";
+                    else if (dataGridView1[5, i].Value.ToString() == "3")
+                        dataGridView1[5, i].Value = "Ак. отпуск";
+                }
+            }
+            else
+            {
+                GroupsShowData();
+                isGroup = true;
+                searching = false;
+                label12.Text = "Отображается список групп";
+            }
         }
     }
 }

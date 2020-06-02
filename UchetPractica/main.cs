@@ -355,7 +355,14 @@ namespace UchetPractica
             this.Visible = false;
             Students students = new Students();
             students.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                this.Visible = true;
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -363,7 +370,14 @@ namespace UchetPractica
             this.Visible = false;
             Organizations organizations = new Organizations();
             organizations.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                this.Visible = true;
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -371,7 +385,14 @@ namespace UchetPractica
             this.Visible = false;
             Rucovoditeli rucovoditeli = new Rucovoditeli();
             rucovoditeli.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                this.Visible = true;
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -379,7 +400,14 @@ namespace UchetPractica
             this.Visible = false;
             Documents arhiv = new Documents();
             arhiv.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                this.Visible = true;
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void redactProfileToolStripMenuItem_Click(object sender, EventArgs e)

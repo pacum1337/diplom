@@ -202,28 +202,8 @@ namespace UchetPractica
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string searchOrg = tbSearch.Text;
-            if (searchOrg != "")
-            {
-                string sqlSearch = String.Format("SELECT * FROM Organizations " +
-                    "WHERE Name LIKE N'%{0}%'", searchOrg);
-
-                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                }
-            }
-            else MessageBox.Show("Без данных, организацию найти не удается");
+            
         }
-
-        private void tbSearch_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(tbSearch, "Введите название компании или её ИНН");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             OrgLoadData();
@@ -280,6 +260,31 @@ namespace UchetPractica
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tbSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(tbSearch, "Введите название компании или её ИНН");
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchOrg = tbSearch.Text;
+            if (searchOrg != "")
+            {
+                string sqlSearch = String.Format("SELECT * FROM Organizations " +
+                    "WHERE Name LIKE N'%{0}%' OR INN LIKE N'%{0}%'", searchOrg);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            else
+                OrgLoadData();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pStud = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.cbStatusStud = new System.Windows.Forms.ComboBox();
@@ -71,6 +72,10 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.lGroupNum = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label13 = new System.Windows.Forms.Label();
             this.pStud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -93,7 +98,7 @@
             this.pStud.Controls.Add(this.tbPatr);
             this.pStud.Controls.Add(this.tbName);
             this.pStud.Controls.Add(this.label5);
-            this.pStud.Location = new System.Drawing.Point(915, 46);
+            this.pStud.Location = new System.Drawing.Point(915, 95);
             this.pStud.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pStud.Name = "pStud";
             this.pStud.Size = new System.Drawing.Size(461, 356);
@@ -242,7 +247,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 95);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -255,7 +260,7 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(134, 404);
+            this.bCancel.Location = new System.Drawing.Point(134, 455);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(116, 55);
@@ -268,7 +273,7 @@
             // 
             this.bDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bDel.Location = new System.Drawing.Point(538, 404);
+            this.bDel.Location = new System.Drawing.Point(495, 30);
             this.bDel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bDel.Name = "bDel";
             this.bDel.Size = new System.Drawing.Size(116, 55);
@@ -282,7 +287,7 @@
             // 
             this.bEditShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEditShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEditShow.Location = new System.Drawing.Point(792, 403);
+            this.bEditShow.Location = new System.Drawing.Point(792, 454);
             this.bEditShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEditShow.Name = "bEditShow";
             this.bEditShow.Size = new System.Drawing.Size(116, 55);
@@ -295,7 +300,7 @@
             // 
             this.bAddShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bAddShow.Location = new System.Drawing.Point(670, 403);
+            this.bAddShow.Location = new System.Drawing.Point(670, 454);
             this.bAddShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bAddShow.Name = "bAddShow";
             this.bAddShow.Size = new System.Drawing.Size(116, 55);
@@ -314,7 +319,7 @@
             this.smiStudNewGr});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1387, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1387, 30);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -331,21 +336,21 @@
             // StudentsShow
             // 
             this.StudentsShow.Name = "StudentsShow";
-            this.StudentsShow.Size = new System.Drawing.Size(196, 26);
+            this.StudentsShow.Size = new System.Drawing.Size(224, 26);
             this.StudentsShow.Text = "Студентах";
             this.StudentsShow.Click += new System.EventHandler(this.StudentsShow_Click);
             // 
             // GroupShow
             // 
             this.GroupShow.Name = "GroupShow";
-            this.GroupShow.Size = new System.Drawing.Size(196, 26);
+            this.GroupShow.Size = new System.Drawing.Size(224, 26);
             this.GroupShow.Text = "Группах";
             this.GroupShow.Click += new System.EventHandler(this.GroupShow_Click);
             // 
             // OldGroupsToolStripMenuItem
             // 
             this.OldGroupsToolStripMenuItem.Name = "OldGroupsToolStripMenuItem";
-            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.OldGroupsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.OldGroupsToolStripMenuItem.Text = "Другие группы";
             this.OldGroupsToolStripMenuItem.Click += new System.EventHandler(this.OldGroupsToolStripMenuItem_Click);
             // 
@@ -393,7 +398,7 @@
             this.pGroup.Controls.Add(this.tbSpecialty);
             this.pGroup.Controls.Add(this.tbGroupCode);
             this.pGroup.Controls.Add(this.label6);
-            this.pGroup.Location = new System.Drawing.Point(915, 47);
+            this.pGroup.Location = new System.Drawing.Point(915, 96);
             this.pGroup.Name = "pGroup";
             this.pGroup.Size = new System.Drawing.Size(461, 354);
             this.pGroup.TabIndex = 25;
@@ -520,7 +525,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(569, 420);
+            this.dataGridView2.Location = new System.Drawing.Point(526, 46);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -532,8 +537,8 @@
             // lGroupNum
             // 
             this.lGroupNum.AutoSize = true;
-            this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lGroupNum.Location = new System.Drawing.Point(256, 419);
+            this.lGroupNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lGroupNum.Location = new System.Drawing.Point(46, 51);
             this.lGroupNum.Name = "lGroupNum";
             this.lGroupNum.Size = new System.Drawing.Size(331, 24);
             this.lGroupNum.TabIndex = 38;
@@ -545,7 +550,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 405);
+            this.button1.Location = new System.Drawing.Point(12, 456);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 54);
             this.button1.TabIndex = 39;
@@ -553,11 +558,45 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(46, 51);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(266, 24);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Отображается список групп";
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSearch.Location = new System.Drawing.Point(413, 469);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(251, 28);
+            this.tbSearch.TabIndex = 41;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseMove);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(343, 472);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 24);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "Поиск";
+            // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1387, 470);
+            this.ClientSize = new System.Drawing.Size(1387, 522);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.lGroupNum);
@@ -571,9 +610,7 @@
             this.Controls.Add(this.pGroup);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1405, 517);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1405, 517);
             this.Name = "Students";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Группы и студенты";
@@ -636,5 +673,9 @@
         private System.Windows.Forms.ComboBox cbStatusStud;
         private System.Windows.Forms.ToolStripMenuItem smiStudNewGr;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label13;
     }
 }

@@ -29,24 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Organizations));
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.отображениеОрганизацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехКромеСкрытыхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всехToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьОбразовательнуюОрганизациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,25 +117,13 @@
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbSearch.Location = new System.Drawing.Point(506, 416);
+            this.tbSearch.Location = new System.Drawing.Point(551, 416);
             this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(265, 28);
             this.tbSearch.TabIndex = 29;
-            this.tbSearch.MouseHover += new System.EventHandler(this.tbSearch_MouseHover);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(777, 411);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseMove);
             // 
             // menuStrip1
             // 
@@ -182,19 +167,6 @@
             this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Text = "Изменить образовательную организацию";
             this.изменитьОбразовательнуюОрганизациюToolStripMenuItem.Click += new System.EventHandler(this.изменитьОбразовательнуюОрганизациюToolStripMenuItem_Click);
             // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(826, 399);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 55);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Сброс";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -208,14 +180,23 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(481, 419);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 24);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Поиск";
+            // 
             // Organizations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 469);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -234,7 +215,6 @@
             this.Text = "Организации";
             this.Load += new System.EventHandler(this.Organizations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -250,14 +230,13 @@
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem отображениеОрганизацийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехКромеСкрытыхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem всехToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьОбразовательнуюОрганизациюToolStripMenuItem;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }
