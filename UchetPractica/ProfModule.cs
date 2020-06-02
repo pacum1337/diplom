@@ -235,5 +235,30 @@ namespace UchetPractica
         {
             Application.Exit();
         }
+
+        private void tbSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(tbSearch, "Введите название ПМ или код специальности");
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchOrg = tbSearch.Text;
+            if (searchOrg != "")
+            {
+                string sqlSearch = String.Format("SELECT * FROM ProfModule " +
+                    "WHERE Name LIKE N'%{0}%' OR SpecCode LIKE N'%{0}%'", searchOrg);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            else
+                LoadData();
+        }
     }
 }

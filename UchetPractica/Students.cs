@@ -784,6 +784,7 @@ namespace UchetPractica
         private void StudentsShow_Click(object sender, EventArgs e)
         {
             tbSearch.Text = "";
+            tbSearch.Enabled = false;
             if (isGroup)
             {
                 isGroup = false;
@@ -1172,7 +1173,7 @@ namespace UchetPractica
 
         private void tbSearch_MouseMove(object sender, MouseEventArgs e)
         {
-            toolTip1.SetToolTip(tbSearch, "Введите название компании или её ИНН");
+            toolTip1.SetToolTip(tbSearch, "Введите имя, фамилию или отчество студента!");
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)

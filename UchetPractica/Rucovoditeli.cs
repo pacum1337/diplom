@@ -306,5 +306,40 @@ namespace UchetPractica
         {
             Application.Exit();
         }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchOrg = tbSearch.Text;
+            if (searchOrg != "")
+            {
+                string sqlSearch = String.Format("SELECT R.Id, O.Name as OrgName, R.Name as RucName, " +
+                "R.Surname, R.Patronymic, R.Status " +
+                "FROM Rucovoditeli AS R " +
+                "INNER JOIN Organizations AS O " +
+                "ON R.OrgId = O.Id " +
+                "WHERE R.Status='1' AND O.Status = '1' AND " +
+                "(O.Name LIKE N'%{0}%' OR R.Name LIKE N'%{0}%' OR R.Surname LIKE N'%{0}%' OR R.Patronymic LIKE N'%{0}%')", searchOrg);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+            else
+                LoadData();
+        }
+
+        private void tbSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(tbSearch, "Введите название организации или\nимя, фамилию или отчество руководителя");
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

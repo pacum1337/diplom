@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bAddShow = new System.Windows.Forms.Button();
             this.bEditShow = new System.Windows.Forms.Button();
@@ -45,6 +46,9 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pStud.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +70,7 @@
             // 
             this.bAddShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bAddShow.Location = new System.Drawing.Point(374, 349);
+            this.bAddShow.Location = new System.Drawing.Point(374, 401);
             this.bAddShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bAddShow.Name = "bAddShow";
             this.bAddShow.Size = new System.Drawing.Size(116, 55);
@@ -79,7 +83,7 @@
             // 
             this.bEditShow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEditShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bEditShow.Location = new System.Drawing.Point(496, 349);
+            this.bEditShow.Location = new System.Drawing.Point(496, 401);
             this.bEditShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bEditShow.Name = "bEditShow";
             this.bEditShow.Size = new System.Drawing.Size(116, 55);
@@ -92,7 +96,7 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(128, 351);
+            this.bCancel.Location = new System.Drawing.Point(128, 403);
             this.bCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(116, 55);
@@ -248,7 +252,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 350);
+            this.button1.Location = new System.Drawing.Point(12, 402);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 56);
             this.button1.TabIndex = 41;
@@ -256,19 +260,40 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(130, 362);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 24);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Поиск";
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSearch.Location = new System.Drawing.Point(200, 359);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(265, 28);
+            this.tbSearch.TabIndex = 46;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tbSearch_MouseMove);
+            // 
             // ProfModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 417);
+            this.ClientSize = new System.Drawing.Size(1077, 470);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pStud);
             this.Controls.Add(this.bAddShow);
             this.Controls.Add(this.bEditShow);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.dataGridView1);
-            this.MaximumSize = new System.Drawing.Size(1095, 464);
-            this.MinimumSize = new System.Drawing.Size(1095, 464);
             this.Name = "ProfModule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Проф. модули";
@@ -277,6 +302,7 @@
             this.pStud.ResumeLayout(false);
             this.pStud.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -299,5 +325,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

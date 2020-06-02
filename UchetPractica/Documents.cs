@@ -28,7 +28,7 @@ namespace UchetPractica
 
         private void LoadDocRaspred()
         {
-            string sqlGroups = "SELECT D.Id, G.GroupNumber, D.DateStart, D.DateEnd " +
+            string sqlGroups = "SELECT D.Id, G.GroupNumber, D.DateStart, D.DateEnd, D.PrType " +
                 "FROM DocumentRaspredelenie AS D " +
                 "INNER JOIN Groups AS G ON D.GroupId = G.Id " +
                 "WHERE PartOfPeriodsStatus IS NULL OR PartOfPeriodsStatus='1'";
@@ -56,10 +56,13 @@ namespace UchetPractica
             dataGridView1.Columns[1].HeaderText = "Номер группы";
             dataGridView1.Columns[2].HeaderText = "Дата начала практики";
             dataGridView1.Columns[3].HeaderText = "Дата окончания практики";
+            dataGridView1.Columns[4].HeaderText = "Тип практики";
 
-            dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Width = 200;
-            dataGridView1.Columns[3].Width = 200;
+            int width = 135;
+            dataGridView1.Columns[1].Width = width;
+            dataGridView1.Columns[2].Width = width;
+            dataGridView1.Columns[3].Width = width;
+            dataGridView1.Columns[4].Width = width;
         }
 
         private void bCancel_Click(object sender, EventArgs e)
@@ -98,6 +101,47 @@ namespace UchetPractica
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tbSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(tbSearch, "Введите номер группы, тип практики\nили дату начала или конца практики (в формате dd.mm.yyyy)");
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchOrg = tbSearch.Text;
+            if (searchOrg != "")
+            {
+                string sqlSearch = String.Format("SELECT D.Id, G.GroupNumber, D.DateStart, D.DateEnd, D.PrType " +
+                "FROM DocumentRaspredelenie AS D " +
+                "INNER JOIN Groups AS G ON D.GroupId = G.Id " +
+                "WHERE (PartOfPeriodsStatus IS NULL OR PartOfPeriodsStatus='1') AND " +
+                "(G.GroupNumber LIKE N'%{0}%' OR D.DateStart LIKE N'%{0}%' OR D.DateEnd LIKE N'%{0}%' OR D.PrType LIKE N'%{0}%')", searchOrg);
+
+                using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlSearch, connection);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+
+                dataGridView1.Columns[0].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Номер группы";
+                dataGridView1.Columns[2].HeaderText = "Дата начала практики";
+                dataGridView1.Columns[3].HeaderText = "Дата окончания практики";
+                dataGridView1.Columns[4].HeaderText = "Тип практики";
+
+                int width = 135;
+                dataGridView1.Columns[1].Width = width;
+                dataGridView1.Columns[2].Width = width;
+                dataGridView1.Columns[3].Width = width;
+                dataGridView1.Columns[4].Width = width;
+            }
+            else
+                LoadDocRaspred();
         }
     }
 }

@@ -699,7 +699,14 @@ namespace UchetPractica
             this.Visible = false;
             ProfModule prof = new ProfModule();
             prof.ShowDialog();
-            this.Visible = true;
+            try
+            {
+                this.Visible = true;
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void скачатьТекущийГУПToolStripMenuItem_Click(object sender, EventArgs e)
