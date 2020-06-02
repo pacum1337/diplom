@@ -62,6 +62,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.pColRuc.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,7 +98,7 @@
             this.bEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bEnter.Location = new System.Drawing.Point(1543, 549);
             this.bEnter.Name = "bEnter";
-            this.bEnter.Size = new System.Drawing.Size(212, 51);
+            this.bEnter.Size = new System.Drawing.Size(216, 51);
             this.bEnter.TabIndex = 26;
             this.bEnter.Text = "Создать документ";
             this.bEnter.UseVisualStyleBackColor = true;
@@ -458,11 +459,22 @@
             this.button6.Text = "Выйти";
             this.button6.UseVisualStyleBackColor = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(1307, 549);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(187, 48);
+            this.label14.TabIndex = 76;
+            this.label14.Text = "Кол-во студентов в\r\nгруппе: ";
+            // 
             // DocRaspredelenAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1769, 673);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
@@ -538,5 +550,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label14;
     }
 }

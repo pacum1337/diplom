@@ -474,6 +474,7 @@ namespace UchetPractica
             button3.Enabled = false;
             panel1.Visible = true;
             panel2.Visible = false;
+            label14.Text = "Кол-во студентов в\nгруппе: ";
         }
 
         private void HideShowDate()
@@ -828,6 +829,7 @@ namespace UchetPractica
                 label10.ForeColor = Color.Black;
                 pColRuc.Enabled = true;
                 LoadDate();
+                label14.Text = "Кол-во студентов в\nгруппе: " + lines;
             }
             else
             {
