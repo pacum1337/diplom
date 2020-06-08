@@ -38,6 +38,9 @@ namespace UchetPractica
         DateTime[] end = new DateTime[0];
         int dateLen = 0;
 
+        //нимерация студентов
+        Label[] studNums;
+
         //студенты
         string[] sudentsInfo = new string[0];
         int[] sudentsId = new int[0];
@@ -65,13 +68,13 @@ namespace UchetPractica
         string[] cbValueArr;
 
         //Текст бокс номер договора
-        TextBox[] tbNum;
+        Label[] tbNum;
 
         //Текст бокс дата договора
-        TextBox[] tbDate;
+        Label[] tbDate;
 
         //Текст бокс тип договора
-        TextBox[] tbType;
+        Label[] tbType;
 
         public DocRaspredelenAdd()
         {
@@ -123,13 +126,14 @@ namespace UchetPractica
                     {
                         cbValueArr[i] = "";
                     }
+                    studNums = new Label[lines];
                     studLabels = new Label[reader.GetInt32(0)];
                     prPlace = new ComboBox[reader.GetInt32(0)];
                     rucColl = new ComboBox[reader.GetInt32(0)];
                     rucOrg = new ComboBox[reader.GetInt32(0)];
-                    tbNum = new TextBox[reader.GetInt32(0)];
-                    tbDate = new TextBox[reader.GetInt32(0)];
-                    tbType = new TextBox[reader.GetInt32(0)];
+                    tbNum = new Label[reader.GetInt32(0)];
+                    tbDate = new Label[reader.GetInt32(0)];
+                    tbType = new Label[reader.GetInt32(0)];
                 }
             }
         }
@@ -201,10 +205,20 @@ namespace UchetPractica
             int otstup = 100;
             for (int i = 0; i < lines; i++)
             {
+                //номер студента
+                studNums[i] = new Label();
+                studNums[i].Top = 10 + otstup * i;
+                studNums[i].Left = 5;
+                studNums[i].Text = (i + 1).ToString() + ")";
+                studNums[i].AutoSize = true;
+                studNums[i].Font = new Font("Arial", 10, FontStyle.Regular);
+                panel.Controls.Add(studNums[i]);
+
+
                 //ФИО студента
                 studLabels[i] = new Label();
                 studLabels[i].Top = 10 + otstup*i;
-                studLabels[i].Left = 20;
+                studLabels[i].Left = 30;
                 studLabels[i].Text = sudentsInfo[i];
                 studLabels[i].AutoSize = true;
                 studLabels[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
@@ -245,39 +259,33 @@ namespace UchetPractica
                 panel.Controls.Add(rucOrg[i]);
 
                 //tb num dogovor
-                tbNum[i] = new TextBox();
+                tbNum[i] = new Label();
                 tbNum[i].Top = 10 + otstup * i;
                 tbNum[i].Left = 740;
                 tbNum[i].Width = 120;
+                tbNum[i].Text = "Номер: ";
                 tbNum[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 panel.Controls.Add(tbNum[i]);
 
-                //
-                tbNum[i].Text = "1";
-
 
                 //tb date dogovor
-                tbDate[i] = new TextBox();
+                tbDate[i] = new Label();
                 tbDate[i].Top = 35 + otstup * i;
                 tbDate[i].Left = 740;
                 tbDate[i].Width = 120;
+                tbDate[i].Text = "Дата: ";
                 tbDate[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 panel.Controls.Add(tbDate[i]);
 
-                //
-                tbDate[i].Text = "1";
-
 
                 //tb type dogovor
-                tbType[i] = new TextBox();
+                tbType[i] = new Label();
                 tbType[i].Top = 60 + otstup * i;
                 tbType[i].Left = 740;
                 tbType[i].Width = 120;
+                tbType[i].Text = "Тип: ";
                 tbType[i].Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
                 panel.Controls.Add(tbType[i]);
-
-                //
-                tbType[i].Text = "1";
             }
         }
 
@@ -305,6 +313,37 @@ namespace UchetPractica
             }
         }
 
+        private void GetDogConetnt(int num, int orgId)
+        {
+            string sqlStuds = String.Format("SELECT DogovorNum, DogovorDate, DogovorType " +
+                "FROM Organizations WHERE Id = {0}", orgId);
+            using (SqlConnection connection = new SqlConnection(Strings.ConStr))
+            {
+                connection.Open();
+                SqlCommand sql = new SqlCommand(sqlStuds, connection);
+                SqlDataReader reader = sql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    tbNum[num].Enabled = true;
+                    tbDate[num].Enabled = true;
+                    tbType[num].Enabled = true;
+                    reader.Read();
+                    if (!reader.IsDBNull(0))
+                    {
+                        tbNum[num].Text = "Номер: " + reader.GetString(0);
+                    }
+                    if (!reader.IsDBNull(1))
+                    {
+                        tbDate[num].Text = "Дата: " + reader.GetString(1);
+                    }
+                    if (!reader.IsDBNull(2))
+                    {
+                        tbType[num].Text = "Тип: " + reader.GetString(2);
+                    }
+                }
+            }
+        }
+
         private void PlaceOnClick(object sender, EventArgs eventArgs)
         {
             for (int i = 0; i < lines; i++)
@@ -317,13 +356,20 @@ namespace UchetPractica
                         rucOrg[i].Enabled = true;
                         rucOrg[i].Items.Clear();
                         GetRucovodOrg(i, prPlaceId[prPlace[i].SelectedIndex]);
-                        for (int j = 0; j < rucOrgStr[i].Length; j++)
+                        try
                         {
-                            if (rucOrgStr[i][j] != null)
-                                rucOrg[i].Items.Add(rucOrgStr[i][j]);
+                            for (int j = 0; j < rucOrgStr[i].Length; j++)
+                            {
+                                if (rucOrgStr[i][j] != null)
+                                    rucOrg[i].Items.Add(rucOrgStr[i][j]);
+                            }
                         }
+                        catch (NullReferenceException)
+                        {
+                            MessageBox.Show("Нет руководителей под эту организацию!");
+                        }
+                        GetDogConetnt(i, prPlaceId[prPlace[i].SelectedIndex]);
                     }
-                    
                 }
             }
         }

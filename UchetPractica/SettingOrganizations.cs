@@ -72,6 +72,9 @@ namespace UchetPractica
                     status = "1";
                 else if(cbStatus.Text == "Не работающая")
                     status = "2";
+                string dogNum = textBox3.Text;
+                string dogDate = textBox2.Text;
+                string dogType = textBox1.Text;
 
 
                 if (addRed)//Добавление организации 
@@ -97,10 +100,10 @@ namespace UchetPractica
                     {
                         string sqlAddGroup = String.Format("INSERT INTO Organizations " +
                             "(Name, Address, DateReristration, Director, OGRN, " +
-                            "INN, KPP, DocCount, Status, StudyOrg) " +
+                            "INN, KPP, DocCount, Status, StudyOrg, DogovorNum, DogovorDate, DogovorType) " +
                             "VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}', " +
-                            "N'{5}',N'{6}',N'{7}',N'{8}', N'{9}')"
-                            , nameOrg, address, date, director, ogrn, inn, kpp, 0, status, studyOrg);
+                            "N'{5}',N'{6}',N'{7}',N'{8}', N'{9}',N'{10}',N'{11}', N'{12}')"
+                            , nameOrg, address, date, director, ogrn, inn, kpp, 0, status, studyOrg, dogNum, dogDate, dogType);
 
                         using (SqlConnection connect = new SqlConnection(Strings.ConStr))
                         {
@@ -120,9 +123,9 @@ namespace UchetPractica
                     {
                         string sqlEditStud = String.Format("UPDATE Organizations SET Name=N'{0}', " +
                             "Address=N'{1}', DateReristration=N'{2}', Director=N'{3}', OGRN=N'{4}', " +
-                            "INN=N'{5}', KPP=N'{6}', Status=N'{7}', StudyOrg=N'{8}' " +
-                            "WHERE Id = '{9}'",
-                            nameOrg, address, date, director, ogrn, inn, kpp,status, studyOrg, selectedOrgId);
+                            "INN=N'{5}', KPP=N'{6}', Status=N'{7}', StudyOrg=N'{8}', DogovorNum=N'{9}', DogovorDate=N'{10}', DogovorType=N'{11}' " +
+                            "WHERE Id = '{12}'",
+                            nameOrg, address, date, director, ogrn, inn, kpp,status, studyOrg, dogNum, dogDate, dogType, selectedOrgId);
                         using (SqlConnection connection = new SqlConnection(Strings.ConStr))
                         {
                             connection.Open();

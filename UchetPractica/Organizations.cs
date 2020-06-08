@@ -51,9 +51,13 @@ namespace UchetPractica
             dataGridView1.Columns[5].HeaderText = "ОГРН";
             dataGridView1.Columns[6].HeaderText = "ИНН";
             dataGridView1.Columns[7].HeaderText = "КПП";
-            dataGridView1.Columns[8].HeaderText = "Кол-во документов с этой организацией";
+            dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[12].HeaderText = "Номер договора";
+            dataGridView1.Columns[13].HeaderText = "Дата заключения договора";
+            dataGridView1.Columns[14].HeaderText = "Тип договора";
         }
 
         private void ProvStudyOrg()
@@ -118,6 +122,9 @@ namespace UchetPractica
                     setting.tbOGRN.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
                     setting.tbINN.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
                     setting.tbKPP.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[7].Value);
+                    setting.textBox3.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[12].Value);
+                    setting.textBox2.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[13].Value);
+                    setting.textBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[14].Value);
                     string status = Convert.ToString(dataGridView1.CurrentRow.Cells[10].Value);
                     if (Convert.ToString(dataGridView1.CurrentRow.Cells[11].Value) == "1")
                     {
