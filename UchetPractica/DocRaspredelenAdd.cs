@@ -515,8 +515,8 @@ namespace UchetPractica
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
             pColRuc.Enabled = false;
-            comboBox5.Enabled = false;
-            comboBox6.Enabled = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
             button3.Enabled = false;
             panel1.Visible = true;
             panel2.Visible = false;
@@ -606,6 +606,7 @@ namespace UchetPractica
                 {
                     comboBox5.Items.Add(reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2));
                     comboBox6.Items.Add(reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2));
+                    comboBox7.Items.Add(reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2));
                 }
             }
         }
@@ -888,20 +889,43 @@ namespace UchetPractica
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox5.Enabled = true;
-            comboBox6.Enabled = false;
+            panel3.Visible = true;
+            panel4.Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox5.Enabled = false;
-            comboBox6.Enabled = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox5.Enabled = true;
-            comboBox6.Enabled = true;
+            if (lines > 3)
+            {
+                for (int i = 0; i < lines; i++)
+                {
+                    comboBox8.Items.Add((i + 1).ToString());
+                    comboBox9.Items.Add((i + 1).ToString());
+                    comboBox10.Items.Add((i + 1).ToString());
+                    comboBox11.Items.Add((i + 1).ToString());
+                }
+                panel3.Visible = false;
+                panel4.Visible = true;
+
+                comboBox8.SelectedIndex = 0;
+                comboBox8.Enabled = false;
+                comboBox11.SelectedIndex = lines - 1;
+                comboBox11.Enabled = false;
+                comboBox9.Items.RemoveAt(lines - 1);
+                comboBox9.Items.RemoveAt(0);
+                comboBox10.Items.RemoveAt(lines - 1);
+                comboBox10.Items.RemoveAt(0);
+            }
+            else
+            {
+                MessageBox.Show("Нужно минимум 4 студента в группе для пользования этой функцией");
+            }
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
@@ -911,24 +935,6 @@ namespace UchetPractica
                 for(int i = 0; i < lines; i++)
                 {
                     rucColl[i].Text = comboBox5.Text;
-                }
-            }
-            else if (radioButton3.Checked)
-            {
-                for (int i = 0; i < lines / 2; i++)
-                {
-                    rucColl[i].Text = comboBox5.Text;
-                }
-            }
-        }
-
-        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (radioButton3.Checked)
-            {
-                for (int i = lines / 2; i < lines; i++)
-                {
-                    rucColl[i].Text = comboBox6.Text;
                 }
             }
         }
@@ -1009,6 +1015,69 @@ namespace UchetPractica
                 Array.Resize(ref numPeriod, periodCount);
                 Array.Resize(ref cherta, periodCount);
             }
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox6.Text != "")
+            {
+                panel5.Enabled = true;
+                RucColTwoGroups(comboBox6, comboBox9, comboBox10, 1);
+            }
+            else
+                panel5.Enabled = false;
+        }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox7.Text != "")
+            {
+                panel6.Enabled = true;
+                RucColTwoGroups(comboBox7, comboBox10, comboBox9, -1);
+            }
+            else
+                panel6.Enabled = false;
+
+        }
+
+        private void RucColTwoGroups(ComboBox main_box, ComboBox sub_box, ComboBox edit_box, int num)
+        {
+            if (main_box.Text != "")
+            {
+                if (sub_box.Text != "")
+                {
+                    if(edit_box.Text == "")
+                        edit_box.Text = (Convert.ToInt32(sub_box.Text) + num).ToString();
+                    else
+                    {
+                        if (Convert.ToInt32(edit_box.Text) + num != Convert.ToInt32(sub_box.Text))
+                        {
+                            edit_box.Text = (Convert.ToInt32(sub_box.Text) + num).ToString();
+                        }
+                    }
+                }
+                if(comboBox9.Text != "" && comboBox10.Text != "" && comboBox6.Text != "" && comboBox7.Text != "")
+                {
+                    for (int i = 0; i < Convert.ToInt32(comboBox9.Text); i++)
+                    {
+                        rucColl[i].Text = comboBox6.Text;
+                    }
+                    for (int i = Convert.ToInt32(comboBox10.Text) - 1; i < lines; i++)
+                    {
+                        rucColl[i].Text = comboBox7.Text;
+                    }
+                }
+            }
+        }
+
+        private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RucColTwoGroups(comboBox6, comboBox9, comboBox10, 1);
+        }
+
+        private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RucColTwoGroups(comboBox7, comboBox10, comboBox9, -1);
         }
     }
 }
