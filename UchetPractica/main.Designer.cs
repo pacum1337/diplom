@@ -69,7 +69,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(507, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(542, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -220,7 +220,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(130, 295);
+            this.button3.Location = new System.Drawing.Point(154, 294);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(243, 82);
@@ -287,7 +287,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.bEnter);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(74, 85);
+            this.groupBox1.Location = new System.Drawing.Point(100, 84);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(355, 205);
             this.groupBox1.TabIndex = 41;
@@ -311,7 +311,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 421);
+            this.ClientSize = new System.Drawing.Size(542, 421);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lStudyProcess);
@@ -321,9 +321,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(525, 468);
+            this.MaximumSize = new System.Drawing.Size(560, 468);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(525, 468);
+            this.MinimumSize = new System.Drawing.Size(560, 468);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Меню быстрого доступа";

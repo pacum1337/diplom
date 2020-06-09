@@ -170,6 +170,7 @@
             // button4
             // 
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.Location = new System.Drawing.Point(329, 119);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -182,6 +183,7 @@
             // button3
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(600, 119);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

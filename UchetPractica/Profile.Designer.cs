@@ -45,6 +45,7 @@
             this.lName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,11 +54,11 @@
             // 
             this.bCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCancel.Location = new System.Drawing.Point(12, 299);
+            this.bCancel.Location = new System.Drawing.Point(147, 283);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(110, 46);
+            this.bCancel.Size = new System.Drawing.Size(110, 55);
             this.bCancel.TabIndex = 37;
-            this.bCancel.Text = "Отмена";
+            this.bCancel.Text = "Назад";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
@@ -83,9 +84,9 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(3, 233);
+            this.button2.Location = new System.Drawing.Point(7, 226);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 46);
+            this.button2.Size = new System.Drawing.Size(110, 51);
             this.button2.TabIndex = 53;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
@@ -95,7 +96,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(301, 228);
+            this.button1.Location = new System.Drawing.Point(296, 226);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 51);
             this.button1.TabIndex = 52;
@@ -237,11 +238,25 @@
             this.panel2.Size = new System.Drawing.Size(486, 291);
             this.panel2.TabIndex = 49;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(12, 283);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(110, 55);
+            this.button3.TabIndex = 50;
+            this.button3.Text = "Выйти";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 369);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lName);
@@ -249,7 +264,9 @@
             this.Controls.Add(this.lSur);
             this.Controls.Add(this.lPas);
             this.Controls.Add(this.bCancel);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(798, 416);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(798, 416);
             this.Name = "Profile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -280,5 +297,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button3;
     }
 }

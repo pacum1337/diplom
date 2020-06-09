@@ -324,13 +324,14 @@ namespace UchetPractica
                         lStudyProcess.Text = "График учебного процесса не загружен в базу данных";
                 }
             }
-            string sqlProv = "SELECT MIN(Id) FROM StudyProcess";
+            string sqlProv = "SELECT COUNT(Id) FROM StudyProcess";
             using (SqlConnection connection = new SqlConnection(Strings.ConStr))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(sqlProv, connection);
                 SqlDataReader reader = command.ExecuteReader();
-                if (!reader.HasRows)
+                reader.Read();
+                if (reader.GetInt32(0) < 1)
                     lStudyProcess.Text = "График учебного процесса не загружен в базу данных";
             }
         }
