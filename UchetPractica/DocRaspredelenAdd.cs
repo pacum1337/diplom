@@ -1079,5 +1079,16 @@ namespace UchetPractica
         {
             RucColTwoGroups(comboBox7, comboBox10, comboBox9, -1);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i< lines; i++)
+            {
+                //места практик
+                prPlace[i].SelectedIndex = 1;
+                //Руководители от организации
+                rucOrg[i].SelectedIndex = 0;
+            }
+        }
     }
 }

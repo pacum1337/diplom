@@ -138,8 +138,8 @@
             this.отключитьУведомленияToolStripMenuItem,
             this.отключитьДоСледующейНеделиToolStripMenuItem});
             this.показУведомленийОППToolStripMenuItem.Name = "показУведомленийОППToolStripMenuItem";
-            this.показУведомленийОППToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-            this.показУведомленийОППToolStripMenuItem.Text = "Показ уведомлений о ПП";
+            this.показУведомленийОППToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.показУведомленийОППToolStripMenuItem.Text = "Показ уведомлений";
             // 
             // всеОтделенияToolStripMenuItem
             // 

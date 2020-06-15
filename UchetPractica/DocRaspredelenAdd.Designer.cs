@@ -143,6 +143,7 @@
             this.label1.Size = new System.Drawing.Size(142, 24);
             this.label1.TabIndex = 28;
             this.label1.Text = "ФИО студента";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 

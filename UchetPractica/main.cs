@@ -572,6 +572,7 @@ namespace UchetPractica
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                StudyProcessPeriod();
             }
 
             string nameFromTable = "";

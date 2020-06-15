@@ -827,6 +827,7 @@ namespace UchetPractica
 
         private void GroupShow_Click(object sender, EventArgs e)
         {
+            tbSearch.Enabled = true;
             this.Width = 710;
             GroupsShowData();
             pStud.Visible = false;
@@ -1113,6 +1114,7 @@ namespace UchetPractica
 
         private void OldGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tbSearch.Enabled = true;
             this.Width = 710;
             ChangeStatusGroup();
             string sql = "SELECT * FROM Groups WHERE Cours > 4 OR Status!=N'1'";
